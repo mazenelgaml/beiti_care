@@ -36,6 +36,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBar: AppBar(
         backgroundColor: Color(0xffF3EFEF),
         leading: null,
+        automaticallyImplyLeading: false,
         centerTitle: true,
         toolbarHeight: 120.h,
         title: Container(

@@ -11,6 +11,7 @@ class OnBoardingFirstScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: null,
+        automaticallyImplyLeading: false,
         centerTitle: true,
         toolbarHeight: 150.h,
         title: Container(width: 122.w,height: 117.h,child: Image(image: AssetImage("assets/images/logo.png"),width: 122.w,height: 117.h,fit: BoxFit.fill,),decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),),

@@ -10,6 +10,7 @@ class LocateScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         leading: null,
         centerTitle: true,
         toolbarHeight: 150.h,

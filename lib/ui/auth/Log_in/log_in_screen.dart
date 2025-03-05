@@ -22,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
     builder: (LogInController controller) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Color(0xffF3EFEF),
         leading: null,
         centerTitle: true,
