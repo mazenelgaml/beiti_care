@@ -1,5 +1,6 @@
 import 'package:beiti_care/ui/onboarding/on_boarding_first_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:splash_view/source/presentation/pages/splash_view.dart';
@@ -35,10 +36,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
         ),
 
-        logo: const Stack(
+        logo:  Stack(
             alignment: Alignment.topCenter,
             children:[
-              Image(image: AssetImage('assets/images/logo.png')),
+              Image(image: AssetImage('assets/images/splash.png')),
 
             ]
         ) );
