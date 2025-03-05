@@ -7,6 +7,7 @@ import 'package:splash_view/source/presentation/pages/splash_view.dart';
 import 'package:splash_view/source/presentation/widgets/done.dart';
 
 import '../../services/memory.dart';
+import '../auth/finger_print/finger_print_screen.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
         backgroundColor: const Color(0xffffffff),
         duration: const Duration(seconds: 4),
         done: Done(
-   OnBoardingFirstScreen()
+            FingerprintAuthScreen()
             // Get.find<CacheHelper>().checkUserIsSignedIn?const HomeScreen():Get.find<CacheHelper>().checkUserIsEnteredAPI?const LoginScreen(): const StartScreen()
 
         ),

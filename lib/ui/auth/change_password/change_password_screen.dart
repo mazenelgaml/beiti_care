@@ -14,6 +14,7 @@ class ChangePasswordScreen extends StatelessWidget {
       builder: (ChangePasswordController controller) {
         return Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             backgroundColor: Color(0xffF3EFEF),
             centerTitle: true,
             toolbarHeight: 140.h,
