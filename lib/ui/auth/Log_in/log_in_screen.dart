@@ -1,3 +1,4 @@
+import 'package:beiti_care/ui/auth/forget_password/forget_password_screen.dart';
 import 'package:beiti_care/ui/auth/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -161,7 +162,9 @@ class _LoginScreenState extends State<LoginScreen> {
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.off(()=>ForgetPasswordScreen());
+                  },
                   child: Text('Forget Password?', style: TextStyle(fontSize: 16,color: Color(0xff49768C))),
                 ),
               ),

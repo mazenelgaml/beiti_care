@@ -55,7 +55,7 @@ dependencies:
   geocoding: ^3.0.0
   easy_localization: ^3.0.0
   flutter_screenutil: ^5.9.3
-  
+  pinput: ^3.0.1
 
 
 dev_dependencies:

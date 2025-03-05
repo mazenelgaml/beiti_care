@@ -16,6 +16,17 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   bool isClient = true;
   int selectedIndex = 0;
+  String? selectedSpecialty;
+
+  final List<String> specialties = [
+    "Nutrition",
+    "Catheterization",
+    "Consultations",
+    "General Surgery",
+    "Pediatrics",
+    "Orthopedics",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
@@ -531,29 +542,45 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ],
                     ),
                   ),
-                  Container(
-                    width: 338.w,
-                    height: 50.h,
-                    child: TextFormField(
-                      controller: controller.specialtyController,
-                      validator: (v){controller.validateNotEmpty(v);},
 
-                      decoration: InputDecoration(
-                        hintText: "Specialty",
-                        hintStyle: TextStyle(
-                            color: Color(0xff8B8B8B),
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14.sp
-                        ),
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide:BorderSide(color: Color(0xff8B8B8B),width: 2)
-                        ),
+             Container(
+               width: 338.w,
+               decoration: BoxDecoration(
+                 color: Colors.white,
+                 borderRadius: BorderRadius.circular(10),
+                 border: Border.all(
+                   color: Color(0xff8B8B8B),
+                   width: 1.5
+                 )
+               ),
+               child: Padding(
+                 padding: const EdgeInsets.symmetric(horizontal: 10),
+                 child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      value: selectedSpecialty,
+                      hint: Text(
+                        "Specialty",
+                        style: TextStyle(color: Color(0xff8B8B8B),fontSize: 16.sp,fontWeight: FontWeight.w400),
                       ),
+                      isExpanded: true,
+                      icon: Icon(Icons.arrow_drop_down, color: Color(0xff8B8B8B),),
+                      style: TextStyle(color: Color(0xff8B8B8B), fontSize: 16.sp,fontWeight: FontWeight.bold),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedSpecialty = newValue;
+                        });
+                      },
+                      items: specialties.map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
                     ),
                   ),
+               ),
+             ),
+
                   SizedBox(height: 10.h),
                   Padding(
                     padding: const EdgeInsets.only(left: 20.0,bottom: 5),
