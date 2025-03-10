@@ -37,12 +37,20 @@ class _SplashScreenState extends State<SplashScreen> {
 
         ),
 
-        logo:  Stack(
-            alignment: Alignment.topCenter,
-            children:[
-              Image(image: AssetImage('assets/images/splash.png')),
-
-            ]
+        logo:  Container(
+          width: Get.width,
+          height: Get.height,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0xFFD3EEFC), // Light blue at the top
+                Color(0xFFEAA8AA), // Light pink at the bottom
+              ],
+            ),
+          ),
+          child: Center(child: Image(image: AssetImage('assets/images/splash.png'))),
         ) );
   }
 }

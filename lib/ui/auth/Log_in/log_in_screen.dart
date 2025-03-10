@@ -1,3 +1,4 @@
+import 'package:beiti_care/services/translation_key.dart';
 import 'package:beiti_care/ui/auth/forget_password/forget_password_screen.dart';
 import 'package:beiti_care/ui/auth/register/register_screen.dart';
 import 'package:flutter/material.dart';
@@ -92,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 15.h),
               Text(
-                'Log in',
+                logIn.tr,
                 style: TextStyle(fontSize: 25.sp, fontWeight: FontWeight.bold, color: Color(0xffB93439)),
               ),
               SizedBox(height: 15.h),
