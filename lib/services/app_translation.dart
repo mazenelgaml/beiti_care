@@ -1,6 +1,6 @@
 
 import 'package:get/get_navigation/src/root/internacionalization.dart';
-import 'package:merchant/services/translation_key.dart';
+
 
 import 'package:beiti_care/services/translation_key.dart';
 import 'package:get/get_navigation/src/root/internacionalization.dart';
