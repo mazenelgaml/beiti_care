@@ -14,12 +14,18 @@ class AppTranslations extends Translations {
   Map<String, Map<String, String>> get keys => {
         "en": {
 
+        logIn:"Log In"
+        },
+        "ar": {
+
+
         },
         "ar": {
 
 
 
 
+          logIn:"تسجيل الدخول"
         }
       };
 }
