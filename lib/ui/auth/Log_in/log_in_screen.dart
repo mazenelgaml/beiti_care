@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../nurse/home/nurse_home_screen.dart';
 import 'controller/log_in_controller.dart';
 
 
@@ -177,6 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     controller.submitForm();
+                    Get.off(()=>NurseHomeScreen());
                   },
           
                   style: ElevatedButton.styleFrom(
