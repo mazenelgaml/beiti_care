@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:beiti_care/ui/nurse/home/nurse_home_screen.dart';
 import 'package:beiti_care/ui/nurse/request/request_screen.dart';
+import 'package:beiti_care/ui/nurse/wallet/wallet_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -40,7 +41,7 @@ class CurvedBottomNavBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildNavItem('assets/images/homeIcon.png', "Home", homeIcon??Colors.grey,(){Get.to(()=>NurseHomeScreen());}),
-              _buildNavItem('assets/images/walletIcon.png', "Wallet", walletIcon??Colors.grey,(){}),
+              _buildNavItem('assets/images/walletIcon.png', "Wallet", walletIcon??Colors.grey,(){Get.to(()=>WalletScreen());}),
               SizedBox(width: 50), // Space for center profile
               _buildNavItem('assets/images/pending.png', "Requests", requestsIcon??Colors.grey,(){Get.to(()=>RequestsScreen());}),
               _buildNavItem('assets/images/moreIcon.png', "More", moreIcon??Colors.grey,(){}),
