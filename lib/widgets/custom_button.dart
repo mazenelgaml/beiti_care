@@ -2,29 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
-  final Function onPressed;
+  final VoidCallback onPressed;
   final String name;
-  final double borderRaduis;
+  final double borderRadius;
   final Color btnColor;
-  const CustomButton({super.key, required this.onPressed, required this.name, required this.borderRaduis, required this.btnColor});
+  final Color textColor;
+
+  const CustomButton({
+    super.key,
+    required this.onPressed,
+    required this.name,
+    required this.borderRadius,
+    required this.btnColor,
+    required this.textColor,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 338.w,
-      height: 56.h,
+      height: 60.h,
       child: ElevatedButton(
-        onPressed: onPressed(),
-
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: btnColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRaduis),
+            borderRadius: BorderRadius.circular(borderRadius),
           ),
           padding: EdgeInsets.symmetric(horizontal: 100.w, vertical: 15.h),
-
         ),
-        child: Text(name, style: TextStyle(fontSize: 20.sp, color: Colors.white)),
+        child: Text(name, style: TextStyle(fontSize: 18.sp, color: textColor)),
       ),
     );
   }

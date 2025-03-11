@@ -2,6 +2,7 @@
 import 'package:beiti_care/services/app_translation.dart';
 import 'package:beiti_care/services/localization_services.dart';
 import 'package:beiti_care/services/memory.dart';
+import 'package:beiti_care/ui/profile/profile_screen.dart';
 import 'package:beiti_care/ui/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         builder: (context, child) {return GetMaterialApp(
         title: 'Yomy Merchant',
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: ProfileScreen(),
         translations: AppTranslations(),
         locale: Get.find<LocalizationService>().activeLocale,
         supportedLocales: SupportedLocales.all,
