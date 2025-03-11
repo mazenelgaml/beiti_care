@@ -6,25 +6,10 @@ import 'package:get/get.dart';
 import '../../../widgets/custom_buttom_nav_bar.dart';
 
 
-class NurseHomeScreen extends StatefulWidget {
+class NurseHomeScreen extends StatelessWidget {
 
   const NurseHomeScreen({super.key});
 
-  @override
-  State<NurseHomeScreen> createState() => _NurseHomeScreenState();
-}
-
-class _NurseHomeScreenState extends State<NurseHomeScreen> {
-  int _selectedIndex = 0;
-  final List<String> _iconPaths = [
-    "assets/images/homeIcon.png",
-    "assets/images/walletIcon.png",
-    "assets/images/pending.png",
-    "assets/images/moreIcon.png",
-  ];
-
-  final List<String> _labels = ["Home", "Wallet", "Requests", "More"];
-  String profile="assets/images/profileIcon.png";
 
 
   @override
@@ -117,62 +102,10 @@ class _NurseHomeScreenState extends State<NurseHomeScreen> {
       ),
 
         //params
-      floatingActionButton: FloatingActionButton(
-
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-        onPressed: () {
-
-        },
-        backgroundColor: Colors.transparent,
-        elevation: 2,
-
-        child: CircleAvatar(
-          backgroundColor: Colors.grey[400],
-          radius: 50,
-
-          child: Image.asset(
-            profile,
-            width: 28,
-            height: 28,
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20)
-        ),
-        margin: EdgeInsets.only(bottom: 20,left: 20,right: 20),
-        child: AnimatedBottomNavigationBar.builder(
-
-          itemCount: _iconPaths.length,
-          tabBuilder: (int index, bool isActive) {
-            final color = isActive ? Colors.red : Colors.grey[600];
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(_iconPaths[index], width: 24, height: 24, color: color),
-                const SizedBox(height: 3),
-                Text(
-                  _labels[index],
-                  style: TextStyle(fontSize: 12, color: color),
-                ),
-              ],
-            );
-          },
-          notchMargin: 15,
-          backgroundColor: Colors.grey[300]!,
-          activeIndex: _selectedIndex,
-          notchSmoothness: NotchSmoothness.smoothEdge,
-          gapLocation: GapLocation.center,
-          leftCornerRadius: 20,
-          rightCornerRadius: 20,
-
-          onTap: (index) => setState(() {
-            _selectedIndex = index;}),
-        ),
-      ),
+      bottomNavigationBar: Container(decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20)
+      ),margin:EdgeInsets.only(bottom: 20,left: 20,right: 20
+      ),child: CurvedBottomNavBar(homeIcon: Color(0xffB93439),)),
 
 
 

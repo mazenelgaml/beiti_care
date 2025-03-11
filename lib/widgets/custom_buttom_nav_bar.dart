@@ -1,78 +1,104 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'dart:ui';
+
+import 'package:beiti_care/ui/nurse/home/nurse_home_screen.dart';
+import 'package:beiti_care/ui/nurse/request/request_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class CustomBottomNavBar extends StatefulWidget {
-  final List<String>?iconPaths;
-  const CustomBottomNavBar({super.key, this.iconPaths});
+class CurvedBottomNavBar extends StatelessWidget {
+  final Color? homeIcon;
+  final Color? walletIcon;
+  final Color? profileIcon;
+  final Color? requestsIcon;
+  final Color? moreIcon;
+  const CurvedBottomNavBar({super.key, this.homeIcon, this.walletIcon, this.profileIcon, this.requestsIcon, this.moreIcon});
 
-  @override
-  _CustomBottomNavBarState createState() => _CustomBottomNavBarState();
-}
-
-class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
-  int _selectedIndex = 0;
-  final List<String> _iconPaths = [
-    "assets/images/homeIcon.png",
-    "assets/images/walletIcon.png",
-    "assets/images/pending.png",
-    "assets/images/moreIcon.png",
-  ];
-
-  final List<String> _labels = ["Home", "Wallet", "Requests", "More"];
-String profile="assets/images/profileIcon.png";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text("Selected: ${_labels[_selectedIndex]}",
-            style: const TextStyle(fontSize: 18)),
-      ),
-      floatingActionButton: FloatingActionButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-        onPressed: () {
-
-        },
-      backgroundColor: Colors.transparent,
-        elevation: 2,
-
-        child: CircleAvatar(
-          backgroundColor: Colors.grey[400],
-          radius: 50,
-
-          child: Image.asset(
-            profile,
-            width: 28,
-            height: 28,
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        CustomPaint(
+          size: Size(MediaQuery.of(context).size.width, 80),
+          painter: BottomNavBarPainter(),
+        ),
+        Positioned(
+          top: -26,
+          left: MediaQuery.of(context).size.width / 2 - 50,
+          child: CircleAvatar(
+            radius: 30,
+            backgroundColor: Colors.grey.shade400,
+            child: Image.asset(
+              'assets/images/profileIcon.png',
+              width: 30,
+              height: 30,
+            ),
           ),
         ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: AnimatedBottomNavigationBar.builder(
-        itemCount: _iconPaths.length,
-        tabBuilder: (int index, bool isActive) {
-          final color = isActive ? Colors.red : Colors.grey[600];
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
+        Positioned.fill(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Image.asset(widget.iconPaths?.length==0||widget.iconPaths==null?_iconPaths[index]:widget.iconPaths?[index]??_iconPaths[index], width: 24, height: 24, color: color),
-              const SizedBox(height: 3),
-              Text(
-                _labels[index],
-                style: TextStyle(fontSize: 12, color: color),
-              ),
+              _buildNavItem('assets/images/homeIcon.png', "Home", homeIcon??Colors.grey,(){Get.to(()=>NurseHomeScreen());}),
+              _buildNavItem('assets/images/walletIcon.png', "Wallet", walletIcon??Colors.grey,(){}),
+              SizedBox(width: 50), // Space for center profile
+              _buildNavItem('assets/images/pending.png', "Requests", requestsIcon??Colors.grey,(){Get.to(()=>RequestsScreen());}),
+              _buildNavItem('assets/images/moreIcon.png', "More", moreIcon??Colors.grey,(){}),
             ],
-          );
-        },
-        backgroundColor: Colors.grey[300]!,
-        activeIndex: _selectedIndex,
-        notchSmoothness: NotchSmoothness.verySmoothEdge,
-        gapLocation: GapLocation.center,
-        leftCornerRadius: 20,
-        rightCornerRadius: 20,
-        onTap: (index) => setState(() {
-          _selectedIndex = index;}),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildNavItem(String imagePath, String label, Color color,Function onTap) {
+    return GestureDetector(
+      onTap: () => onTap(),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(
+            imagePath,
+            width: 24,
+            height: 24,
+            color: color,
+          ),
+          Text(label, style: TextStyle(color: color, fontSize: 12)),
+        ],
       ),
     );
   }
+}
+
+class BottomNavBarPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()..color = Colors.grey.shade300;
+
+    // Define border radius
+    double borderRadius = 20.0;
+
+    // Create a rounded rectangle path
+    RRect roundedRect = RRect.fromRectAndRadius(
+      Rect.fromLTWH(0, 0, size.width, size.height),
+      Radius.circular(borderRadius),
+    );
+
+    // Clip the rounded rectangle
+    canvas.clipRRect(roundedRect);
+
+    Path path = Path();
+    path.moveTo(0, 0);
+    path.lineTo(size.width * 0.35, 0);
+    path.quadraticBezierTo(size.width * 0.5, 80, size.width * 0.65, 2);
+    path.lineTo(size.width, 0);
+    path.lineTo(size.width, size.height);
+    path.lineTo(0, size.height);
+    path.close();
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

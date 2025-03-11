@@ -6,6 +6,7 @@ plugins {
 }
 
 android {
+
     namespace = "com.example.beiti_care"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion

@@ -306,7 +306,7 @@ class ProfileScreen extends StatelessWidget {
                     onPressed: () {},
                     name: 'Password',
                     borderRadius: 10,
-                    btnColor: Colors.white.withOpacity(0.1),
+                    btnColor: Colors.white,
                     textColor: Colors.black,
                   ),
                   SizedBox(height: 8.h,),
@@ -326,13 +326,18 @@ class ProfileScreen extends StatelessWidget {
                     textColor: Colors.white,
                   ),
                   SizedBox(height: 8.h,),
-                  SizedBox(
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Color(0xffB93439)
+                      )
+                    ),
                     width: 338.w,
                     height: 60.h,
                     child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white.withOpacity(0.1),
+                        backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
