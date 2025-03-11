@@ -58,6 +58,7 @@ dependencies:
   pinput: ^3.0.1
   local_auth: ^2.1.6
   animated_bottom_navigation_bar: ^1.4.0
+  font_awesome_flutter: ^10.6.0
 
 
 
