@@ -1,8 +1,18 @@
+import 'package:beiti_care/ui/auth/Log_in/log_in_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import '../../services/memory.dart';
+import '../../services/translation_key.dart';
+import '../../widgets/custom_buttom_nav_bar.dart';
+import '../nurse/change_language/change_language_screen.dart';
+import '../nurse/policy_privacy/policy_privacy_screen.dart';
 
 class MoreScreen extends StatelessWidget {
+  const MoreScreen({super.key});
+
 
 
   @override
@@ -35,7 +45,7 @@ class MoreScreen extends StatelessWidget {
               ),
               SizedBox(width: 5.w),
               Text(
-                "More",
+                More.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -75,7 +85,7 @@ class MoreScreen extends StatelessWidget {
               SizedBox(width: 4.w),
               Expanded(
                 child: Text(
-                  "About",
+                  About.tr,
                   style: TextStyle(
                     color: const Color(0xffB93439),
                     fontSize: 16.sp,
@@ -107,7 +117,7 @@ class MoreScreen extends StatelessWidget {
                   SizedBox(width: 4.w),
                   Expanded(
                     child: Text(
-                      "Contact Us",
+                      ContactUs.tr,
                       style: TextStyle(
                         color: const Color(0xffB93439),
                         fontSize: 16.sp,
@@ -139,7 +149,7 @@ class MoreScreen extends StatelessWidget {
                   SizedBox(width: 4.w),
                   Expanded(
                     child: Text(
-                      "Withdraw History",
+                      WithdrawHistory.tr,
                       style: TextStyle(
                         color: const Color(0xffB93439),
                         fontSize: 16.sp,
@@ -171,7 +181,7 @@ class MoreScreen extends StatelessWidget {
                   SizedBox(width: 4.w),
                   Expanded(
                     child: Text(
-                      "Help",
+                      Help.tr,
                       style: TextStyle(
                         color: const Color(0xffB93439),
                         fontSize: 16.sp,
@@ -182,105 +192,123 @@ class MoreScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              width: 338.w,
-              height: 50.h,
-              margin: EdgeInsets.symmetric(vertical: 7.h), // تباعد بين العناصر
-              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: const Color(0xff8B8B8B), width: 1),
-                color: Colors.white,
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    "assets/images/language.png",
-                    width: 20.w,
-                    height: 20.h,
-                    fit: BoxFit.cover,
-                  ),
-                  SizedBox(width: 4.w),
-                  Expanded(
-                    child: Text(
-                      "Language",
-                      style: TextStyle(
-                        color: const Color(0xffB93439),
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
+            GestureDetector(
+              onTap: (){Get.to(()=>LanguageScreen());},
+              child: Container(
+                width: 338.w,
+                height: 50.h,
+                margin: EdgeInsets.symmetric(vertical: 7.h), // تباعد بين العناصر
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0xff8B8B8B), width: 1),
+                  color: Colors.white,
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      "assets/images/language.png",
+                      width: 20.w,
+                      height: 20.h,
+                      fit: BoxFit.cover,
+                    ),
+                    SizedBox(width: 4.w),
+                    Expanded(
+                      child: Text(
+                        Language.tr,
+                        style: TextStyle(
+                          color: const Color(0xffB93439),
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-            Container(
-              width: 338.w,
-              height: 50.h,
-              margin: EdgeInsets.symmetric(vertical: 7.h), // تباعد بين العناصر
-              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: const Color(0xff8B8B8B), width: 1),
-                color: Colors.white,
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    "assets/images/privacyPolicy.png",
-                    width: 20.w,
-                    height: 20.h,
-                    fit: BoxFit.cover,
-                  ),
-                  SizedBox(width: 4.w),
-                  Expanded(
-                    child: Text(
-                      "PolicyPrivacy",
-                      style: TextStyle(
-                        color: const Color(0xffB93439),
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
+            InkWell(
+              onTap: (){
+                Get.to(()=>PolicyPrivacyScreen());
+              },
+              child: Container(
+                width: 338.w,
+                height: 50.h,
+                margin: EdgeInsets.symmetric(vertical: 7.h), // تباعد بين العناصر
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0xff8B8B8B), width: 1),
+                  color: Colors.white,
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      "assets/images/privacyPolicy.png",
+                      width: 20.w,
+                      height: 20.h,
+                      fit: BoxFit.cover,
+                    ),
+                    SizedBox(width: 4.w),
+                    Expanded(
+                      child: Text(
+                        PolicyPrivacy.tr,
+                        style: TextStyle(
+                          color: const Color(0xffB93439),
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-            Container(
-              width: 338.w,
-              height: 50.h,
-              margin: EdgeInsets.symmetric(vertical: 7.h), // تباعد بين العناصر
-              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: const Color(0xff8B8B8B), width: 1),
-                color: Colors.white,
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    "assets/images/logOut.png",
-                    width: 20.w,
-                    height: 20.h,
-                    fit: BoxFit.cover,
-                  ),
-                  SizedBox(width: 4.w),
-                  Expanded(
-                    child: Text(
-                      "Log out",
-                      style: TextStyle(
-                        color: const Color(0xffB93439),
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
+            InkWell(
+              onTap: (){
+                Get.find<CacheHelper>().loggingOut();
+                Get.off(()=>LoginScreen());
+              },
+              child: Container(
+                width: 338.w,
+                height: 50.h,
+                margin: EdgeInsets.symmetric(vertical: 7.h), // تباعد بين العناصر
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0xff8B8B8B), width: 1),
+                  color: Colors.white,
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      "assets/images/logOut.png",
+                      width: 20.w,
+                      height: 20.h,
+                      fit: BoxFit.cover,
+                    ),
+                    SizedBox(width: 4.w),
+                    Expanded(
+                      child: Text(
+                        Logout.tr,
+                        style: TextStyle(
+                          color: const Color(0xffB93439),
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],
         ),
       ),
+      bottomNavigationBar: Container(decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20)
+      ),margin:EdgeInsets.only(bottom: 20,left: 20,right: 20
+      ),child: CurvedBottomNavBar(moreIcon: Color(0xffB93439),)),
     );
   }
 }

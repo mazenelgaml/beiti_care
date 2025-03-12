@@ -1,3 +1,4 @@
+import 'package:beiti_care/services/translation_key.dart';
 import 'package:beiti_care/ui/onboarding/on_boarding_third_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +25,7 @@ class OnBoardingSecondScreen extends StatelessWidget {
           Image(image: AssetImage("assets/images/onboarding2.png"),width: 374.55.w,height: 279.09.h,),
           Container(
             width: 296.w,
-            child: Text(textAlign: TextAlign.center,style: TextStyle(color: Color(0xff929292),fontSize: 16,fontWeight: FontWeight.w700),"Medical care is now closer to you! 🏡 Request your specialized nurse anytime, anywhere"),
+            child: Text(textAlign: TextAlign.center,style: TextStyle(color: Color(0xff929292),fontSize: 16,fontWeight: FontWeight.w700),onBoardingSecondText.tr),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -58,7 +59,7 @@ class OnBoardingSecondScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)
                   ),
                   child: Center(
-                    child: Text("Skip",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w700),),
+                    child: Text(skipBtn.tr,style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w700),),
                   ),
                 ),
               ),
@@ -74,7 +75,7 @@ class OnBoardingSecondScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)
                   ),
                   child: Center(
-                    child: Text("Next",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w700),),
+                    child: Text(nextBtn.tr,style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w700),),
                   ),
                 ),
               )

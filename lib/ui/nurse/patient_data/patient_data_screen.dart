@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:get/get.dart';
+
+import '../../../services/translation_key.dart';
 
 class PatientDataScreen extends StatefulWidget {
   @override
@@ -14,7 +17,7 @@ class _PatientDataScreenState extends State<PatientDataScreen> {
   List<XFile> selectedFiles = [];
 
   Future<void> _selectDate(BuildContext context) async {
-    debugPrint("📅 Date field clicked!");
+    debugPrint("📅 ${Datefieldclicked.tr}");
     DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -41,7 +44,7 @@ class _PatientDataScreenState extends State<PatientDataScreen> {
   }
 
   Future<void> _scanBarcode() async {
-    debugPrint("📸 Scan barcode clicked!");
+    debugPrint("📸 ${Scanbarcodeclicked.tr}");
     // هنا يمكن استدعاء كود ماسح الباركود الحقيقي
     barcodeController.text = "123456789"; // قيمة تجريبية
   }
@@ -76,7 +79,7 @@ class _PatientDataScreenState extends State<PatientDataScreen> {
               ),
               SizedBox(width: 5.w), // توسيع المسافة بين الأيقونة والنص
               Text(
-                "Patient data",
+                Patientdata.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -97,15 +100,15 @@ class _PatientDataScreenState extends State<PatientDataScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildSectionTitle("Code"),
-              _buildTextField("Code"),
+              _buildSectionTitle(Code.tr),
+              _buildTextField(Code.tr),
 
-              _buildSectionTitle("Record a short video or photos while dragging (optional)"),
+              _buildSectionTitle(Recordashortvideoorphotoswhiledraggingoptional.tr),
               _buildUploadField(),
 
-              _buildSectionTitle("Picture of the tube after placing the barcode"),
+              _buildSectionTitle(Pictureofthetubeafterplacingthebarcode.tr),
               _buildTextField(
-                "Scan barcode",
+                Scanbarcode.tr,
                 icon: Icons.qr_code_scanner,
                 controller: barcodeController,
                 onTap: _scanBarcode,
@@ -113,16 +116,16 @@ class _PatientDataScreenState extends State<PatientDataScreen> {
               ),
 
               SizedBox(height: 16.h),
-              Text("Record withdrawal data",
+              Text(Recordwithdrawaldata.tr,
                   style: TextStyle(color: Color(0xffB93439), fontWeight: FontWeight.bold)),
               SizedBox(height: 8.h),
-              _buildSectionTitle("Nurse's name"),
-              _buildTextField("Nurse's name"),
-              _buildSectionTitle("Location"),
-              _buildTextField("Location"),
-              _buildSectionTitle("Date"),
+              _buildSectionTitle(Nursesname.tr),
+              _buildTextField(Nursesname.tr),
+              _buildSectionTitle(Location.tr),
+              _buildTextField(Location.tr),
+              _buildSectionTitle(Date.tr),
               _buildTextField(
-                "Date",
+                Date.tr,
                 icon: Icons.calendar_today,
                 controller: dateController,
                 onTap: () => _selectDate(context),
@@ -139,7 +142,7 @@ class _PatientDataScreenState extends State<PatientDataScreen> {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                   ),
                   onPressed: () {},
-                  child: Text("Send", style: TextStyle(color: Colors.white)),
+                  child: Text(Send.tr, style: TextStyle(color: Colors.white)),
                 ),
               ),
             ],
@@ -199,8 +202,8 @@ class _PatientDataScreenState extends State<PatientDataScreen> {
           children: [
             Text(
               selectedFiles.isEmpty
-                  ? "Record a short video or photos while\n dragging (optional)"
-                  : "${selectedFiles.length} files selected",
+                  ? "${Recordashortvideoorphotoswhiledraggingoptional.tr}\n ${draggingoptional.tr}"
+                  : "${selectedFiles.length} ${filesselected.tr}",
               style: TextStyle(color: Colors.black54),
             ),
             Icon(Icons.camera_alt, color: Colors.grey),

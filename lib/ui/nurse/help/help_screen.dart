@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+
+import '../../../services/translation_key.dart';
 
 class HelpScreen extends StatelessWidget {
   const HelpScreen({super.key});
@@ -9,7 +12,7 @@ class HelpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 100.w,
+        leadingWidth: 150.w,
         leading: Padding(
           padding: EdgeInsets.only(left: 16.w),
           child: Row(
@@ -28,9 +31,11 @@ class HelpScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 8.w),
-              Text(
-                "Help",
-                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: Color(0xffB93439),),
+              Expanded(
+                child: Text(
+                  Help.tr,
+                  style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: Color(0xffB93439),),
+                ),
               ),
             ],
           ),
@@ -71,7 +76,7 @@ class HelpScreen extends StatelessWidget {
 
                     // Title
                     Text(
-                      "24/7 integrated healthcare services",
+                      "24/7 ${integratedhealthcareservices.tr}",
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500, color: Color(0xff49768C)),
                     ),
@@ -79,9 +84,9 @@ class HelpScreen extends StatelessWidget {
                     SizedBox(height: 16.h),
 
                     // Contact Details
-                    _infoRow("Contact Us", "+96582365988"),
-                    _infoRow("Location", "Haa Alkhalidia, Jeddah", isBold: true),
-                    _infoRow("Email", "Nour@gmail.com"),
+                    _infoRow(ContactUs.tr, "+96582365988"),
+                    _infoRow(Location.tr, "Haa Alkhalidia, Jeddah", isBold: true),
+                    _infoRow(email.tr, "Nour@gmail.com"),
 
                     SizedBox(height: 16.h),
 

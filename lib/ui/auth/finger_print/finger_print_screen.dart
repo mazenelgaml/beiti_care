@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:local_auth/local_auth.dart';
 
+import '../../../services/translation_key.dart';
+
 class FingerprintAuthScreen extends StatefulWidget {
   const FingerprintAuthScreen({Key? key}) : super(key: key);
 
@@ -25,8 +27,8 @@ class _FingerprintAuthScreenState extends State<FingerprintAuthScreen> {
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text(
-                  "Enter fingerprint",
+                 Text(
+                  enterFingerprint.tr,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 20),
@@ -42,7 +44,7 @@ class _FingerprintAuthScreenState extends State<FingerprintAuthScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: const Text("Cancel", style: TextStyle(color: Colors.white)),
+                  child:  Text(cancel.tr, style: TextStyle(color: Colors.white)),
                 ),
               ],
             ),
@@ -70,14 +72,14 @@ class _FingerprintAuthScreenState extends State<FingerprintAuthScreen> {
     bool authenticated = false;
     try {
       authenticated = await auth.authenticate(
-        localizedReason: 'Scan your fingerprint to authenticate',
+        localizedReason: scanFingerprintToAuthenticate.tr,
         options: const AuthenticationOptions(
           biometricOnly: true,
           stickyAuth: true,
         ),
       );
     } catch (e) {
-      print("Authentication error: $e");
+      print("${authenticationError.tr} $e");
     }
 
     if (authenticated) {

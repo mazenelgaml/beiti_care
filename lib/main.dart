@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         builder: (context, child) {return GetMaterialApp(
         title: 'Yomy Merchant',
         debugShowCheckedModeBanner: false,
-        home: ContactUsScreen(),
+        home: SplashScreen(),
         translations: AppTranslations(),
         locale: Get.find<LocalizationService>().activeLocale,
         supportedLocales: SupportedLocales.all,

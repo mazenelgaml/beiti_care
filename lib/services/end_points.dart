@@ -1,7 +1,5 @@
 class EndPoint {
-  static String baseUrl="http://192.168.202.123:8088";
-  static String signIn = "/nectar/login";
-  static String signUp = "/nectar/signUp";
+  static String baseUrl="https://nurseproject-production-ad11.up.railway.app";
   static String getUserDataEndPoint(id) {
     return "/nectar/get/$id";
   }

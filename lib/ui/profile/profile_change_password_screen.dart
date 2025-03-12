@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
+import '../../services/translation_key.dart';
 import '../../widgets/custom_button.dart';
 
 class ProfileChangePasswordScreen extends StatefulWidget {
@@ -26,7 +28,7 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
   void _savePassword() {
     if (_formKey.currentState!.validate()) {
       // Password validation passed; proceed with save logic
-      print("Password changed successfully!");
+      print(Passwordchangedsuccessfully.tr);
       // You can add your API call or further actions here.
     }
   }
@@ -62,7 +64,7 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
               ),
               SizedBox(width: 5.w),
               Text(
-                "Profile",
+                Profile.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -104,7 +106,7 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
                             right: 0,
                             child: GestureDetector(
                               onTap: () {
-                                print("Edit Profile Picture");
+                                print(EditProfilePicture.tr);
                               },
                               child: Container(
                                 width: 25.w,
@@ -162,7 +164,7 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
               SizedBox(height: 50.h),
               // Password field
               Text(
-                "Password",
+                password.tr,
                 style: TextStyle(
                   color: Color(0xff8B8B8B),
                   fontSize: 18.sp,
@@ -177,7 +179,7 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
                   controller: _passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
-                    hintText: "Password",
+                    hintText: password.tr,
                     hintStyle: TextStyle(
                       color: Color(0xff8B8B8B),
                       fontWeight: FontWeight.w400,
@@ -192,10 +194,10 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter password';
+                      return Pleaseenterpassword.tr;
                     }
                     if (value.length < 6) {
-                      return 'Password must be at least 6 characters';
+                      return Passwordmustbeatleast6characters.tr;
                     }
                     return null;
                   },
@@ -204,7 +206,7 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
               SizedBox(height: 15.h),
               // Confirm Password field
               Text(
-                "Confirm Password",
+                confirm_Password.tr,
                 style: TextStyle(
                   color: Color(0xff8B8B8B),
                   fontSize: 18.sp,
@@ -219,7 +221,7 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
                   controller: _confirmPasswordController,
                   obscureText: true,
                   decoration: InputDecoration(
-                    hintText: "Confirm Password",
+                    hintText: confirm_Password.tr,
                     hintStyle: TextStyle(
                       color: Color(0xff8B8B8B),
                       fontWeight: FontWeight.w400,
@@ -234,10 +236,10 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please confirm password';
+                      return Pleaseconfirmpassword.tr;
                     }
                     if (value != _passwordController.text) {
-                      return 'Passwords do not match';
+                      return Passwordsdonotmatch.tr;
                     }
                     return null;
                   },
@@ -257,7 +259,7 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
           children: [
             CustomButton(
               onPressed: _savePassword,
-              name: 'Save',
+              name: Save.tr,
               borderRadius: 10,
               btnColor: Color(0xffB93439),
               textColor: Colors.white,
@@ -267,7 +269,7 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
               onPressed: () {
                 Navigator.pop(context);
               },
-              name: 'Cancel',
+              name: cancel.tr,
               borderRadius: 10,
               btnColor: Color(0xff263238),
               textColor: Colors.white,

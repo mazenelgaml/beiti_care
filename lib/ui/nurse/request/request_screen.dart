@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
+import '../../../services/translation_key.dart';
 import '../../../widgets/custom_buttom_nav_bar.dart';
 
 class RequestsScreen extends StatelessWidget {
@@ -53,7 +55,7 @@ class RequestsScreen extends StatelessWidget {
         ),
 
         title: Text(
-          "Requests",
+          Requests.tr,
           style: TextStyle(color: Color(0xffB93439), fontWeight: FontWeight.bold),
         ),
 
@@ -143,7 +145,7 @@ class RequestCard extends StatelessWidget {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                     ),
                     onPressed: () {},
-                    child: Text("Cancel", style: TextStyle(color: Colors.white)),
+                    child: Text(cancel.tr, style: TextStyle(color: Colors.white)),
                   ),
                 ),
                 SizedBox(width: 10),
@@ -156,7 +158,7 @@ class RequestCard extends StatelessWidget {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                     ),
                     onPressed: () {},
-                    child: Text("Accept", style: TextStyle(color: Colors.white)),
+                    child: Text(Accept.tr, style: TextStyle(color: Colors.white)),
                   ),
                 ),
               ],

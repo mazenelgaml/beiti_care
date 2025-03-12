@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
+import '../../../services/translation_key.dart';
 import '../otp/otp_screen.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
@@ -34,7 +35,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             SizedBox(height: 40.h),
             Image.asset('assets/images/forgetpassword.png', height: 230.99.h,width: 310.w,),
             SizedBox(height: 40.h),
-            Text("Forget Password",
+            Text(forgetPassword.tr,
             style: TextStyle(
               color: Color(0xff49768C),
               fontSize: 20.sp,
@@ -43,7 +44,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             Container(
               width: 274.w,
               height: 48.h,
-              child: Text("Please enter your mobile to send to you a varication code",
+              child: Text(enterPhoneNumberForOTP.tr,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color(0xff8B8B8B),
@@ -57,7 +58,7 @@ class ForgetPasswordScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(" Phone Number",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                  Text(phone_Number.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                 ],
               ),
             ),
@@ -79,7 +80,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintText: "Phone Number",
+                  hintText: phone_Number.tr,
                   hintStyle: TextStyle(color: Color(0xff8B8B8B),fontWeight: FontWeight.w400,fontSize: 14 ), // توسيط النص
                   // ضبط المسافات الداخلية
                 ),
@@ -109,7 +110,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 100.w, vertical: 15.h),
 
                 ),
-                child: Text('Send OTP', style: TextStyle(fontSize: 20.sp, color: Colors.white)),
+                child: Text(sendOTP.tr, style: TextStyle(fontSize: 20.sp, color: Colors.white)),
               ),
             )
           ],

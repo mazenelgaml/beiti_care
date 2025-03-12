@@ -2,13 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:get/get.dart';
 
-class PatientDataScreen extends StatefulWidget {
+import '../../../services/translation_key.dart';
+
+class PolicyPrivacyScreen extends StatefulWidget {
+  const PolicyPrivacyScreen({super.key});
+
   @override
-  _PatientDataScreenState createState() => _PatientDataScreenState();
+  _PolicyPrivacyScreenState createState() => _PolicyPrivacyScreenState();
 }
 
-class _PatientDataScreenState extends State<PatientDataScreen> {
+class _PolicyPrivacyScreenState extends State<PolicyPrivacyScreen> {
 
 
   @override
@@ -41,7 +46,7 @@ class _PatientDataScreenState extends State<PatientDataScreen> {
               ),
               SizedBox(width: 5.w), // توسيع المسافة بين الأيقونة والنص
               Text(
-                "PolicyPrivacy",
+                PolicyPrivacy.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,

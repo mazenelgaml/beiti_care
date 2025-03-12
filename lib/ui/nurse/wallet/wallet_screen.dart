@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
+import '../../../services/translation_key.dart';
 import '../../../widgets/custom_buttom_nav_bar.dart';
 
 class WalletScreen extends StatelessWidget {
@@ -36,7 +38,7 @@ class WalletScreen extends StatelessWidget {
               ),
               SizedBox(width: 5.w), // توسيع المسافة بين الأيقونة والنص
               Text(
-                "Wallet",
+                Wallet.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -90,7 +92,7 @@ class WalletScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(vertical: 12.h),
                       ),
                       onPressed: () {},
-                      child: Text("Pay", style: TextStyle(fontSize: 16.sp, color: Colors.white)),
+                      child: Text(Pay.tr, style: TextStyle(fontSize: 16.sp, color: Colors.white)),
                     ),
                   ),
                   SizedBox(height: 30.h),
@@ -103,7 +105,7 @@ class WalletScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(vertical: 12.h),
                       ),
                       onPressed: () {},
-                      child: Text("Withdraw", style: TextStyle(fontSize: 16.sp, color: Colors.white)),
+                      child: Text(Withdraw.tr, style: TextStyle(fontSize: 16.sp, color: Colors.white)),
                     ),
                   ),
                   SizedBox(height: 30.h),

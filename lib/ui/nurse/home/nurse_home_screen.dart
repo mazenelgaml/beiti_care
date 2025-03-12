@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../services/translation_key.dart';
 import '../../../widgets/custom_buttom_nav_bar.dart';
 
 
@@ -77,10 +78,10 @@ class NurseHomeScreen extends StatelessWidget {
               mainAxisSpacing: 12,
               childAspectRatio: 2,
               children: [
-                _buildInfoCard("patient", "assets/images/patient.png", "0"),
-                _buildInfoCard("Completed", "assets/images/completed.png", "0"),
-                _buildInfoCard("Pending","assets/images/pending.png", "0"),
-                _buildInfoCard("Total Revenue", "assets/images/coins.png", "0"),
+                _buildInfoCard(patient.tr, "assets/images/patient.png", "0"),
+                _buildInfoCard(Completed.tr, "assets/images/completed.png", "0"),
+                _buildInfoCard(Pending.tr,"assets/images/pending.png", "0"),
+                _buildInfoCard(TotalRevenue.tr, "assets/images/coins.png", "0"),
               ],
             ),
           ),
@@ -91,7 +92,7 @@ class NurseHomeScreen extends StatelessWidget {
               children: [
                 Image.asset("assets/images/notif.png", width: 335.61.w,height: 291.36.h,), // Replace with your asset
                  SizedBox(height: 16.h),
-                 Text("You have no requests.",
+                 Text(Youhavenorequests.tr,
                     style: TextStyle(color: Color(0xff8B8B8B), fontSize: 14.sp,fontWeight: FontWeight.w600)),
               ],
             ),

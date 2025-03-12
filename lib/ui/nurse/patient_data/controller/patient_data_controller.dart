@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import '../../../../services/translation_key.dart';
 
 class PatientDataScreen extends StatelessWidget {
   const PatientDataScreen({super.key});
@@ -26,7 +29,7 @@ class PatientDataScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Patient data",
+          Patientdata.tr,
           style: TextStyle(
               color: Color(0xffB93439), fontWeight: FontWeight.bold, fontSize: 18.sp),
         ),
@@ -36,31 +39,31 @@ class PatientDataScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildLabel("Code"),
-            _buildTextField("Code"),
+            _buildLabel(Code.tr),
+            _buildTextField(Code.tr),
 
             SizedBox(height: 10.h),
-            _buildLabel("Record a short video or photos while dragging (optional)"),
-            _buildTextField("Record a short video or photos while dragging (optional)", icon: Icons.camera_alt),
+            _buildLabel(Recordashortvideoorphotoswhiledraggingoptional.tr),
+            _buildTextField(Recordashortvideoorphotoswhiledraggingoptional.tr, icon: Icons.camera_alt),
 
             SizedBox(height: 10.h),
-            _buildLabel("Picture of the tube after placing the barcode"),
-            _buildTextField("Picture of the tube after placing the barcode", icon: Icons.camera_alt),
+            _buildLabel(Pictureofthetubeafterplacingthebarcode.tr),
+            _buildTextField(Pictureofthetubeafterplacingthebarcode.tr, icon: Icons.camera_alt),
 
             SizedBox(height: 15.h),
-            Text("Record withdrawal data", style: TextStyle(color: Colors.red, fontSize: 16.sp, fontWeight: FontWeight.w600)),
+            Text(Recordwithdrawaldata.tr, style: TextStyle(color: Colors.red, fontSize: 16.sp, fontWeight: FontWeight.w600)),
 
             SizedBox(height: 10.h),
-            _buildLabel("Nurse's name"),
-            _buildTextField("Nurse's name"),
+            _buildLabel(Nursesname.tr),
+            _buildTextField(Nursesname.tr),
 
             SizedBox(height: 10.h),
-            _buildLabel("Location"),
-            _buildTextField("Location"),
+            _buildLabel(Location.tr),
+            _buildTextField(Location.tr),
 
             SizedBox(height: 10.h),
-            _buildLabel("Date"),
-            _buildTextField("Date", icon: Icons.calendar_today),
+            _buildLabel(Date.tr),
+            _buildTextField(Date.tr, icon: Icons.calendar_today),
 
             SizedBox(height: 20.h),
             SizedBox(
@@ -74,7 +77,7 @@ class PatientDataScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {},
-                child: Text("Send", style: TextStyle(color: Colors.white, fontSize: 16.sp)),
+                child: Text(Send.tr, style: TextStyle(color: Colors.white, fontSize: 16.sp)),
               ),
             ),
           ],

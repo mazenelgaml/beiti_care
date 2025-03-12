@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../services/translation_key.dart';
+
 class ChangePasswordController extends GetxController {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -18,13 +20,13 @@ class ChangePasswordController extends GetxController {
   /// **Validation for submission**
   String? validatePassword(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return "Password cannot be empty";
+      return passwordCannotBeEmpty.tr;
     }
     if (!value.contains(RegExp(r'[0-9]'))) {
-      return "Password must contain at least one number";
+      return passwordMustContainNumber.tr;
     }
     if (!value.contains(RegExp(r'[a-zA-Z]'))) {
-      return "Password must contain at least one letter";
+      return passwordMustContainLetter.tr;
     }
     return null;
   }
@@ -32,10 +34,10 @@ class ChangePasswordController extends GetxController {
   /// **Validation for Confirm Password**
   String? validateConfirmPassword(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return "Confirm Password cannot be empty";
+      return confirmPasswordCannotBeEmpty.tr;
     }
     if (value != passwordController.text) {
-      return "Passwords do not match";
+      return passwordsDoNotMatch.tr;
     }
     return null;
   }

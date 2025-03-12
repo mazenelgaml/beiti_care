@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
+import '../../../services/translation_key.dart';
 import 'controller/sign_up_controller.dart';
 
 
@@ -66,7 +67,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       child: Center(
                         child: Text(
-                          'Client',
+                          client.tr,
                           style: TextStyle(
                             color: isClient ? Colors.white : Color(0xff8B8B8B),
                             fontWeight: FontWeight.w700,
@@ -87,7 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       child: Center(
                         child: Text(
-                          'Nurse',
+                          nurse.tr,
                           style: TextStyle(
                             color: !isClient ? Colors.white : Color(0xff8B8B8B),
                             fontWeight: FontWeight.w700,
@@ -101,12 +102,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ],
             ),
             SizedBox(height: 15.h),
-            isClient?Form(
+            if (isClient) Form(
               key: controller.formKey1,
               child: Column(
                 children: [
                   Text(
-                    'Register',
+                    register.tr,
                     style: TextStyle(fontSize: 25.sp, fontWeight: FontWeight.bold, color: Color(0xffB93439)),
                   ),
                   SizedBox(height: 15.h),
@@ -115,7 +116,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Full Name",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                        Text(Full_Name.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -127,7 +128,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       controller: controller.nameController,
                       validator: (v){controller.validateName(v);},
                       decoration: InputDecoration(
-                        hintText: "Full Name",
+                        hintText: Full_Name.tr,
                         hintStyle: TextStyle(
                             color: Color(0xff8B8B8B),
                             fontWeight: FontWeight.w400,
@@ -148,7 +149,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Email",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                        Text(email.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -160,7 +161,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       controller: controller.emailController,
                       validator: (v){controller.validateEmail(v);},
                       decoration: InputDecoration(
-                        hintText: "Email",
+                        hintText: email.tr,
                         hintStyle: TextStyle(
                             color: Color(0xff8B8B8B),
                             fontWeight: FontWeight.w400,
@@ -181,7 +182,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(" Phone Number",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                        Text(phone_Number.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -203,7 +204,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: "Phone Number",
+                        hintText: phone_Number.tr,
                         hintStyle: TextStyle(color: Color(0xff8B8B8B),fontWeight: FontWeight.w400,fontSize: 14 ), // توسيط النص
                         // ضبط المسافات الداخلية
                       ),
@@ -230,7 +231,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text(" Age",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                                  Text(Age.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                                 ],
                               ),
                             ),
@@ -242,7 +243,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 validator: (v){controller.validateNotEmpty(v);},
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
-                                  hintText: "Age",
+                                  hintText: Age.tr,
                                   hintStyle: TextStyle(
                                       color: Color(0xff8B8B8B),
                                       fontWeight: FontWeight.w400,
@@ -267,7 +268,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text(" Years",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                                  Text(Years.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                                 ],
                               ),
                             ),
@@ -279,7 +280,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 validator: (v){controller.validateNotEmpty(v);},
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
-                                  hintText: "Years",
+                                  hintText: Years.tr,
                                   hintStyle: TextStyle(
                                       color: Color(0xff8B8B8B),
                                       fontWeight: FontWeight.w400,
@@ -305,9 +306,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        genderButton(1, Icons.male, "Male"),
+                        genderButton(1, Icons.male, Male.tr),
                         SizedBox(width: 10),
-                        genderButton(0, Icons.female, "Feminine"),
+                        genderButton(0, Icons.female, Feminine.tr),
                       ],
                     ),
                   ),
@@ -317,7 +318,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Password",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                        Text(password.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -329,7 +330,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       controller: controller.passwordController,
                       validator: (v){controller.validatePassword(v);},
                       decoration: InputDecoration(
-                        hintText: "Password",
+                        hintText: password.tr,
                         hintStyle: TextStyle(
                             color: Color(0xff8B8B8B),
                             fontWeight: FontWeight.w400,
@@ -350,7 +351,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(" Confirm Password",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                        Text(confirm_Password.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -362,7 +363,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       controller: controller.confirmPasswordController,
                       validator: (v){controller.validateConfirmPassword(v);},
                       decoration: InputDecoration(
-                        hintText: " Confirm Password",
+                        hintText: confirm_Password.tr,
                         hintStyle: TextStyle(
                             color: Color(0xff8B8B8B),
                             fontWeight: FontWeight.w400,
@@ -383,7 +384,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     height: 56.h,
                     child: ElevatedButton(
                       onPressed: () {
-                        controller.submitForm();
+                        controller.submitForm(context,selectedSpecialty??"");
                       },
 
                       style: ElevatedButton.styleFrom(
@@ -394,17 +395,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         padding: EdgeInsets.symmetric(horizontal: 100.w, vertical: 15.h),
 
                       ),
-                      child: Text('Register', style: TextStyle(fontSize: 20.sp, color: Colors.white)),
+                      child: Text(register.tr, style: TextStyle(fontSize: 20.sp, color: Colors.white)),
                     ),
                   ),
                 ],
               ),
-            ):
-            Form(
+            ) else Form(
+              key: controller.formKey2,
               child: Column(
                 children: [
                   Text(
-                    'Register',
+                    register.tr,
                     style: TextStyle(fontSize: 25.sp, fontWeight: FontWeight.bold, color: Color(0xffB93439)),
                   ),
                   SizedBox(height: 15.h),
@@ -413,7 +414,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Full Name",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                        Text(Full_Name.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -421,12 +422,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     width: 338.w,
                     height: 50.h,
                     child: TextFormField(
-                      obscureText: true,
+
                        controller: controller.nameController,
                       validator: (v){controller.validateName(v);},
 
                       decoration: InputDecoration(
-                        hintText: "Full Name",
+                        hintText: Full_Name.tr,
                         hintStyle: TextStyle(
                             color: Color(0xff8B8B8B),
                             fontWeight: FontWeight.w400,
@@ -447,7 +448,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Email",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                        Text(email.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -460,7 +461,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       validator: (v){controller.validateEmail(v);},
 
                       decoration: InputDecoration(
-                        hintText: "Email",
+                        hintText: email.tr,
                         hintStyle: TextStyle(
                             color: Color(0xff8B8B8B),
                             fontWeight: FontWeight.w400,
@@ -481,7 +482,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Image",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                        Text(image.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -491,7 +492,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Please upload your medical qualification certificate.",textAlign: TextAlign.left,style: TextStyle(
+                        Text(Pleaseuploadyourmedicalqualificationcertificate.tr,textAlign: TextAlign.left,style: TextStyle(
                           color: Color(0xff8B8B8B),
                           fontSize: 12,
                           fontWeight: FontWeight.w500
@@ -505,7 +506,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Experience",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                        Text(Experience.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -518,7 +519,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       validator: (v){controller.validateNotEmpty(v);},
 
                       decoration: InputDecoration(
-                        hintText: "Experience",
+                        hintText: Experience.tr,
                         hintStyle: TextStyle(
                             color: Color(0xff8B8B8B),
                             fontWeight: FontWeight.w400,
@@ -539,7 +540,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Specialty",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                        Text(Specialty.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -560,7 +561,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: DropdownButton<String>(
                       value: selectedSpecialty,
                       hint: Text(
-                        "Specialty",
+                        Specialty.tr,
                         style: TextStyle(color: Color(0xff8B8B8B),fontSize: 16.sp,fontWeight: FontWeight.w400),
                       ),
                       isExpanded: true,
@@ -588,7 +589,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Location",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                        Text(Location.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -600,7 +601,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       validator: (v){controller.validateNotEmpty(v);},
 
                       decoration: InputDecoration(
-                        hintText: "Location",
+                        hintText: Location.tr,
                         hintStyle: TextStyle(
                             color: Color(0xff8B8B8B),
                             fontWeight: FontWeight.w400,
@@ -621,7 +622,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(" Phone Number",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                        Text(phone_Number.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -638,23 +639,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     child: IntlPhoneField(
                       controller: controller.phoneNumberController,
-                      validator: (v){controller.validateNotEmpty(controller.phoneNumberController.text.trim());},
-
+                      validator: (v) {
+                        return controller.validateNotEmpty(controller.phoneNumberController.text.trim());
+                      },
                       keyboardType: TextInputType.phone,
                       textAlign: TextAlign.left,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: "Phone Number",
-                        hintStyle: TextStyle(color: Color(0xff8B8B8B),fontWeight: FontWeight.w400,fontSize: 14 ), // توسيط النص
-                        // ضبط المسافات الداخلية
+                        hintText: phone_Number.tr,
+                        hintStyle: TextStyle(
+                          color: Color(0xff8B8B8B),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                        ),
+                        contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 10),
                       ),
                       dropdownIcon: Icon(Icons.keyboard_arrow_down, color: Colors.grey),
-                      initialCountryCode: 'EG', // 🇪🇬
-                      disableLengthCheck: true, // إلغاء العداد
+                      initialCountryCode: 'EG',
+                      disableLengthCheck: true,
                       onChanged: (phone) {
-                        print(phone.completeNumber); // الرقم بالكامل مع الكود
+                        controller.setPhoneNumber(phone.completeNumber);
                       },
-                    ),
+                    )
+
                   ),
                   SizedBox(height: 10.h),
                   Padding(
@@ -662,7 +669,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("ID Card",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                        Text(ID_Card.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -675,7 +682,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
-                        hintText: "ID Card",
+                        hintText: ID_Card.tr,
                         hintStyle: TextStyle(
                             color: Color(0xff8B8B8B),
                             fontWeight: FontWeight.w400,
@@ -696,7 +703,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Password",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                        Text(password.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -710,7 +717,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
 
                       decoration: InputDecoration(
-                        hintText: "Password",
+                        hintText: password.tr,
                         hintStyle: TextStyle(
                             color: Color(0xff8B8B8B),
                             fontWeight: FontWeight.w400,
@@ -731,7 +738,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(" Confirm Password",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                        Text(confirm_Password.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 18.sp,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -745,7 +752,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
 
                       decoration: InputDecoration(
-                        hintText: " Confirm Password",
+                        hintText: confirm_Password.tr,
                         hintStyle: TextStyle(
                             color: Color(0xff8B8B8B),
                             fontWeight: FontWeight.w400,
@@ -766,7 +773,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     height: 56.h,
                     child: ElevatedButton(
                       onPressed: () {
-                        controller.submitForm();
+                        if (controller.formKey2.currentState!.validate())
+                        {
+                          controller.signUp(context, selectedSpecialty??"");
+                        }
                       },
 
                       style: ElevatedButton.styleFrom(
@@ -777,7 +787,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         padding: EdgeInsets.symmetric(horizontal: 100.w, vertical: 15.h),
 
                       ),
-                      child: Text('Register', style: TextStyle(fontSize: 20.sp, color: Colors.white)),
+                      child: Text(register.tr, style: TextStyle(fontSize: 20.sp, color: Colors.white)),
                     ),
                   ),
                 ],),
@@ -786,7 +796,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Already have an account ? ",style: TextStyle(
+                Text(AlreadyHaveAnAccount.tr,style: TextStyle(
                     color: Color(0xff8B8B8B),
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w600
@@ -795,7 +805,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   onTap: () {
                     Get.off(()=>LoginScreen());
                   },
-                  child: Text('Log in', style: TextStyle(color: Color(0xffB93439), fontWeight: FontWeight.w600,fontSize: 18.sp)),
+                  child: Text(logIn.tr, style: TextStyle(color: Color(0xffB93439), fontWeight: FontWeight.w600,fontSize: 18.sp)),
                 ),
               ],
             ),

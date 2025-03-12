@@ -3,13 +3,17 @@ import 'dart:ui';
 import 'package:beiti_care/ui/nurse/home/nurse_home_screen.dart';
 import 'package:beiti_care/ui/nurse/request/request_screen.dart';
 import 'package:beiti_care/ui/nurse/wallet/wallet_screen.dart';
+import 'package:beiti_care/ui/profile/profile_screen.dart';
+import 'package:beiti_care/ui/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../ui/profile/More_screen.dart';
 
 class CurvedBottomNavBar extends StatelessWidget {
   final Color? homeIcon;
   final Color? walletIcon;
-  final Color? profileIcon;
+  final String? profileIcon;
   final Color? requestsIcon;
   final Color? moreIcon;
   const CurvedBottomNavBar({super.key, this.homeIcon, this.walletIcon, this.profileIcon, this.requestsIcon, this.moreIcon});
@@ -26,13 +30,18 @@ class CurvedBottomNavBar extends StatelessWidget {
         Positioned(
           top: -26,
           left: MediaQuery.of(context).size.width / 2 - 50,
-          child: CircleAvatar(
-            radius: 30,
-            backgroundColor: Colors.grey.shade400,
-            child: Image.asset(
-              'assets/images/profileIcon.png',
-              width: 30,
-              height: 30,
+          child: InkWell(
+            onTap: (){
+              Get.off(()=>ProfileScreen());
+            },
+            child: CircleAvatar(
+              radius: 30,
+              backgroundColor: Color(0xffD9D9D9),
+              child: Image.asset(
+                profileIcon??'assets/images/profileIcon.png',
+                width: 30,
+                height: 30,
+              ),
             ),
           ),
         ),
@@ -40,11 +49,11 @@ class CurvedBottomNavBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildNavItem('assets/images/homeIcon.png', "Home", homeIcon??Colors.grey,(){Get.to(()=>NurseHomeScreen());}),
-              _buildNavItem('assets/images/walletIcon.png', "Wallet", walletIcon??Colors.grey,(){Get.to(()=>WalletScreen());}),
+              _buildNavItem('assets/images/homeIcon.png', "Home", homeIcon??Color(0xff797979),(){Get.to(()=>NurseHomeScreen());}),
+              _buildNavItem('assets/images/walletIcon.png', "Wallet", walletIcon??Color(0xff797979),(){Get.to(()=>WalletScreen());}),
               SizedBox(width: 50), // Space for center profile
-              _buildNavItem('assets/images/pending.png', "Requests", requestsIcon??Colors.grey,(){Get.to(()=>RequestsScreen());}),
-              _buildNavItem('assets/images/moreIcon.png', "More", moreIcon??Colors.grey,(){}),
+              _buildNavItem('assets/images/pending.png', "Requests", requestsIcon??Color(0xff797979),(){Get.to(()=>RequestsScreen());}),
+              _buildNavItem('assets/images/moreIcon.png', "More", moreIcon??Color(0xff797979),(){Get.to(()=>MoreScreen());}),
             ],
           ),
         ),

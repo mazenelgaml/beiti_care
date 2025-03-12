@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import '../../services/translation_key.dart';
 
 class ContactUsScreen extends StatelessWidget {
   const ContactUsScreen({super.key});
@@ -35,7 +38,7 @@ class ContactUsScreen extends StatelessWidget {
               ),
               SizedBox(width: 5.w),
               Text(
-                "Contact Us",
+                ContactUs.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -58,7 +61,7 @@ class ContactUsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "Full Name",
+                  Full_Name.tr,
                   style: TextStyle(
                     color: Color(0xff8B8B8B),
                     fontSize: 18.sp,
@@ -75,7 +78,7 @@ class ContactUsScreen extends StatelessWidget {
             child: TextFormField(
               obscureText: true,
               decoration: InputDecoration(
-                hintText: "Full Name",
+                hintText: Full_Name.tr,
                 hintStyle: TextStyle(
                   color: Color(0xff8B8B8B),
                   fontWeight: FontWeight.w400,
@@ -97,7 +100,7 @@ class ContactUsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "Message",
+                  Message.tr,
                   style: TextStyle(
                     color: Color(0xff8B8B8B),
                     fontSize: 18.sp,
@@ -113,7 +116,7 @@ class ContactUsScreen extends StatelessWidget {
             child: TextFormField(
               maxLines: 5, // السماح بكتابة أكثر من سطر
               decoration: InputDecoration(
-                hintText: "Message",
+                hintText: Message.tr,
                 hintStyle: TextStyle(
                   color: Color(0xff8B8B8B),
                   fontWeight: FontWeight.w400,

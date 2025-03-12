@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import '../../services/translation_key.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -35,7 +38,7 @@ class AboutScreen extends StatelessWidget {
               ),
               SizedBox(width: 5.w),
               Text(
-                "About",
+                About.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -59,7 +62,7 @@ class AboutScreen extends StatelessWidget {
               child: TextFormField(
                 maxLines: 5, // السماح بكتابة أكثر من سطر
                 decoration: InputDecoration(
-                  hintText: "Introduction",
+                  hintText: Introduction.tr,
                   hintStyle: TextStyle(
                     color: Color(0xff8B8B8B),
                     fontWeight: FontWeight.w400,
@@ -83,7 +86,7 @@ class AboutScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 20),
             child: Text(
-              "Our nursing services",
+              Ournursingservices.tr,
               style:
               TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500,color: Color(0xffB93439)),
             ),
@@ -92,7 +95,7 @@ class AboutScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 20),
             child: Text(
-              "We provide comprehensive healthcare in your home",
+              Weprovidecomprehensivehealthcareinyourhome.tr,
               style:
               TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500,color: Color(0xff8B8B8B)),
             ),

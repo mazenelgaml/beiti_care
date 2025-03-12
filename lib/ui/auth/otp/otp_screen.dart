@@ -8,6 +8,8 @@ import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:pinput/pinput.dart';
 
+import '../../../services/translation_key.dart';
+
 class OtpScreen extends StatefulWidget {
   const OtpScreen({super.key});
 
@@ -100,7 +102,7 @@ class _OtpScreenState extends State<OtpScreen> {
             SizedBox(height: 30.h),
             Image.asset('assets/images/otp.png', height: 230.99.h,width: 310.w,),
             SizedBox(height: 30.h),
-            Text("OTP Verification",
+            Text(OTPVerification.tr,
               style: TextStyle(
                   color: Color(0xff49768C),
                   fontSize: 20.sp,
@@ -109,7 +111,7 @@ class _OtpScreenState extends State<OtpScreen> {
             Container(
               width: 300.w,
               height: 48.h,
-              child: Text("Please enter the code send to your mobile number ",
+              child: Text(Pleaseenterthecodesendtoyourmobilenumber.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Color(0xff8B8B8B),
@@ -152,14 +154,14 @@ class _OtpScreenState extends State<OtpScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("I didn’t receive any code.",
+                Text(Ididntreceiveanycode.tr,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Color(0xff838282)            ),),
                 TextButton(
                   onPressed: onResendTap,
                   child: Text(
-                    "RESEND",
+                    RESEND.tr,
                     style: TextStyle(
                       color: _isResendActive ? Color(0xff49768C) : Color(0xff838282),
                       fontWeight: FontWeight.bold,
@@ -186,7 +188,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 100.w, vertical: 15.h),
 
                 ),
-                child: Text('Submit', style: TextStyle(fontSize: 20.sp, color: Colors.white)),
+                child: Text(Submit.tr, style: TextStyle(fontSize: 20.sp, color: Colors.white)),
               ),
             )
           ],

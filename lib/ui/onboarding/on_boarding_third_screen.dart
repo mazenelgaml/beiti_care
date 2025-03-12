@@ -1,3 +1,4 @@
+import 'package:beiti_care/services/translation_key.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -25,7 +26,7 @@ class OnBoardingThirdScreen extends StatelessWidget {
           Image(image: AssetImage("assets/images/onboarding1.png"),width: 374.55.w,height: 279.09.h,),
           Container(
             width: 296.w,
-            child: Text(textAlign: TextAlign.center,style: TextStyle(color: Color(0xff929292),fontSize: 16,fontWeight: FontWeight.w700),"Your health is our priority! 🏥 With our app,get home nursing services easily and comfortably."),
+            child: Text(textAlign: TextAlign.center,style: TextStyle(color: Color(0xff929292),fontSize: 16,fontWeight: FontWeight.w700),onBoardingThirdText.tr),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -60,7 +61,7 @@ class OnBoardingThirdScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)
                   ),
                   child: Center(
-                    child: Text("Skip",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w700),),
+                    child: Text(skipBtn.tr,style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w700),),
                   ),
                 ),
               ),
@@ -76,7 +77,7 @@ class OnBoardingThirdScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)
                   ),
                   child: Center(
-                    child: Text("Next",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w700),),
+                    child: Text(nextBtn.tr,style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w700),),
                   ),
                 ),
               )

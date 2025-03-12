@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../services/translation_key.dart';
 import 'controller/change_password_controller.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
@@ -34,7 +35,7 @@ class ChangePasswordScreen extends StatelessWidget {
                 Image.asset('assets/images/forgetpassword.png', height: 230.99.h, width: 310.w),
                 SizedBox(height: 10.h),
                 Text(
-                  "Change Password",
+                  Change_Password.tr,
                   style: TextStyle(
                     color: Color(0xff49768C),
                     fontSize: 20.sp,
@@ -45,7 +46,7 @@ class ChangePasswordScreen extends StatelessWidget {
                   width: 274.w,
                   height: 48.h,
                   child: Text(
-                    "Please enter your password to continue",
+                    Pleaseenteryourpasswordtocontinue.tr,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Color(0xff8B8B8B),
@@ -63,7 +64,7 @@ class ChangePasswordScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "Password",
+                        password.tr,
                         style: TextStyle(
                           color: Color(0xff8B8B8B),
                           fontSize: 18.sp,
@@ -82,7 +83,7 @@ class ChangePasswordScreen extends StatelessWidget {
                     validator: (v) => controller.validatePassword(v),
                     onChanged: (value) => controller.validatePasswordOnChange(value),
                     decoration: InputDecoration(
-                      hintText: "Password",
+                      hintText: password.tr,
                       hintStyle: TextStyle(
                         color: Color(0xff8B8B8B),
                         fontWeight: FontWeight.w400,
@@ -106,7 +107,7 @@ class ChangePasswordScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "Confirm Password",
+                        confirm_Password.tr,
                         style: TextStyle(
                           color: Color(0xff8B8B8B),
                           fontSize: 18.sp,
@@ -124,7 +125,7 @@ class ChangePasswordScreen extends StatelessWidget {
                     controller: controller.confirmPasswordController,
                     validator: (v) => controller.validateConfirmPassword(v),
                     decoration: InputDecoration(
-                      hintText: "Confirm Password",
+                      hintText: confirm_Password.tr,
                       hintStyle: TextStyle(
                         color: Color(0xff8B8B8B),
                         fontWeight: FontWeight.w400,
@@ -148,7 +149,7 @@ class ChangePasswordScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Your Password Must Contain",
+                      Text(YourPasswordMustContain.tr,
                       style: TextStyle(
                         color: Color(0xff8B8B8B),
                         fontSize: 9.sp,
@@ -170,7 +171,7 @@ class ChangePasswordScreen extends StatelessWidget {
                           ),
                           SizedBox(width: 5.w),
                           Text(
-                            "Numbers",
+                            Numbers.tr,
                             style: TextStyle(
                               color: controller.containsNumber == null
                                   ? Colors.grey
@@ -198,7 +199,7 @@ class ChangePasswordScreen extends StatelessWidget {
                           ),
                           SizedBox(width: 5.w),
                           Text(
-                            "Letters",
+                            Letters.tr,
                             style: TextStyle(
                               color: controller.containsLetter == null
                                   ? Colors.grey
@@ -230,7 +231,7 @@ class ChangePasswordScreen extends StatelessWidget {
                       ),
                       padding: EdgeInsets.symmetric(horizontal: 100.w, vertical: 15.h),
                     ),
-                    child: Text('Reset', style: TextStyle(fontSize: 20.sp, color: Colors.white)),
+                    child: Text(Reset.tr, style: TextStyle(fontSize: 20.sp, color: Colors.white)),
                   ),
                 )
               ],

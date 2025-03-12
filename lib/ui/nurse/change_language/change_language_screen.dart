@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../services/localization_services.dart';
 import '../../../services/memory.dart';
+import '../../../services/translation_key.dart';
 
 
 class LanguageScreen extends StatefulWidget {
@@ -46,7 +47,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
     Get.updateLocale(newLocale);
 
     // رسالة تأكيد
-    Get.snackbar("Success", "Language updated to ${newLocale.languageCode.toUpperCase()}",
+    Get.snackbar(success.tr, "${Languageupdatedto.tr} ${newLocale.languageCode.toUpperCase()}",
         snackPosition: SnackPosition.BOTTOM);
   }
 
@@ -75,7 +76,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
               ),
               SizedBox(width: 8.w),
               Text(
-                "Language",
+                Language.tr,
                 style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: Color(0xffB93439)),
               ),
             ],
@@ -92,7 +93,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
             SizedBox(height: 20.h),
 
             // Arabic Language Toggle
-            _languageTile("Arabic", isArabicSelected, () {
+            _languageTile(Arabic.tr, isArabicSelected, () {
               setState(() {
                 isArabicSelected = true;
                 isEnglishSelected = false;
@@ -102,7 +103,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
             SizedBox(height: 12.h),
 
             // English Language Toggle
-            _languageTile("English", isEnglishSelected, () {
+            _languageTile(English.tr, isEnglishSelected, () {
               setState(() {
                 isEnglishSelected = true;
                 isArabicSelected = false;
@@ -112,9 +113,9 @@ class _LanguageScreenState extends State<LanguageScreen> {
             Spacer(),
 
             // Save & Cancel Buttons
-            _actionButton("Save", Color(0xffB93439), Colors.white, _saveLanguage),
+            _actionButton(Save.tr, Color(0xffB93439), Colors.white, _saveLanguage),
             SizedBox(height: 12.h),
-            _actionButton("Cancel", Colors.black87, Colors.white, () {
+            _actionButton(cancel.tr, Colors.black87, Colors.white, () {
               Navigator.pop(context);
             }),
 

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../services/translation_key.dart';
+
 class OnBoardingFirstScreen extends StatelessWidget {
   const OnBoardingFirstScreen({super.key});
 
@@ -23,7 +25,7 @@ class OnBoardingFirstScreen extends StatelessWidget {
           Image(image: AssetImage("assets/images/onboarding3.png"),width: 374.55.w,height: 279.09.h,),
           Container(
             width: 296.w,
-            child: Text(textAlign: TextAlign.center,style: TextStyle(color: Color(0xff929292),fontSize: 16,fontWeight: FontWeight.w700),"Your comfort matters to us! 🌿 We provide high-quality home nursing care with personalize attention. Request now in easy and quick steps"),
+            child: Text(textAlign: TextAlign.center,style: TextStyle(color: Color(0xff929292),fontSize: 16,fontWeight: FontWeight.w700),onBoardingFirstText.tr),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +58,7 @@ class OnBoardingFirstScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10)
                   ),
                   child: Center(
-                    child: Text("Skip",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w700),),
+                    child: Text(skipBtn.tr,style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w700),),
                   ),
                 ),
               ),
@@ -72,7 +74,7 @@ class OnBoardingFirstScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)
                   ),
                   child: Center(
-                    child: Text("Next",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w700),),
+                    child: Text(nextBtn.tr,style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w700),),
                   ),
                 ),
               )

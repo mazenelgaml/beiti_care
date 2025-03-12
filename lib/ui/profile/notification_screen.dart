@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import '../../services/translation_key.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -35,7 +38,7 @@ class NotificationScreen extends StatelessWidget {
               ),
               SizedBox(width: 5.w),
               Text(
-                "Notifications",
+                Notifications.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -75,7 +78,7 @@ class NotificationScreen extends StatelessWidget {
                   SizedBox(width: 10.w),
                   Expanded(
                     child: Text(
-                      "Your request has been approved.",
+                      Yourrequesthasbeenapproved.tr,
                       style: TextStyle(
                         color: const Color(0xff8B8B8B),
                         fontSize: 14.sp,
