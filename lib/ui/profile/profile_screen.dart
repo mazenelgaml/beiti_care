@@ -4,19 +4,24 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
+import '../../services/memory.dart';
 import '../../services/translation_key.dart';
 import '../../widgets/custom_buttom_nav_bar.dart';
 import '../../widgets/custom_button.dart';
+import 'controller/profile_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GetBuilder(
+        init: ProfileController(),
+    builder: (ProfileController controller) {
+    return controller.isLoading?Scaffold(body: Center(child: CircularProgressIndicator(),),): Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leadingWidth: 160.w, // توسيع المساحة الخاصة بـ leading
+        leadingWidth: 200.w, // توسيع المساحة الخاصة بـ leading
         leading: Padding(
           padding: EdgeInsets.only(left: 16.w,right: 16.w), // دفع المحتوى ناحية اليمين
           child: Row(
@@ -70,12 +75,14 @@ class ProfileScreen extends StatelessWidget {
                       child: Stack(
                         children: [
                           ClipOval(
-                            child: Image.asset(
-                              "assets/images/boy.png",
+                            child:controller.nurseByIdModel?.data?.image==null||controller.nurseByIdModel?.data?.image==""?Image.asset(
+                              "assets/images/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+
                               width: 70.w,
                               height: 70.h,
                               fit: BoxFit.cover,
-                            ),
+                            ):Image.network(controller.nurseByIdModel?.data?.image??"",width: 70.w,
+                              height: 70.h,fit: BoxFit.cover,),
                           ),
                           // زر التعديل فوق الصورة
                           Positioned(
@@ -83,7 +90,7 @@ class ProfileScreen extends StatelessWidget {
                             right: 0,
                             child: GestureDetector(
                               onTap: () {
-                                print(EditProfilePicture.tr);
+                                controller.pickImage();
                               },
                               child: Container(
                                 width: 25.w,
@@ -117,7 +124,7 @@ class ProfileScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Rania Mohamed",
+                           controller.nurseByIdModel?.data?.userName??"",
                             style: TextStyle(
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w600,
@@ -125,7 +132,7 @@ class ProfileScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "raniamohamed@gmail.com",
+                            controller.nurseByIdModel?.data?.email??"",
                             style: TextStyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w500,
@@ -163,7 +170,7 @@ class ProfileScreen extends StatelessWidget {
                       width: 338.w,
                       height: 50.h,
                       child: TextFormField(
-                        obscureText: true,
+                        controller: controller.username,
                         decoration: InputDecoration(
                           hintText: Full_Name.tr,
                           hintStyle: TextStyle(
@@ -200,7 +207,7 @@ class ProfileScreen extends StatelessWidget {
                       width: 338.w,
                       height: 50.h,
                       child: TextFormField(
-                        obscureText: true,
+                      controller: controller.email,
                         decoration: InputDecoration(
                           hintText: email.tr,
                           hintStyle: TextStyle(
@@ -242,8 +249,8 @@ class ProfileScreen extends StatelessWidget {
                         border: Border.all(color: Color(0xff8B8B8B), width: 1.5),
                       ),
                       child: IntlPhoneField(
-                        // controller: controller.phoneNumberController,
-                        // validator: (v){controller.validateNotEmpty(controller.phoneNumberController.text.trim());},
+                        controller: controller.phoneNumber,
+                        validator: (v){controller.validateNotEmpty(controller.phoneNumber.text);},
                         textAlign: TextAlign.left,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
@@ -286,6 +293,7 @@ class ProfileScreen extends StatelessWidget {
                     Container(
                       width: 338.w,
                       child: TextFormField(
+                        controller: controller.bio,
                         maxLines: 5, // السماح بكتابة أكثر من سطر
                         decoration: InputDecoration(
                           hintText: Introduction.tr,
@@ -317,7 +325,11 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 8.h,),
                     CustomButton(
-                      onPressed: () {},
+                      onPressed: () async{
+                        String bio = controller.bio.text;
+                        await Get.find<CacheHelper>().saveData(key: "bio", value: bio);
+                        controller.updateUserProfile();
+                      },
                       name:  Save.tr,
                       borderRadius: 10,
                       btnColor: Color(0xffB93439),
@@ -379,6 +391,6 @@ class ProfileScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(20)
       ),margin:EdgeInsets.only(bottom: 20,left: 20,right: 20
       ),child: CurvedBottomNavBar(profileIcon:"assets/images/profileIconActive.png",)),
-    );
+    );});
   }
 }

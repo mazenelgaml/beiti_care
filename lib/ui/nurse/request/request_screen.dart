@@ -34,40 +34,45 @@ class RequestsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
+        leadingWidth: 200.w, // توسيع المساحة الخاصة بـ leading
         leading: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 11,vertical: 11), // تقليل المساحة حول الأيقونة
-          child: GestureDetector(
-            onTap: (){},
-            child: Container(
-              width: 24.w,
-              height: 24.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(0),
-                color: Color(0xffB93439),
+          padding: EdgeInsets.only(left: 16.w,right: 16.w), // دفع المحتوى ناحية اليمين
+          child: Row(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  width: 24.w,
+                  height: 24.h,
+                  decoration: BoxDecoration(
+                    color: Color(0xffB93439),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  alignment: Alignment.center, // لضبط الأيقونة في المنتصف
+                  child: Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    color: Colors.white,
+                    size: 16,
+                  ),
+                ),
               ),
-              child: Center(
-                child: Icon(Icons.arrow_back, color: Colors.white, size: 20), // تقليل الحجم لو لازم
+              SizedBox(width: 5.w), // توسيع المسافة بين الأيقونة والنص
+              Text(
+                Requests.tr,
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xffB93439),
+                ),
               ),
-            ),
+            ],
           ),
         ),
-
-        title: Text(
-          Requests.tr,
-          style: TextStyle(color: Color(0xffB93439), fontWeight: FontWeight.bold),
-        ),
-
-        actions:  [
-          Padding(
-            padding: EdgeInsets.all(12.0),
-            child: InkWell(
-              onTap: (){},
-              child: Image(image: AssetImage("assets/images/notify.png"),width: 24.w,height: 24.h,fit: BoxFit.fill,),
-            ),
-          ),
-        ],
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        backgroundColor: Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),

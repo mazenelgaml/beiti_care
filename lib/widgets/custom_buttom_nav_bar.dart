@@ -8,6 +8,7 @@ import 'package:beiti_care/ui/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../services/translation_key.dart';
 import '../ui/profile/More_screen.dart';
 
 class CurvedBottomNavBar extends StatelessWidget {
@@ -49,11 +50,11 @@ class CurvedBottomNavBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildNavItem('assets/images/homeIcon.png', "Home", homeIcon??Color(0xff797979),(){Get.to(()=>NurseHomeScreen());}),
-              _buildNavItem('assets/images/walletIcon.png', "Wallet", walletIcon??Color(0xff797979),(){Get.to(()=>WalletScreen());}),
+              _buildNavItem('assets/images/homeIcon.png', homeBottomNav.tr, homeIcon??Color(0xff797979),(){Get.to(()=>NurseHomeScreen());}),
+              _buildNavItem('assets/images/walletIcon.png', Wallet.tr, walletIcon??Color(0xff797979),(){Get.to(()=>WalletScreen());}),
               SizedBox(width: 50), // Space for center profile
-              _buildNavItem('assets/images/pending.png', "Requests", requestsIcon??Color(0xff797979),(){Get.to(()=>RequestsScreen());}),
-              _buildNavItem('assets/images/moreIcon.png', "More", moreIcon??Color(0xff797979),(){Get.to(()=>MoreScreen());}),
+              _buildNavItem('assets/images/pending.png', Requests.tr, requestsIcon??Color(0xff797979),(){Get.to(()=>RequestsScreen());}),
+              _buildNavItem('assets/images/moreIcon.png', More.tr, moreIcon??Color(0xff797979),(){Get.to(()=>MoreScreen());}),
             ],
           ),
         ),

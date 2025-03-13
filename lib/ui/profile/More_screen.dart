@@ -1,4 +1,5 @@
 import 'package:beiti_care/ui/auth/Log_in/log_in_screen.dart';
+import 'package:beiti_care/ui/contact_us/contact_us_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,9 +20,9 @@ class MoreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 170.w,
+        leadingWidth: 200.w,
         leading: Padding(
-          padding: EdgeInsets.only(left: 16.w),
+          padding: EdgeInsets.only(left: 16.w,right: 16.w),
           child: Row(
             children: [
               GestureDetector(
@@ -96,36 +97,41 @@ class MoreScreen extends StatelessWidget {
             ],
           ),
         ),
-            Container(
-              width: 338.w,
-              height: 50.h,
-              margin: EdgeInsets.symmetric(vertical: 7.h), // تباعد بين العناصر
-              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: const Color(0xff8B8B8B), width: 1),
-                color: Colors.white,
-              ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    "assets/images/contactUs.png",
-                    width: 20.w,
-                    height: 20.h,
-                    fit: BoxFit.cover,
-                  ),
-                  SizedBox(width: 4.w),
-                  Expanded(
-                    child: Text(
-                      ContactUs.tr,
-                      style: TextStyle(
-                        color: const Color(0xffB93439),
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
+            InkWell(
+              onTap: (){
+                Get.to(()=>ContactUsScreen());
+              },
+              child: Container(
+                width: 338.w,
+                height: 50.h,
+                margin: EdgeInsets.symmetric(vertical: 7.h), // تباعد بين العناصر
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0xff8B8B8B), width: 1),
+                  color: Colors.white,
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      "assets/images/contactUs.png",
+                      width: 20.w,
+                      height: 20.h,
+                      fit: BoxFit.cover,
+                    ),
+                    SizedBox(width: 4.w),
+                    Expanded(
+                      child: Text(
+                        ContactUs.tr,
+                        style: TextStyle(
+                          color: const Color(0xffB93439),
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Container(

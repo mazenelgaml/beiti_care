@@ -178,3 +178,6 @@ const Passwordmustbeatleast6characters="Password must be at least 6 characters";
 const Pleaseconfirmpassword="Please confirm password";
 const Passwordsdonotmatch="Passwords do not match";
 const DeleteAccount="Delete Account";
+
+//Bottom nav bar
+const homeBottomNav="Home_Bottom_Nav";

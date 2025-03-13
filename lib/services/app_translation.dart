@@ -179,6 +179,9 @@ class AppTranslations extends Translations {
       Passwordsdonotmatch:"Passwords do not match",
       DeleteAccount:"Delete Account",
 
+      //bottom nav bar
+      homeBottomNav:"Home",
+
     },
     "ar": {
 
@@ -355,6 +358,9 @@ class AppTranslations extends Translations {
       Pleaseconfirmpassword:"الرجاء تأكيد كلمة المرور",
       Passwordsdonotmatch:"كلمات المرور غير متطابقة.",
       DeleteAccount:"حذف الحساب",
+
+      //bottom nav bar
+      homeBottomNav:"الرئيسية",
 
     }
   };

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../services/translation_key.dart';
 import '../../../widgets/custom_buttom_nav_bar.dart';
+import '../../add_credit_card/add_credit_card_screen.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({super.key});
@@ -12,9 +13,9 @@ class WalletScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 150.w, // توسيع المساحة الخاصة بـ leading
+        leadingWidth: 200.w, // توسيع المساحة الخاصة بـ leading
         leading: Padding(
-          padding: EdgeInsets.only(left: 16.w), // دفع المحتوى ناحية اليمين
+          padding: EdgeInsets.only(left: 16.w,right: 16.w), // دفع المحتوى ناحية اليمين
           child: Row(
             children: [
               GestureDetector(
@@ -91,7 +92,9 @@ class WalletScreen extends StatelessWidget {
                         backgroundColor: Colors.blueGrey,
                         padding: EdgeInsets.symmetric(vertical: 12.h),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=>AddCreditCardScreen());
+                      },
                       child: Text(Pay.tr, style: TextStyle(fontSize: 16.sp, color: Colors.white)),
                     ),
                   ),
