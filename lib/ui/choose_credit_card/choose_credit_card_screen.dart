@@ -138,7 +138,7 @@ class _ChooseCreditCardScreenState extends State<ChooseCreditCardScreen> {
                       ),
                     ),
                     onPressed: () {},
-                    child: Text('Send', style: TextStyle(fontSize: 16.sp, color: Colors.white)),
+                    child: Text(Send.tr, style: TextStyle(fontSize: 16.sp, color: Colors.white)),
                   ),
                 ),
               ],

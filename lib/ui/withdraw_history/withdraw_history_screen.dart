@@ -1,14 +1,16 @@
+import 'package:beiti_care/services/translation_key.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class WithdrawHistoryScreen extends StatelessWidget {
   final List<Map<String, String>> transactions = List.generate(
     6,
         (index) => {
       "phone": "01023625821",
-      "amount": "500 EGP",
+      "amount": "500 ${currency.tr}",
       "date": "22/1/2024",
-      "status": "process is complete"
+      "status": processIsCompleted.tr
     },
   );
 
@@ -44,7 +46,7 @@ class WithdrawHistoryScreen extends StatelessWidget {
               ),
               SizedBox(width: 5.w),
               Text(
-                'Withdraw History',
+                WithdrawHistory.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -77,11 +79,11 @@ class WithdrawHistoryScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Cash Phone Number: ${transaction['phone']}",
+                      "${cashPhoneNumber.tr}: ${transaction['phone']}",
                       style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 5.h),
-                    Text("Amount: ${transaction['amount']}", style: TextStyle(fontSize: 14.sp)),
+                    Text("${amount.tr}: ${transaction['amount']}", style: TextStyle(fontSize: 14.sp)),
                     SizedBox(height: 5.h),
                     Text("${transaction['date']}", style: TextStyle(fontSize: 14.sp)),
                     SizedBox(height: 5.h),

@@ -181,3 +181,12 @@ const DeleteAccount="Delete Account";
 
 //Bottom nav bar
 const homeBottomNav="Home_Bottom_Nav";
+
+//add credit card
+const cashPhoneNumber="Cash_Phone_Number";
+const enterTheAmount="Enter_The_Amount";
+
+//withdraw history
+const amount="Amount";
+const processIsCompleted="Process_Is_Completed";
+const currency="Currency";

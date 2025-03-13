@@ -182,6 +182,16 @@ class AppTranslations extends Translations {
       //bottom nav bar
       homeBottomNav:"Home",
 
+      //add credit card
+      cashPhoneNumber:"Cash Phone Number",
+      enterTheAmount:"Enter the amount",
+
+      //withdraw history
+
+      amount:"Amount",
+      processIsCompleted:"Process is completed",
+      currency:"EGP",
+
     },
     "ar": {
 
@@ -361,6 +371,16 @@ class AppTranslations extends Translations {
 
       //bottom nav bar
       homeBottomNav:"الرئيسية",
+
+      //add credit card
+      cashPhoneNumber:"رقم الهاتف للدفع النقدي",
+      enterTheAmount:"دخل المبلغ",
+
+      //withdraw history
+
+      amount:"المبلغ",
+      processIsCompleted:"العملية اكتملت بنجاح. ",
+      currency:"جنية",
 
     }
   };

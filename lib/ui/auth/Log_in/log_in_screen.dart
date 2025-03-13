@@ -4,6 +4,8 @@ import 'package:beiti_care/ui/auth/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../services/localization_services.dart';
+import '../../../services/memory.dart';
 import '../../nurse/home/nurse_home_screen.dart';
 import 'controller/log_in_controller.dart';
 
@@ -98,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(height: 15.h),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                      padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -130,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(height: 15.h),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                      padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -162,7 +164,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     Align(
-                      alignment: Alignment.centerRight,
+                      alignment: Get.find<CacheHelper>()
+                          .activeLocale == SupportedLocales.english ?Alignment.centerRight:Alignment.centerLeft,
                       child: TextButton(
                         onPressed: () {
                           Get.off(()=>ForgetPasswordScreen());

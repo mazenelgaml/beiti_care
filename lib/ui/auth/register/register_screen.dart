@@ -105,7 +105,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 15.h),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                    padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -138,7 +138,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 10.h),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                    padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -171,7 +171,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 10.h),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                    padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -307,7 +307,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 10.h),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                    padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -340,7 +340,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 10.h),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                    padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -403,7 +403,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 15.h),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                    padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -437,7 +437,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 10.h),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                    padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -471,7 +471,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 10.h),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                    padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -495,7 +495,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 10.h),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                    padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -529,7 +529,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 10.h),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                    padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -578,7 +578,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                   SizedBox(height: 10.h),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                    padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -611,7 +611,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 10.h),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                    padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -658,7 +658,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 10.h),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                    padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -692,7 +692,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 10.h),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                    padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -727,7 +727,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 10.h),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,bottom: 5),
+                    padding: const EdgeInsets.only(left: 20.0,bottom: 5,right: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [

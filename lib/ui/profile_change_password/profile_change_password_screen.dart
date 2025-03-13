@@ -30,14 +30,14 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
     return controller.isLoading?Scaffold(body: Center(child: CircularProgressIndicator(),),): Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leadingWidth: 150.w,
+        leadingWidth: 250.w,
         leading: Padding(
-          padding: EdgeInsets.only(left: 16.w),
+          padding: EdgeInsets.only(left: 16.w,right: 16.w),
           child: Row(
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                  Get.back();
                 },
                 child: Container(
                   width: 24.w,

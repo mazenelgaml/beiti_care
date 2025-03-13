@@ -29,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                  Get.back();
                 },
                 child: Container(
                   width: 24.w,
@@ -152,7 +152,7 @@ class ProfileScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 20.0, bottom: 5),
+                      padding: const EdgeInsets.only(left: 20.0, bottom: 5,right: 20.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -189,7 +189,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20.0, bottom: 5),
+                      padding: const EdgeInsets.only(left: 20.0, bottom: 5,right: 20.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -226,7 +226,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20.0, bottom: 5),
+                      padding: const EdgeInsets.only(left: 20.0, bottom: 5,right: 20.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -276,7 +276,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20.0, bottom: 5),
+                      padding: const EdgeInsets.only(left: 20.0, bottom: 5,right: 20.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -359,8 +359,49 @@ class ProfileScreen extends StatelessWidget {
                       height: 60.h,
                       child: ElevatedButton(
                         onPressed: () {
-                          controller.deleteNurseAccount();
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                title: Row(
+                                  children: [
+                                    Image.asset("assets/images/trash.png",width: 24.w,height: 24.h,),
+                                    SizedBox(width: 8),
+                                    Text(
+                                      "Are you sure you want to\n delete the account?",
+                                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop(); // Close the popup
+                                    },
+                                    child: Text(
+                                      "No",
+                                      style: TextStyle(fontSize: 16, color: Colors.grey),
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      controller.deleteNurseAccount(); // Execute deletion
+                                      Navigator.of(context).pop(); // Close the popup
+                                    },
+                                    child: Text(
+                                      "Yes",
+                                      style: TextStyle(fontSize: 16, color: Color(0xff264EB9)),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
                         },
+
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
