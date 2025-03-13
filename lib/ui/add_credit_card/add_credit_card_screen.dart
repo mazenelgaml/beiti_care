@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 import '../../services/translation_key.dart';
+import '../choose_credit_card/choose_credit_card_screen.dart';
 
 class AddCreditCardScreen extends StatelessWidget {
   const AddCreditCardScreen({super.key});
@@ -190,7 +191,9 @@ class AddCreditCardScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8.r),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(()=>ChooseCreditCardScreen());
+                    },
                     child: Text('Send', style: TextStyle(fontSize: 16.sp, color: Colors.white)),
                   ),
                 ),

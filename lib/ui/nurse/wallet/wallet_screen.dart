@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../../services/translation_key.dart';
 import '../../../widgets/custom_buttom_nav_bar.dart';
 import '../../add_credit_card/add_credit_card_screen.dart';
+import '../../withdraw_history/withdraw_history_screen.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({super.key});
@@ -107,7 +108,7 @@ class WalletScreen extends StatelessWidget {
                         backgroundColor: Color(0xffB93439),
                         padding: EdgeInsets.symmetric(vertical: 12.h),
                       ),
-                      onPressed: () {},
+                      onPressed: () {Get.to(()=>WithdrawHistoryScreen());},
                       child: Text(Withdraw.tr, style: TextStyle(fontSize: 16.sp, color: Colors.white)),
                     ),
                   ),
