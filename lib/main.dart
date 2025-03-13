@@ -1,13 +1,6 @@
-
 import 'package:beiti_care/services/app_translation.dart';
 import 'package:beiti_care/services/localization_services.dart';
 import 'package:beiti_care/services/memory.dart';
-import 'package:beiti_care/ui/profile/More_screen.dart';
-import 'package:beiti_care/ui/profile/about_screen.dart';
-import 'package:beiti_care/ui/contact_us/contact_us_screen.dart';
-import 'package:beiti_care/ui/profile/notification_screen.dart';
-import 'package:beiti_care/ui/profile/profile_change_password_screen.dart';
-import 'package:beiti_care/ui/profile/profile_screen.dart';
 import 'package:beiti_care/ui/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cool_alert/cool_alert.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,17 +9,46 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
-import '../../../../models/nurse_by_id_model.dart';
-import '../../../../services/end_points.dart';
-import '../../../../services/memory.dart';
+import '../../../models/nurse_by_id_model.dart';
+import '../../../services/end_points.dart';
+import '../../../services/memory.dart';
 
-class HomeController extends GetxController {
+class ProfileChangePasswordController extends GetxController {
   bool isLoading = false;
   NurseByIdModel? nurseByIdModel;
-  TextEditingController username = TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController phoneNumber = TextEditingController();
-  TextEditingController bio = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
+  String? validatePassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'كلمة المرور مطلوبة';
+    }
+    if (value.length < 6) {
+      return 'كلمة المرور يجب أن تكون على الأقل 6 أحرف';
+    }
+    return null;
+  }
+
+  String? validateConfirmPassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'تأكيد كلمة المرور مطلوب';
+    }
+    if (value != passwordController.text) {
+      return 'كلمة المرور غير متطابقة';
+    }
+    return null;
+  }
+  void submitForm(BuildContext context) {
+    if (formKey.currentState!.validate()) {
+      updateUserPassword(context);
+    }
+  }
+  void dispose() {
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
   File? image;
 
   @override
@@ -27,7 +57,12 @@ class HomeController extends GetxController {
     await CacheHelper.init();
     await getUserProfile();
   }
-
+  String? validateNotEmpty(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return "هذا الحقل مطلوب";
+    }
+    return null;
+  }
 
   Future<void> getUserProfile() async {
     isLoading = true;
@@ -49,11 +84,7 @@ class HomeController extends GetxController {
       if (response.statusCode == 200) {
         NurseByIdModel userDataModel = NurseByIdModel.fromJson(response.data);
         nurseByIdModel = userDataModel;
-        username.text = nurseByIdModel?.data?.userName ?? "";
-        email.text = nurseByIdModel?.data?.email ?? "";
-        phoneNumber.text = nurseByIdModel?.data?.phone ?? "";
-        String bioS = await Get.find<CacheHelper>().getData(key: "bio") ?? "";
-        bio.text = bioS;
+
       } else {
         ScaffoldMessenger.of(Get.context!).showSnackBar(
           SnackBar(content: Text('Error fetching user data')),
@@ -70,7 +101,7 @@ class HomeController extends GetxController {
     }
   }
 
-  Future<void> updateUserProfile() async {
+  Future<void> updateUserPassword(BuildContext context) async {
     isLoading = true;
     update();
 
@@ -91,10 +122,8 @@ class HomeController extends GetxController {
       final response = await dio.patch(
         "/api/nurse/update/$id",
         data: {
-          "userName": username.text.trim(),
-          "email": email.text.trim(),
-          "phone": phoneNumber.text.trim(),
-          // "image": base64Encode(image!.readAsBytesSync()),
+          "password": passwordController.text.trim(),
+
 
           // 🔹 لو الـ API يقبل الصورة كـ URL أو base64، غير هنا
         },  // 🔹 إرسال البيانات كـ JSON
@@ -109,13 +138,17 @@ class HomeController extends GetxController {
       if (response.statusCode == 200) {
         NurseByIdModel userDataModel = NurseByIdModel.fromJson(response.data);
         nurseByIdModel = userDataModel;
-        username.text = nurseByIdModel?.data?.userName ?? "";
-        email.text = nurseByIdModel?.data?.email ?? "";
-        phoneNumber.text = nurseByIdModel?.data?.phone ?? "";
         getUserProfile();
-        ScaffoldMessenger.of(Get.context!).showSnackBar(
-          SnackBar(content: Text('Profile updated successfully')),
+        passwordController.text="";
+        confirmPasswordController.text="";
+        FocusScope.of(context).unfocus();
+        CoolAlert.show(
+          context: context,
+          type: CoolAlertType.success,
+          title: "success",
+          text: 'Password updated successfully',
         );
+
       } else {
         ScaffoldMessenger.of(Get.context!).showSnackBar(
           SnackBar(content: Text('Error updating user data')),
@@ -132,6 +165,14 @@ class HomeController extends GetxController {
     }
   }
 
+
+  Future<void> pickImage() async {
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      image = File(pickedFile.path);
+      update();
+    }
+  }
 
 
 }

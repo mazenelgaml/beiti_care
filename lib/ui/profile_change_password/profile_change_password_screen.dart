@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../services/translation_key.dart';
 import '../../widgets/custom_button.dart';
+import 'controller/profile_change_password_controller.dart';
 
 class ProfileChangePasswordScreen extends StatefulWidget {
   const ProfileChangePasswordScreen({super.key});
@@ -14,28 +15,19 @@ class ProfileChangePasswordScreen extends StatefulWidget {
 }
 
 class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
+
 
   @override
-  void dispose() {
-    _passwordController.dispose();
-    _confirmPasswordController.dispose();
-    super.dispose();
-  }
 
-  void _savePassword() {
-    if (_formKey.currentState!.validate()) {
-      // Password validation passed; proceed with save logic
-      print(Passwordchangedsuccessfully.tr);
-      // You can add your API call or further actions here.
-    }
-  }
+
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GetBuilder(
+        init: ProfileChangePasswordController(),
+    builder: (ProfileChangePasswordController controller) {
+    return controller.isLoading?Scaffold(body: Center(child: CircularProgressIndicator(),),): Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         leadingWidth: 150.w,
@@ -81,7 +73,7 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
         child: Form(
-          key: _formKey,
+          key: controller.formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -94,12 +86,14 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
                       child: Stack(
                         children: [
                           ClipOval(
-                            child: Image.asset(
-                              "assets/images/boy.png",
+                            child:controller.nurseByIdModel?.data?.image==null||controller.nurseByIdModel?.data?.image==""?Image.asset(
+                              "assets/images/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+
                               width: 70.w,
                               height: 70.h,
                               fit: BoxFit.cover,
-                            ),
+                            ):Image.network(controller.nurseByIdModel?.data?.image??"",width: 70.w,
+                              height: 70.h,fit: BoxFit.cover,),
                           ),
                           Positioned(
                             bottom: 0,
@@ -140,7 +134,8 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Rania Mohamed",
+                            controller
+                            .nurseByIdModel?.data?.userName??"",
                             style: TextStyle(
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w600,
@@ -148,7 +143,8 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
                             ),
                           ),
                           Text(
-                            "raniamohamed@gmail.com",
+                            controller
+                                .nurseByIdModel?.data?.email??"",
                             style: TextStyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w500,
@@ -176,7 +172,10 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
                 width: 338.w,
                 height: 50.h,
                 child: TextFormField(
-                  controller: _passwordController,
+                  controller: controller.passwordController,
+                  validator:(value){
+                    controller.validatePassword(value);
+                  },
                   obscureText: true,
                   decoration: InputDecoration(
                     hintText: password.tr,
@@ -192,15 +191,7 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
                       borderSide: BorderSide(color: Color(0xff8B8B8B), width: 2),
                     ),
                   ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return Pleaseenterpassword.tr;
-                    }
-                    if (value.length < 6) {
-                      return Passwordmustbeatleast6characters.tr;
-                    }
-                    return null;
-                  },
+
                 ),
               ),
               SizedBox(height: 15.h),
@@ -218,7 +209,7 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
                 width: 338.w,
                 height: 50.h,
                 child: TextFormField(
-                  controller: _confirmPasswordController,
+                  controller: controller.confirmPasswordController,
                   obscureText: true,
                   decoration: InputDecoration(
                     hintText: confirm_Password.tr,
@@ -235,13 +226,7 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
                     ),
                   ),
                   validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return Pleaseconfirmpassword.tr;
-                    }
-                    if (value != _passwordController.text) {
-                      return Passwordsdonotmatch.tr;
-                    }
-                    return null;
+                    controller.validateConfirmPassword(value);
                   },
                 ),
               ),
@@ -258,7 +243,9 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
           mainAxisSize: MainAxisSize.min,
           children: [
             CustomButton(
-              onPressed: _savePassword,
+              onPressed:() {
+                controller.submitForm(context);
+              },
               name: Save.tr,
               borderRadius: 10,
               btnColor: Color(0xffB93439),
@@ -267,7 +254,7 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
             SizedBox(height: 8.h),
             CustomButton(
               onPressed: () {
-                Navigator.pop(context);
+                Get.back();
               },
               name: cancel.tr,
               borderRadius: 10,
@@ -278,5 +265,6 @@ class _ProfileChangePasswordScreenState extends State<ProfileChangePasswordScree
         ),
       ),
     );
+    });
   }
 }

@@ -11,32 +11,32 @@ String signUpModelToJson(SignUpModel data) => json.encode(data.toJson());
 class SignUpModel {
   bool? success;
   String? message;
-  Data? data;
+  NewNurse? newNurse;
   String? token;
 
   SignUpModel({
     this.success,
     this.message,
-    this.data,
+    this.newNurse,
     this.token,
   });
 
   factory SignUpModel.fromJson(Map<String, dynamic> json) => SignUpModel(
     success: json["success"],
     message: json["message"],
-    data: json["data"] == null ? null : Data.fromJson(json["data"]),
+    newNurse: json["newNurse"] == null ? null : NewNurse.fromJson(json["newNurse"]),
     token: json["token"],
   );
 
   Map<String, dynamic> toJson() => {
     "success": success,
     "message": message,
-    "data": data?.toJson(),
+    "newNurse": newNurse?.toJson(),
     "token": token,
   };
 }
 
-class Data {
+class NewNurse {
   String? userName;
   String? email;
   String? password;
@@ -44,15 +44,19 @@ class Data {
   String? phone;
   String? image;
   String? experience;
-  String? specialty;
+  List<String>? specialty;
   String? location;
   String? idCard;
+  List<dynamic>? clients;
+  int? rating;
+  List<String>? language;
   String? id;
+  List<dynamic>? reviews;
   DateTime? createdAt;
   DateTime? updatedAt;
   int? v;
 
-  Data({
+  NewNurse({
     this.userName,
     this.email,
     this.password,
@@ -63,13 +67,17 @@ class Data {
     this.specialty,
     this.location,
     this.idCard,
+    this.clients,
+    this.rating,
+    this.language,
     this.id,
+    this.reviews,
     this.createdAt,
     this.updatedAt,
     this.v,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory NewNurse.fromJson(Map<String, dynamic> json) => NewNurse(
     userName: json["userName"],
     email: json["email"],
     password: json["password"],
@@ -77,10 +85,14 @@ class Data {
     phone: json["phone"],
     image: json["image"],
     experience: json["experience"],
-    specialty: json["specialty"],
+    specialty: json["specialty"] == null ? [] : List<String>.from(json["specialty"]!.map((x) => x)),
     location: json["location"],
     idCard: json["idCard"],
+    clients: json["clients"] == null ? [] : List<dynamic>.from(json["clients"]!.map((x) => x)),
+    rating: json["rating"],
+    language: json["language"] == null ? [] : List<String>.from(json["language"]!.map((x) => x)),
     id: json["_id"],
+    reviews: json["reviews"] == null ? [] : List<dynamic>.from(json["reviews"]!.map((x) => x)),
     createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
     updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
     v: json["__v"],
@@ -94,10 +106,14 @@ class Data {
     "phone": phone,
     "image": image,
     "experience": experience,
-    "specialty": specialty,
+    "specialty": specialty == null ? [] : List<dynamic>.from(specialty!.map((x) => x)),
     "location": location,
     "idCard": idCard,
+    "clients": clients == null ? [] : List<dynamic>.from(clients!.map((x) => x)),
+    "rating": rating,
+    "language": language == null ? [] : List<dynamic>.from(language!.map((x) => x)),
     "_id": id,
+    "reviews": reviews == null ? [] : List<dynamic>.from(reviews!.map((x) => x)),
     "createdAt": createdAt?.toIso8601String(),
     "updatedAt": updatedAt?.toIso8601String(),
     "__v": v,

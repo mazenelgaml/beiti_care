@@ -19,21 +19,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
   int selectedIndex = 0;
   String? selectedSpecialty;
 
-  final List<String> specialties = [
-    "Nutrition",
-    "Catheterization",
-    "Consultations",
-    "General Surgery",
-    "Pediatrics",
-    "Orthopedics",
-  ];
+
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
         init: SignupController(),
         builder: (SignupController controller) {
-          return Scaffold(
+          return controller.isLoading?Scaffold(body: Center(child: CircularProgressIndicator(),),):Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xffF3EFEF),
         leading: null,
@@ -572,7 +565,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           selectedSpecialty = newValue;
                         });
                       },
-                      items: specialties.map<DropdownMenuItem<String>>((String value) {
+                      items: controller.chooseService?.map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(value),

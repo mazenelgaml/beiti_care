@@ -1,3 +1,4 @@
+import 'package:beiti_care/ui/notifications/controller/notifications_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,7 +11,10 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GetBuilder(
+        init: NotificationsController(),
+    builder: (NotificationsController controller) {
+    return controller.isLoading?Scaffold(body: Center(child: CircularProgressIndicator(),),): Scaffold(
       appBar: AppBar(
         leadingWidth: 170.w,
         leading: Padding(
@@ -55,7 +59,7 @@ class NotificationScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(16.w),
         child: ListView.builder(
-          itemCount: 5, // عدد الإشعارات
+          itemCount: controller.nurseNotifications?.length, // عدد الإشعارات
           itemBuilder: (context, index) {
             return Container(
               width: 338.w,
@@ -78,7 +82,7 @@ class NotificationScreen extends StatelessWidget {
                   SizedBox(width: 10.w),
                   Expanded(
                     child: Text(
-                      Yourrequesthasbeenapproved.tr,
+                      controller.nurseNotifications?[index].message??"",
                       style: TextStyle(
                         color: const Color(0xff8B8B8B),
                         fontSize: 14.sp,
@@ -92,6 +96,6 @@ class NotificationScreen extends StatelessWidget {
           },
         ),
       ),
-    );
+    );});
   }
 }

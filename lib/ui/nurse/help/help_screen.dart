@@ -2,12 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../services/translation_key.dart';
 
 class HelpScreen extends StatelessWidget {
   const HelpScreen({super.key});
 
+  final String phoneNumber = "+96582365988"; // رقم الهاتف للاتصال والواتساب
+  final String emailAddress = "Nour@gmail.com"; // البريد الإلكتروني
+  final String locationAddress = "Haa Alkhalidia, Jeddah"; // العنوان
+  final String googleMapsQuery = "Haa Alkhalidia, Jeddah"; // العنوان بصيغة بحث جوجل ماب
+  void _callPhone(String phone) async {
+    final url = 'tel:$phone';
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      print("❌ لا يمكن إجراء المكالمة");
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +47,7 @@ class HelpScreen extends StatelessWidget {
               Expanded(
                 child: Text(
                   Help.tr,
-                  style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: Color(0xffB93439),),
+                  style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: Color(0xffB93439)),
                 ),
               ),
             ],
@@ -84,9 +97,9 @@ class HelpScreen extends StatelessWidget {
                     SizedBox(height: 16.h),
 
                     // Contact Details
-                    _infoRow(ContactUs.tr, "+96582365988"),
-                    _infoRow(Location.tr, "Haa Alkhalidia, Jeddah", isBold: true),
-                    _infoRow(email.tr, "Nour@gmail.com"),
+                    _infoRow(ContactUs.tr, phoneNumber, onTap: () => _callPhone(phoneNumber)), // فتح واتساب عند الضغط على الرقم
+                    _infoRow(Location.tr, locationAddress, isBold: true, onTap: () => _openGoogleMaps(googleMapsQuery)), // فتح جوجل ماب عند الضغط على الموقع
+                    _infoRow(email.tr, emailAddress, onTap: () => _sendEmail(emailAddress)),
 
                     SizedBox(height: 16.h),
 
@@ -95,7 +108,7 @@ class HelpScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         _socialIcon(FontAwesomeIcons.facebook),
-                        _socialIcon(FontAwesomeIcons.whatsapp),
+                        _socialIcon(FontAwesomeIcons.whatsapp, onTap: () => _launchWhatsApp(phoneNumber)), // أيقونة واتساب
                         _socialIcon(FontAwesomeIcons.snapchat),
                         _socialIcon(FontAwesomeIcons.instagram),
                       ],
@@ -110,29 +123,67 @@ class HelpScreen extends StatelessWidget {
     );
   }
 
-  Widget _infoRow(String title, String value, {bool isBold = false}) {
+  Widget _infoRow(String title, String value, {bool isBold = false, Function()? onTap}) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "$title  ",
-            style: TextStyle(fontWeight:FontWeight.w600,fontSize: 18.sp, color: Color(0xff49768C)),
-          ),
-          Text(
-            value,
-            style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w400, color: Color(0xff49768C)),
-          ),
-        ],
+      child: GestureDetector(
+        onTap: onTap,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "$title  ",
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.sp, color: Color(0xff49768C)),
+            ),
+            Text(
+              value,
+              style: TextStyle(
+                fontSize: 18.sp,
+                fontWeight: isBold ? FontWeight.w600 : FontWeight.w400,
+                color: Colors.blue, // لون أزرق ليبين إنه لينك
+                decoration: TextDecoration.underline, // خط تحت النص
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _socialIcon(IconData icon) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8.w),
-      child: Icon(icon, size: 22.sp, color: Colors.blueGrey.shade700),
+  Widget _socialIcon(IconData icon, {Function()? onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        child: Icon(icon, size: 22.sp, color: Colors.blueGrey.shade700),
+      ),
     );
+  }
+
+  void _launchWhatsApp(String phoneNumber) async {
+    final Uri url = Uri.parse("https://wa.me/$phoneNumber");
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
+    } else {
+      Get.snackbar("Error", "Cannot open WhatsApp");
+    }
+  }
+
+  void _sendEmail(String email) async {
+    final Uri url = Uri.parse("mailto:$email");
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
+    } else {
+      Get.snackbar("Error", "Cannot open email app");
+    }
+  }
+
+  void _openGoogleMaps(String query) async {
+    final Uri googleMapsUrl = Uri.parse("https://www.google.com/maps/search/?api=1&query=${Uri.encodeComponent(query)}");
+    if (await canLaunchUrl(googleMapsUrl)) {
+      await launchUrl(googleMapsUrl, mode: LaunchMode.externalApplication);
+    } else {
+      Get.snackbar("Error", "Cannot open Google Maps");
+    }
   }
 }

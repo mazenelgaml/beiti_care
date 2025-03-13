@@ -20,7 +20,7 @@ class _PolicyPrivacyScreenState extends State<PolicyPrivacyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 150.w, // توسيع المساحة الخاصة بـ leading
+        leadingWidth: 300.w, // توسيع المساحة الخاصة بـ leading
         leading: Padding(
           padding: EdgeInsets.only(left: 16.w), // دفع المحتوى ناحية اليمين
           child: Row(

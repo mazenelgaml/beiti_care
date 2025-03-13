@@ -1,14 +1,14 @@
 import 'dart:convert';
-
+import 'dart:io';
+import 'dart:typed_data';
+import 'package:beiti_care/ui/auth/register/register_screen.dart';
 import 'package:dio/dio.dart' as dio;
-import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
-
+import 'package:flutter/foundation.dart';
 import '../../../models/nurse_by_id_model.dart';
+import '../../../models/update_nurse_model.dart';
 import '../../../services/end_points.dart';
 import '../../../services/memory.dart';
 
@@ -27,6 +27,7 @@ class ProfileController extends GetxController {
     await CacheHelper.init();
     await getUserProfile();
   }
+
   String? validateNotEmpty(String? value) {
     if (value == null || value.trim().isEmpty) {
       return "هذا الحقل مطلوب";
@@ -52,96 +53,105 @@ class ProfileController extends GetxController {
       );
 
       if (response.statusCode == 200) {
-        NurseByIdModel userDataModel = NurseByIdModel.fromJson(response.data);
-        nurseByIdModel = userDataModel;
-        username.text = nurseByIdModel?.data?.userName ?? "";
-        email.text = nurseByIdModel?.data?.email ?? "";
-        phoneNumber.text = nurseByIdModel?.data?.phone ?? "";
+        nurseByIdModel = NurseByIdModel.fromJson(response.data);
         String bioS = await Get.find<CacheHelper>().getData(key: "bio") ?? "";
         bio.text = bioS;
       } else {
-        ScaffoldMessenger.of(Get.context!).showSnackBar(
-          SnackBar(content: Text('Error fetching user data')),
-        );
+        Get.snackbar("خطأ", "فشل في تحميل البيانات");
       }
     } catch (e) {
       print(e);
-      ScaffoldMessenger.of(Get.context!).showSnackBar(
-        SnackBar(content: Text('Error occurred while connecting to the Server')),
-      );
+      Get.snackbar("خطأ", "حدث خطأ أثناء الاتصال بالخادم");
     } finally {
       isLoading = false;
       update();
     }
   }
 
-  Future<void> updateUserProfile() async {
+  Future<void> updateUserProfile(BuildContext context) async {
     isLoading = true;
     update();
-
     String id = await Get.find<CacheHelper>().getData(key: "id");
-    print("User ID: $id");  // ✅ تأكد أن id ليس فارغًا
-
-    final Dio dio = Dio(
-      BaseOptions(
+    final dio.Dio dioInstance = dio.Dio(
+      dio.BaseOptions(
         baseUrl: EndPoint.baseUrl,
         validateStatus: (status) => status != null && status < 500,
       ),
     );
 
-    // 🔹 إرسال البيانات كـ JSON بدلاً من FormData
-
-
     try {
-      final response = await dio.patch(
+      dio.FormData formData = dio.FormData.fromMap({
+        "userName": username.text.trim(),
+        "email": email.text.trim(),
+        "phone": phoneNumber.text,
+        if (image != null)
+          "image": await dio.MultipartFile.fromFile(image!.path, filename: image!.path.split('/').last),
+      });
+      final response = await dioInstance.patch(
         "/api/nurse/update/$id",
-        data: {
-          "userName": username.text.trim(),
-          "email": email.text.trim(),
-          "phone": phoneNumber.text.trim(),
-          // "image": base64Encode(image!.readAsBytesSync()),
-
-          // 🔹 لو الـ API يقبل الصورة كـ URL أو base64، غير هنا
-        },  // 🔹 إرسال البيانات كـ JSON
-        options: Options(headers: {
-          "Content-Type": "application/json",
-        }),
+        data: formData,
+        options: dio.Options(headers: {"Content-Type": "multipart/form-data"}),
       );
-
-      print("Response Code: ${response.statusCode}");
-      print("Response Data: ${response.data}");  // ✅ طباعة الاستجابة للتأكد
+      print("Response Status: ${response.statusCode}");
+      print("Response Data: ${response.data}");
 
       if (response.statusCode == 200) {
-        NurseByIdModel userDataModel = NurseByIdModel.fromJson(response.data);
-        nurseByIdModel = userDataModel;
-        username.text = nurseByIdModel?.data?.userName ?? "";
-        email.text = nurseByIdModel?.data?.email ?? "";
-        phoneNumber.text = nurseByIdModel?.data?.phone ?? "";
-   getUserProfile();
-        ScaffoldMessenger.of(Get.context!).showSnackBar(
-          SnackBar(content: Text('Profile updated successfully')),
-        );
+        getUserProfile();
+        Get.snackbar("نجاح", "تم تحديث الملف الشخصي بنجاح");
       } else {
-        ScaffoldMessenger.of(Get.context!).showSnackBar(
-          SnackBar(content: Text('Error updating user data')),
-        );
+        Get.snackbar("خطأ", "فشل تحديث البيانات");
       }
     } catch (e) {
-      print("Error: $e");  // ✅ طباعة الخطأ لمعرفة السبب الحقيقي
-      ScaffoldMessenger.of(Get.context!).showSnackBar(
-        SnackBar(content: Text('Error occurred while connecting to the Server')),
-      );
-    } finally {
+      print("Error: ${e.toString()}");
+      Get.snackbar("خطأ", "حدث خطأ أثناء الاتصال بالخادم");
+    }
+    finally {
       isLoading = false;
       update();
     }
   }
 
-
   Future<void> pickImage() async {
     final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
-      image = File(pickedFile.path);
+      File selectedImage = File(pickedFile.path);
+      image = await compute(compressImage, selectedImage);
+      update();
+    }
+  }
+
+  static Future<File> compressImage(File file) async {
+    return file; // يمكن إضافة ضغط للصورة هنا
+  }
+
+  Future<void> deleteNurseAccount() async {
+    isLoading = true;
+    update();
+    String id = await Get.find<CacheHelper>().getData(key: "id");
+    final dio.Dio dioInstance = dio.Dio(
+      dio.BaseOptions(
+        baseUrl: EndPoint.baseUrl,
+        validateStatus: (status) => status != null && status < 500,
+      ),
+    );
+
+    try {
+      final response = await dioInstance.delete(
+        "/info?id=$id",
+        options: dio.Options(headers: {"Content-Type": "application/json"}),
+      );
+
+      if (response.statusCode == 200) {
+        Get.find<CacheHelper>().loggingOut();
+        Get.off(() => RegisterScreen());
+      } else {
+        Get.snackbar("خطأ", "فشل حذف الحساب");
+      }
+    } catch (e) {
+      print(e);
+      Get.snackbar("خطأ", "حدث خطأ أثناء الاتصال بالخادم");
+    } finally {
+      isLoading = false;
       update();
     }
   }

@@ -1,3 +1,4 @@
+import 'package:beiti_care/ui/profile_change_password/profile_change_password_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -317,7 +318,9 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 16.h,),
                     CustomButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=>ProfileChangePasswordScreen());
+                      },
                       name: password.tr,
                       borderRadius: 10,
                       btnColor: Colors.white,
@@ -328,7 +331,7 @@ class ProfileScreen extends StatelessWidget {
                       onPressed: () async{
                         String bio = controller.bio.text;
                         await Get.find<CacheHelper>().saveData(key: "bio", value: bio);
-                        controller.updateUserProfile();
+                        controller.updateUserProfile(context);
                       },
                       name:  Save.tr,
                       borderRadius: 10,
@@ -337,7 +340,9 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 8.h,),
                     CustomButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.getUserProfile();
+                      },
                       name: cancel.tr,
                       borderRadius: 10,
                       btnColor: Color(0xff263238),
@@ -353,7 +358,9 @@ class ProfileScreen extends StatelessWidget {
                       width: 338.w,
                       height: 60.h,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          controller.deleteNurseAccount();
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           shape: RoundedRectangleBorder(

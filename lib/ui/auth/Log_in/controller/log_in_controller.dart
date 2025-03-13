@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import '../../../../models/login_model.dart';
 import '../../../../services/end_points.dart';
 import '../../../../services/memory.dart';
+import '../../finger_print/finger_print_screen.dart';
 
 class LogInController extends GetxController{
 
@@ -83,7 +84,7 @@ class LogInController extends GetxController{
         final id = loginModel.user?.id;
         await Get.find<CacheHelper>().saveData(key: "token", value: token);
         await Get.find<CacheHelper>().saveData(key: "id", value: id);
-        Get.off(() => NurseHomeScreen());
+        Get.off(() => FingerprintAuthScreen());
 
       } else {
         CoolAlert.show(

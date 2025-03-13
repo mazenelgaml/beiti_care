@@ -1,3 +1,4 @@
+import 'package:beiti_care/ui/nurse/home/nurse_home_screen.dart';
 import 'package:beiti_care/ui/onboarding/on_boarding_first_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,7 +37,7 @@ class _FingerprintAuthScreenState extends State<FingerprintAuthScreen> {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () async {
-                   Get.off(()=>OnBoardingFirstScreen()); // Start fingerprint authentication
+                   Get.off(()=>NurseHomeScreen()); // Start fingerprint authentication
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
