@@ -84,7 +84,7 @@ class _FingerprintAuthScreenState extends State<FingerprintAuthScreen> {
     }
 
     if (authenticated) {
-      Get.off(() => OnBoardingFirstScreen());
+      Get.off(()=>NurseHomeScreen());
     }
   }
   void initState() {

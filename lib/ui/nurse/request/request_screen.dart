@@ -89,8 +89,13 @@ class RequestsScreen extends StatelessWidget {
                               Text(controller.nurseSessionsModel?[index].nurse?.location ?? "",
                                   style: TextStyle(color: Color(0xffB93439), fontSize: 12.sp,fontWeight:FontWeight.w500)),
                               SizedBox(height: 5),
-                              Text(controller.nurseSessionsModel?[index].client?.medicalHistory?.laboratoryTests?[index]?? "",
-                                  style: TextStyle(color: Color(0xff49768C), fontSize: 14.sp, decoration: TextDecoration.underline)),
+                              Text(
+                                (controller.nurseSessionsModel?[index].client?.medicalHistory?.laboratoryTests?.isNotEmpty ?? false)
+                                    ? controller.nurseSessionsModel![index].client!.medicalHistory!.laboratoryTests!.first
+                                    : "No tests available",
+                                style: TextStyle(color: Color(0xff49768C), fontSize: 14.sp, decoration: TextDecoration.underline),
+                              ),
+
                             ],
                           ),
                         ),

@@ -33,7 +33,7 @@ class RequestController extends GetxController {
 
     try {
       final response = await dioInstance.get(
-        "/api/session/nurseSessions/$id",
+        "/api/session/nurseSessions/67cf88f548a9babe7ea07309",
         options: dio.Options(headers: {"Content-Type": "application/json"}),
       );
 
