@@ -31,7 +31,7 @@ class NotificationsController extends GetxController {
 
     try {
       final response = await dioInstance.get(
-        "/api/notification/$id",
+        "/api/notification/67cf88f548a9babe7ea07309",
         options: dio.Options(headers: {"Content-Type": "application/json"}),
       );
 

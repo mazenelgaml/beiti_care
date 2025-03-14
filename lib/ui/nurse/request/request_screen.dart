@@ -9,7 +9,7 @@ import 'controller/request_controller.dart';
 class RequestsScreen extends StatelessWidget {
 
 
-   RequestsScreen({super.key});
+   const RequestsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -75,9 +75,15 @@ class RequestsScreen extends StatelessWidget {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CircleAvatar(
-                          radius: 25,
-                          backgroundImage: AssetImage("assets/images/boy.png"), // Change as needed
+                        ClipOval(
+                          child:controller.nurseSessionsModel?[index].client?.image==null||controller.nurseSessionsModel?[index].client?.image==""?Image.asset(
+                            "assets/images/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+
+                            width: 70.w,
+                            height: 70.h,
+                            fit: BoxFit.cover,
+                          ):Image.network(controller.nurseSessionsModel?[index].client?.image??"",width: 70.w,
+                            height: 70.h,fit: BoxFit.cover,),
                         ),
                         SizedBox(width: 10),
                         Expanded(
@@ -108,7 +114,7 @@ class RequestsScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
+                        SizedBox(
                           width: 98.w,
                           height: 35.h,
                           child: ElevatedButton(
@@ -123,7 +129,7 @@ class RequestsScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(width: 10),
-                        Container(
+                        SizedBox(
                           width: 98.w,
                           height: 35.h,
                           child: ElevatedButton(

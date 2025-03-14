@@ -62,6 +62,9 @@ class ProfileController extends GetxController {
 
       if (response.statusCode == 200) {
         nurseByIdModel = NurseByIdModel.fromJson(response.data);
+        username.text=nurseByIdModel?.data?.userName??"";
+        phoneNumber.text=nurseByIdModel?.data?.phone??"";
+        email.text=nurseByIdModel?.data?.email??"";
         String bioS = await Get.find<CacheHelper>().getData(key: "bio") ?? "";
         bio.text = bioS;
         print("📷 Current Image URL: ${nurseByIdModel?.data?.image}");
@@ -162,14 +165,15 @@ class ProfileController extends GetxController {
     }
   }
 
+  File? selectedImage;
   Future<void> pickImage() async {
     final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
-      image = File(pickedFile.path);
-      print("✅ Selected Image: ${image!.path}");
-      update();
+      selectedImage = File(pickedFile.path);
+      update(); // تحديث الـ UI
     }
   }
+
 
   Future<void> deleteNurseAccount() async {
     isLoading = true;

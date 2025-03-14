@@ -83,6 +83,7 @@ class Client {
   int? age;
   int? years;
   int? phone;
+  String? image;
   int? v;
   DateTime? updatedAt;
   List<dynamic>? comments;
@@ -99,6 +100,7 @@ class Client {
     this.age,
     this.years,
     this.phone,
+    this.image,
     this.v,
     this.updatedAt,
     this.comments,
@@ -116,6 +118,7 @@ class Client {
     age: json["age"],
     years: json["years"],
     phone: json["phone"],
+    image: json["image"],
     v: json["__v"],
     updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
     comments: json["comments"] == null ? [] : List<dynamic>.from(json["comments"]!.map((x) => x)),
@@ -133,6 +136,7 @@ class Client {
     "age": age,
     "years": years,
     "phone": phone,
+    "image": image,
     "__v": v,
     "updatedAt": updatedAt?.toIso8601String(),
     "comments": comments == null ? [] : List<dynamic>.from(comments!.map((x) => x)),

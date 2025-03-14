@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
+import '../../services/localization_services.dart';
 import '../../services/memory.dart';
 import '../../services/translation_key.dart';
 import '../../widgets/custom_buttom_nav_bar.dart';
@@ -76,15 +77,28 @@ class ProfileScreen extends StatelessWidget {
                       child: Stack(
                         children: [
                           ClipOval(
-                            child:controller.nurseByIdModel?.data?.image==null||controller.nurseByIdModel?.data?.image==""?Image.asset(
-                              "assets/images/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
-
+                            child: controller.selectedImage != null
+                                ? Image.file(
+                              controller.selectedImage!,
                               width: 70.w,
                               height: 70.h,
                               fit: BoxFit.cover,
-                            ):Image.network(controller.nurseByIdModel?.data?.image??"",width: 70.w,
-                              height: 70.h,fit: BoxFit.cover,),
+                            )
+                                : (controller.nurseByIdModel?.data?.image == null || controller.nurseByIdModel?.data?.image == "")
+                                ? Image.asset(
+                              "assets/images/default_avatar.jpg",
+                              width: 70.w,
+                              height: 70.h,
+                              fit: BoxFit.cover,
+                            )
+                                : Image.network(
+                              controller.nurseByIdModel!.data!.image!,
+                              width: 70.w,
+                              height: 70.h,
+                              fit: BoxFit.cover,
+                            ),
                           ),
+
                           // زر التعديل فوق الصورة
                           Positioned(
                             bottom: 0,
@@ -252,7 +266,8 @@ class ProfileScreen extends StatelessWidget {
                       child: IntlPhoneField(
                         controller: controller.phoneNumber,
                         validator: (v){controller.validateNotEmpty(controller.phoneNumber.text);},
-                        textAlign: TextAlign.left,
+                        textAlign: Get.find<CacheHelper>()
+                            .activeLocale == SupportedLocales.english ?TextAlign.left:TextAlign.right,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
                           border: InputBorder.none,

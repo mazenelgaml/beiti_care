@@ -38,6 +38,9 @@ class LocateScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               InkWell(
+                onTap: (){
+                  Get.off(()=>LoginScreen());
+                },
                 child: Container(
                   width: 135.w,
                   height: 50.h,
