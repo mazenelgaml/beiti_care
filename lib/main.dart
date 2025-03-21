@@ -1,6 +1,7 @@
 import 'package:beiti_care/services/app_translation.dart';
 import 'package:beiti_care/services/localization_services.dart';
 import 'package:beiti_care/services/memory.dart';
+import 'package:beiti_care/ui/nutrition/nutrition_screen.dart';
 import 'package:beiti_care/ui/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,9 +28,9 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
         builder: (context, child) {return GetMaterialApp(
-        title: 'Yomy Merchant',
+        title: 'BeitiCare',
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: NutritionScreen(),
         translations: AppTranslations(),
         locale: Get.find<LocalizationService>().activeLocale,
         supportedLocales: SupportedLocales.all,
