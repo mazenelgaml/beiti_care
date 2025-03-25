@@ -192,6 +192,131 @@ class AppTranslations extends Translations {
       processIsCompleted:"Process is completed",
       currency:"EGP",
 
+      //profile_Ahmadwork folder
+      // Confirmpassword page
+      Profile:"Profile",
+      EditProfilePicture:"Edit Profile Picture",
+      Password:"Password",
+      ConfirmPassword:"Confirm Password",
+      Save:"Save",
+      Cancel:"Cancel",
+      //functionaltests page
+      Functionaltests:"Functional tests",
+      ECG:"ECG",
+      ECG1:"ECG",
+      LoremIpsum:"Lorem Ipsum is simply dummy text\nof the printing and typesetting\nindustry.",
+      Date:"Date",
+      Lungfunctions:"Lungfunctions",
+
+      //Imagingtests page
+      Imagingtests1:"Imaging tests",
+      Magneticresonance:"Magnetic resonance",
+      imaging:"imaging",
+
+      //Laboratorytests page
+      Laboratorytests1:"Laboratory tests",
+      Bloodtestresult:"Blood test result",
+      //Magneticresonanceimaging page
+      Magneticresonanceimaging1:"Magnetic resonance imaging",
+      LoremIpsumissimplydummy:"""Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n Lorem Ipsum has been the industry's \n standard dummy text ever since the \n 1500s, when an unknown printer took a \n galley of type and scrambled it to make 
+a type specimen book. It has survived not \n only five centuries """ ,
+      butalsotheleap:'''but also the leap into electronic \n typesetting, remaining essentially \n unchanged. It was popularised in the \n 1960s with the release of Letraset sheets \n containing Lorem Ipsum passages, and \n more recently with desktop publishing \n software like Aldus PageMaker including \n versions of Lorem Ipsum.  ''',
+      Requestaconsultation:"Request a consultation",
+      Doyouwanttorequestaconsultation:"Do you want to request a \nconsultation?",
+      Doctor:"Doctor",
+      Nurse:"Nurse",
+      WhatsApp:"WhatsApp",
+
+
+      //medicaltests page
+      Medicaltests:"Medical tests",
+      Viewallprevioustestsandanalyses:"View all previous tests and analyses",
+      Comparethelastresultsforanygiventest:"Compare the last 3-5 results for any given test.",
+
+      //profile1 page
+      Completeyourprofile:"Complete your profile",
+      Completeyourfile:"Complete your file",
+      FullName:"Full Name",
+      Email:"Email",
+      PhoneNumber:"Phone Number",
+      DeleteAccount:"Delete Account",
+      Areyousureyouwanttodeletetheaccount:"Are you sure you want to\ndelete the account?",
+      No:"No",
+      Yes:"Yes",
+      Home:"Home",
+      Services:"Services",
+      Requests:"Requests",
+      More:"More",
+      More1:"More",
+
+      //profile2 page
+      EditProfile:"Edit Profile",
+      History1:"History",
+      Therapeuticexaminations:"Therapeutic examinations",
+      //Therapeutic examinations page
+      Therapeuticexaminations1:"Therapeutic examinations",
+      Genetictesting:"Genetictesting",
+
+      //TestResults folder
+      //Testresults page
+      Testresults:"Test results",
+      Keepencryptedcopies:"Keep encrypted copies",
+
+      //Notifications folder
+      Yourrequesthasbeenapproved: "Your request has been approved.",
+      Yourrequesthasbeenrejected: "Your request has been rejected.",
+      Thenurseisonhiswaytoyou: "The nurse is on his way to you.",
+      Thenursehasarrived: "The nurse has arrived.",
+      Servicestartednow: "Service started now.",
+      Bloodtestappointmenttoday: "Blood test appointment today.",
+      Diabetescheckupappointmenttoday: "Diabetes check-up appointment today.",
+      Kidneyfunctiontestappointmenttoday: "Kidney function test appointment today.",
+      Resultshavebeensent: "Results have been sent.",
+      Notifications1:"Notifications",
+      Nonotifications:"No notifications",
+
+      //AboutandMore folder
+      About1:"About",
+      Ournursingservices:"Our nursing services",
+      Weprovidecomprehensivehealthcareinyourhome:"We provide comprehensive healthcare in your home",
+      ContactUs:"Contact Us",
+      Help:"Help",
+      Language:"Language",
+      PolicyPrivacy:"PolicyPrivacy",
+      Logout:"Log out",
+
+      //Basicpatiantinformation folder
+      Basicpatientinformation:"Basic patient information",
+      Age:"Age",
+      Years:"Years",
+      IDCard:"ID Card",
+      Healthnumber:"Health number",
+      Male:"Male",
+      Feminine:"Feminine",
+      Bloodtype:"Blood type",
+      Generalhealthstatus:"General health status",
+      Chronicdiseases:"Chronic diseases",
+      Allergytomedicationsorfoods:"Allergy to medicationsor foods",
+      Medicationscurrently:"Medications currently",
+      Lastdateforexamination:"Last date for examination",
+      Stateofemergency:"State of emergency",
+      nearestcontactperson:"nearest contact person",
+      Dateoflasthospitaladmission:"Date of last hospital admission",
+      Havinganyprevioussurgeries:"Having any previous surgeries",
+      Previouslaboratorytestsandtheirdates:"Previous laboratory tests and their \ndates",
+      MedicalDiagnosesandTreatmentHistory:"Medical Diagnoses and Treatment \nHistory",
+      Vaccinationsreceivedanddates:"Vaccinations received and dates",
+      Previousmedicationsandtreatments:"Previous medications and treatments:",
+      Listofmedicationsusedinthelastmonths:"List of medications used in the last \n6-12 months",
+      Dosageandregularityoftakingit:"Dosage and regularity of taking it",
+      Familyhealthhistory:"Family health history:",
+      Thepresenceofhereditarydiseasesinthefamilydiabeteshighbloodpressureheartdisease:"The presence of hereditary diseases\nin the family (diabetes, high blood\npressure, heart disease,",
+      Uploadmedicalfilesandxrays:"Upload medical files and x-rays",
+      AbilitytouploadXraysMRIsandcardiacscans:"Ability to upload X-rays, MRIs, and cardiac scans",
+      Comments:"Comments",
+      Healthrecordandmedicalhistory:"Health record and medical history",
+      Medicalreportsrumorsandtests:"Medical reports, rumors and tests",
+
     },
     "ar": {
 
@@ -381,6 +506,131 @@ class AppTranslations extends Translations {
       amount:"المبلغ",
       processIsCompleted:"العملية اكتملت بنجاح. ",
       currency:"جنية",
+
+      //profile_Ahmadwork folder
+      // Confirmpassword page
+      Profile:"الملف الشخصي",
+      EditProfilePicture:"تعديل الملف الشخصي",
+      Password:"كلمة المرور",
+      ConfirmPassword:"تأكيد كلمة المرور",
+      Save:"حفظ",
+      Cancel:"الغاء",
+      //functionaltests page
+      Functionaltests:"الفحوصات الوظيفية",
+      ECG:"تخطيط القلب",
+      ECG1:"تخطيط القلب",
+      LoremIpsum:"نص شكلي بالعربي",
+      Date:"التاريخ",
+      Lungfunctions:"وظائف الرئة",
+
+      //Imagingtests page
+      Imagingtests1:"اختبارات التصوير",
+      Magneticresonance:"الرنين المغناطيسي",
+      imaging:"تصوير",
+
+      //Laboratorytests page
+      Laboratorytests1:"الفحوصات المخبرية",
+      Bloodtestresult:"نتيجة فحص الدم",
+      //Magneticresonanceimaging page
+      Magneticresonanceimaging1:"تصوير الرنين المغناطيسي",
+      LoremIpsumissimplydummy :"لوريم إيبسوم هو نص شكلي يستخدم في صناعة\nالطباعة والنشر. كان لوريم إيبسوم هو النص\nالنموذجي القياسي في هذه الصناعة منذ القرن السادس عشر، عندما أخذ أحد الطابعين\nالمجهولين مجموعة من الأحرف وقام بترتيبها\nعشوائيًا لإنشاء كتاب عينات للطباعة.\nوقد صمد عبر خمسة قرون وليس ذلك فقط.",
+
+  butalsotheleap:"ولكن أيضا القفزة إلى التنضيد الإلكتروني،\nمع بقاءه كما هو دون تغيير. أصبح شائعًا\nفي الستينيات مع إصدار أوراق Letraset\nالتي تحتوي على مقاطع Lorem Ipsum،\nومؤخرا مع برامج النشر المكتبي مثل Aldus PageMaker\nالتي تضمنت نسخاً من Lorem Ipsum.",
+      Requestaconsultation:"طلب استشارة",
+      Doyouwanttorequestaconsultation:"هل تريد طلب استشارة؟",
+      Doctor:"طبيب",
+      Nurse:"ممرض",
+      WhatsApp:"واتس اب",
+
+      //medicaltests page
+      Medicaltests:"الفحوصات الطبية",
+      Viewallprevioustestsandanalyses:"عرض الفحوصات السابقة والتحاليل",
+      Comparethelastresultsforanygiventest:"مقارنة آخر 3-5 نتائج لأي اختبار معين.",
+
+      //profile1 page
+      Completeyourprofile: "أكمل ملفك الشخصي",
+      Completeyourfile: "أكمل ملفك",
+      FullName: "الاسم الكامل",
+      Email: "البريد الإلكتروني",
+      PhoneNumber: "رقم الهاتف",
+      DeleteAccount: "حذف الحساب",
+      Areyousureyouwanttodeletetheaccount: "هل أنت متأكد أنك تريد\nحذف الحساب؟",
+      No: "لا",
+      Yes: "نعم",
+      Home: "الرئيسية",
+      Services: "الخدمات",
+      Requests: "الطلبات",
+      More: "المزيد",
+      More1: "المزيد",
+
+      //profile2 page
+      EditProfile: "تعديل الملف الشخصي",
+      History1: "التاريخ",
+      Therapeuticexaminations: "الفحوصات العلاجية",
+
+      //Therapeutic examinations page
+      Therapeuticexaminations1: "الفحوصات العلاجية",
+      Genetictesting: "الاختبارات الوراثية",
+
+      //TestResults folder
+      //Testresults page
+      Testresults: "نتائج الفحوصات",
+      Keepencryptedcopies: "الاحتفاظ بنسخ مشفرة",
+
+      //Notifications folder
+      Yourrequesthasbeenapproved: "تمت الموافقة على طلبك.",
+      Yourrequesthasbeenrejected: "تم رفض طلبك.",
+      Thenurseisonhiswaytoyou: "الممرضة في طريقها إليك.",
+      Thenursehasarrived: "وصلت الممرضة.",
+      Servicestartednow: "تم بدء الخدمة الآن.",
+      Bloodtestappointmenttoday: "موعد اختبار الدم اليوم.",
+      Diabetescheckupappointmenttoday: "موعد فحص السكر اليوم.",
+      Kidneyfunctiontestappointmenttoday: "موعد اختبار وظائف الكلى اليوم.",
+      Resultshavebeensent: "تم إرسال النتائج.",
+      Notifications1:"الاشعارات",
+      Nonotifications:"لا يوجد اشعارات",
+
+      //AboutandMore folder
+      About1: "عن",
+      Ournursingservices: "خدمات التمريض لدينا",
+      Weprovidecomprehensivehealthcareinyourhome: "نحن نقدم رعاية صحية شاملة في منزلك",
+      ContactUs: "اتصل بنا",
+      Help: "مساعدة",
+      Language: "اللغة",
+      PolicyPrivacy: "سياسة الخصوصية",
+      Logout: "تسجيل الخروج",
+      //Basicpatiantinformation folder
+      Basicpatientinformation: "معلومات المريض الأساسية",
+      Age: "العمر",
+      Years: "سنوات",
+      IDCard: "بطاقة الهوية",
+      Healthnumber: "رقم الصحة",
+      Male: "ذكر",
+      Feminine: "أنثى",
+      Bloodtype: "فصيلة الدم",
+      Generalhealthstatus: "الحالة الصحية العامة",
+      Chronicdiseases: "الأمراض المزمنة",
+      Allergytomedicationsorfoods: "الحساسية من الأدوية أو الأطعمة",
+      Medicationscurrently: "الأدوية الحالية",
+      Lastdateforexamination: "تاريخ آخر فحص",
+      Stateofemergency: "حالة الطوارئ",
+      nearestcontactperson: "أقرب شخص للتواصل",
+      Dateoflasthospitaladmission: "تاريخ آخر دخول للمستشفى",
+      Havinganyprevioussurgeries: "هل لديك أي عمليات جراحية سابقة",
+      Previouslaboratorytestsandtheirdates: "الفحوصات المخبرية السابقة وتواريخها",
+      MedicalDiagnosesandTreatmentHistory: "التشخيصات الطبية وسجل العلاج",
+      Vaccinationsreceivedanddates: "اللقاحات التي تم تلقيها وتواريخها",
+      Previousmedicationsandtreatments: "الأدوية والعلاجات السابقة:",
+      Listofmedicationsusedinthelastmonths: "قائمة الأدوية المستخدمة في آخر 6-12 شهراً",
+      Dosageandregularityoftakingit: "الجرعة وانتظام تناولها",
+      Familyhealthhistory: "التاريخ الصحي العائلي:",
+      Thepresenceofhereditarydiseasesinthefamilydiabeteshighbloodpressureheartdisease: """وجود أمراض وراثية في العائلة 
+          (السكري، ضغط الدم المرتفع، أمراض القلب)""",
+      Uploadmedicalfilesandxrays: "تحميل الملفات الطبية والأشعة السينية",
+      AbilitytouploadXraysMRIsandcardiacscans: "إمكانية تحميل الأشعة السينية، والرنين المغناطيسي، والمسح القلبي",
+      Comments: "التعليقات",
+      Healthrecordandmedicalhistory: "السجل الصحي والتاريخ الطبي",
+      Medicalreportsrumorsandtests: "التقارير الطبية والشائعات والفحوصات",
 
     }
   };

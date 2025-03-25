@@ -190,3 +190,128 @@ const enterTheAmount="Enter_The_Amount";
 const amount="Amount";
 const processIsCompleted="Process_Is_Completed";
 const currency="Currency";
+
+//profile_Ahmadwork folder
+//Confirmpassword page
+const Password="Password";
+const ConfirmPassword="Confirm Password";
+const Cancel="Cancel";
+
+//functionaltests page
+const Functionaltests="Functional tests";
+const ECG="ECG";
+const ECG1="ECG";
+
+const LoremIpsum="Lorem Ipsum is simply dummy text\nof the printing and typesetting\nindustry.";
+const Lungfunctions="Lung functions";
+
+//Imagingtests page
+const Magneticresonance="Magnetic resonance";
+const imaging="imaging";
+const Imagingtests1="Imaging tests";
+
+//Laboratorytests page
+const Laboratorytests1="Laboratory tests";
+const Bloodtestresult="Blood test result";
+
+
+//Magneticresonanceimaging page
+const Magneticresonanceimaging1="Magnetic resonance imaging";
+const LoremIpsumissimplydummy="""Lorem Ipsum is simply dummy text of the 
+printing and typesetting industry. 
+Lorem Ipsum has been the industry's 
+standard dummy text ever since the 
+1500s, when an unknown printer took a 
+galley of type and scrambled it to make 
+a type specimen book. It has survived not 
+only five centuries """ ;
+const butalsotheleap='''but also the leap into electronic 
+typesetting, remaining essentially 
+unchanged. It was popularised in the 
+1960s with the release of Letraset sheets 
+containing Lorem Ipsum passages, and 
+more recently with desktop publishing 
+software like Aldus PageMaker including 
+versions of Lorem Ipsum.  ''';
+const Requestaconsultation="Request a consultation";
+const Doyouwanttorequestaconsultation="Do you want to request a \nconsultation?";
+const Doctor="Doctor";
+const Nurse="Nurse";
+const WhatsApp="WhatsApp";
+
+//medicaltests page
+const Medicaltests="Medical tests";
+const Viewallprevioustestsandanalyses="View all previous tests and analyses";
+const Comparethelastresultsforanygiventest="Compare the last 3-5 results for any given test.";
+
+//profile1 page
+const Completeyourprofile="Complete your profile";
+const Completeyourfile="Complete your file";
+const FullName="Full Name";
+const Email="Email";
+const PhoneNumber="Phone Number";
+const Areyousureyouwanttodeletetheaccount="Are you sure you want to\ndelete the account?";
+const No="No";
+const Yes="Yes";
+const Home="Home";
+const Services="Services";
+
+
+//profile2 page
+const EditProfile="Edit Profile";
+const History1="History";
+const Therapeuticexaminations="Therapeutic examinations";
+
+//Therapeutic examinations page
+const Therapeuticexaminations1="Therapeutic examinations";
+const Genetictesting="Genetictesting";
+
+//TestResults folder
+//Testresults page
+const Testresults="Test results";
+const Keepencryptedcopies="Keep encrypted copies";
+
+//Notifications folder
+const Yourrequesthasbeenrejected = "Your request has been rejected.";
+const Thenurseisonhiswaytoyou = "The nurse is on his way to you.";
+const Thenursehasarrived = "The nurse has arrived.";
+const Servicestartednow = "Service started now.";
+const Bloodtestappointmenttoday = "Blood test appointment today.";
+const Diabetescheckupappointmenttoday = "Diabetes check-up appointment today.";
+const Kidneyfunctiontestappointmenttoday = "Kidney function test appointment today.";
+const Resultshavebeensent = "Results have been sent.";
+const Notifications1="Notifications";
+const Nonotifications="No notifications";
+
+
+//AboutandMore folder
+const About1="About";
+const More1="More";
+
+//Basicpatiantinformation folder
+const Basicpatientinformation="Basic patient information";
+const IDCard="ID Card";
+const Healthnumber="Health number";
+const Bloodtype="Blood type";
+const Generalhealthstatus="General health status";
+const Chronicdiseases="Chronic diseases";
+const Allergytomedicationsorfoods="Allergy to medicationsor foods";
+const Medicationscurrently="Medicationscurrently";
+const Lastdateforexamination="Last date for examination";
+const Stateofemergency="State of emergency";
+const nearestcontactperson="nearest contact person";
+const Dateoflasthospitaladmission="Date of last hospital admission";
+const Havinganyprevioussurgeries="Having any previous surgeries";
+const Healthrecordandmedicalhistory="Health record and medical history";
+const Previouslaboratorytestsandtheirdates="Previous laboratory tests and their \ndates";
+const Medicalreportsrumorsandtests="Medical reports, rumors and tests";
+const MedicalDiagnosesandTreatmentHistory="Medical Diagnoses and Treatment \nHistory";
+const Vaccinationsreceivedanddates="Vaccinations received and dates";
+const Previousmedicationsandtreatments="Previous medications and treatments:";
+const Listofmedicationsusedinthelastmonths="List of medications used in the last \n6-12 months";
+const Dosageandregularityoftakingit="Dosage and regularity of taking it";
+const Familyhealthhistory="Family health history:";
+const Thepresenceofhereditarydiseasesinthefamilydiabeteshighbloodpressureheartdisease="The presence of hereditary diseases\nin the family (diabetes, high blood\npressure, heart disease,";
+const Uploadmedicalfilesandxrays="Upload medical files and x-rays";
+const AbilitytouploadXraysMRIsandcardiacscans="Ability to upload X-rays, MRIs, and cardiac scans";
+const Comments="Comments";
