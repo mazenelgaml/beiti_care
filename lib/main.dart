@@ -1,7 +1,17 @@
 import 'package:beiti_care/services/app_translation.dart';
 import 'package:beiti_care/services/localization_services.dart';
 import 'package:beiti_care/services/memory.dart';
+
 import 'package:beiti_care/ui/user_check_out/user_check_out_screen.dart';
+
+import 'package:beiti_care/ui/Medical_test/medical_testt_screen.dart';
+import 'package:beiti_care/ui/check_out/check_out_screen.dart';
+
+import 'package:beiti_care/ui/medical_tests/medical_tests_screen.dart';
+import 'package:beiti_care/ui/nutrition/nutrition_screen.dart';
+import 'package:beiti_care/ui/search/search_screen.dart';
+import 'package:beiti_care/ui/splash/splash_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,7 +39,9 @@ class MyApp extends StatelessWidget {
         builder: (context, child) {return GetMaterialApp(
         title: 'BeitiCare',
         debugShowCheckedModeBanner: false,
+
         home: UserCheckoutScreen(),
+
         translations: AppTranslations(),
         locale: Get.find<LocalizationService>().activeLocale,
         supportedLocales: SupportedLocales.all,
