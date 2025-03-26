@@ -1,3 +1,8 @@
+import 'package:beiti_care/ui/auth/Log_in/log_in_screen.dart';
+import 'package:beiti_care/ui/contact_us/contact_us_screen.dart';
+import 'package:beiti_care/ui/nurse/change_language/change_language_screen.dart';
+import 'package:beiti_care/ui/nurse/help/help_screen.dart';
+import 'package:beiti_care/ui/nurse/policy_privacy/policy_privacy_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +10,7 @@ import 'package:get/get.dart';
 import '../../services/translation_key.dart';
 import '../../widgets/custom_buttom_nav_bar.dart';
 import '../../widgets/custom_button_nav_bar_user.dart';
+import '../profile/about_screen.dart';
 
 class MoreUserScreen extends StatefulWidget {
   const MoreUserScreen({super.key});
@@ -138,16 +144,22 @@ class _MoreUserScreenState extends State<MoreUserScreen> {
       onTap: () {
         if (notification == About1.tr) {
           print("about page");
+          Get.to(()=>AboutScreen());
         } else if (notification == ContactUs.tr) {
           print("Contact Us page");
+          Get.to(()=>ContactUsScreen());
         } else if (notification == Help.tr) {
           print("Help page");
+          Get.to(()=>HelpScreen());
         } else if (notification == Language.tr) {
           print("Language page");
+          Get.to(()=>LanguageScreen());
         } else if (notification == PolicyPrivacy.tr) {
           print("PolicyPrivacy page");
+          Get.to(()=>PolicyPrivacyScreen());
         } else if (notification == Logout.tr) {
           print("Log out");
+          Get.to(()=>LoginScreen());
         }
       },
       child: Container(

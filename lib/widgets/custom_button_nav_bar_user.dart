@@ -9,15 +9,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../services/translation_key.dart';
+import '../ui/about_and_more/more_screen.dart';
 import '../ui/profile/More_screen.dart';
+import '../ui/requests/user_requests_screen.dart';
+import '../ui/services/services_screen.dart';
 
 class CurvedBottomNavBarUser extends StatelessWidget {
   final Color? homeIcon;
-  final Color? walletIcon;
+  final Color? servicesIcon;
   final String? profileIcon;
   final Color? requestsIcon;
   final Color? moreIcon;
-  const CurvedBottomNavBarUser({super.key, this.homeIcon, this.walletIcon, this.profileIcon, this.requestsIcon, this.moreIcon});
+  const CurvedBottomNavBarUser({super.key, this.homeIcon, this.servicesIcon, this.profileIcon, this.requestsIcon, this.moreIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +54,10 @@ class CurvedBottomNavBarUser extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildNavItem('assets/images/homeIcon.png', homeBottomNav.tr, homeIcon??Color(0xff797979),(){Get.to(()=>NurseHomeScreen());}),
-              _buildNavItem('assets/images/walletIcon.png', Wallet.tr, walletIcon??Color(0xff797979),(){Get.to(()=>WalletScreen());}),
+              _buildNavItem('assets/images/servicesBottom.png', servicesBottomNav.tr, servicesIcon??Color(0xff797979),(){Get.to(()=>ServicesScreen());}),
               SizedBox(width: 50), // Space for center profile
-              _buildNavItem('assets/images/pending.png', Requests.tr, requestsIcon??Color(0xff797979),(){Get.to(()=>RequestsScreen());}),
-              _buildNavItem('assets/images/moreIcon.png', More.tr, moreIcon??Color(0xff797979),(){Get.to(()=>MoreScreen());}),
+              _buildNavItem('assets/images/pending.png', Requests.tr, requestsIcon??Color(0xff797979),(){Get.to(()=>UserRequestsScreen());}),
+              _buildNavItem('assets/images/moreIcon.png', More.tr, moreIcon??Color(0xff797979),(){Get.to(()=>MoreUserScreen());}),
             ],
           ),
         ),

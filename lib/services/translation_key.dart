@@ -181,6 +181,7 @@ const DeleteAccount="Delete Account";
 
 //Bottom nav bar
 const homeBottomNav="Home_Bottom_Nav";
+const servicesBottomNav="Services_Bottom_Nav";
 
 //add credit card
 const cashPhoneNumber="Cash_Phone_Number";
