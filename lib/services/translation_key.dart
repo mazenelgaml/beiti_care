@@ -374,3 +374,16 @@ const CVV="CVV";
 const Expiry="Expiry";
 const SaveYourCreditInformation="Save Your Credit Information";
 
+//custom_nurse_card
+const Specializednutritionservicesandcomprehensivenutritionalassessment="Specialized nutrition services and comprehensive nutritional assessment";
+const Minutes="Minutes";
+const Numberofcasesserved22="Number of cases served 22";
+const BookNow="Book Now";
+
+
+//custom_nutrition_and_dietary_assessment_card
+const Nutritionservices="Nutrition services";
+const Findanurse="Find a nurse";
+const ShowMore="Show More";
+
+

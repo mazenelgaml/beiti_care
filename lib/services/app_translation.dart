@@ -378,6 +378,19 @@ a type specimen book. It has survived not \n only five centuries """ ,
    Expiry:"Expiry",
    SaveYourCreditInformation:"Save Your Credit Information",
 
+  //custom_nurse_card
+   Specializednutritionservicesandcomprehensivenutritionalassessment:"Specialized nutrition services and comprehensive nutritional assessment",
+   Minutes:"Minutes",
+   Numberofcasesserved22:"Number of cases served 22",
+   BookNow:"Book Now",
+
+//custom_nutrition_and_dietary_assessment_card
+   Nutritionservices:"Nutrition services",
+   Findanurse:"Find a nurse",
+   ShowMore:"Show More",
+
+      //custom_review_card
+
 
 },
     "ar": {
@@ -750,7 +763,18 @@ a type specimen book. It has survived not \n only five centuries """ ,
       NameOnCard: "الاسم على البطاقة",
       CVV: "رمز الأمان (CVV)",
       Expiry: "تاريخ الانتهاء",
-      SaveYourCreditInformation: "حفظ معلومات البطاقة الائتمانية"
+      SaveYourCreditInformation: "حفظ معلومات البطاقة الائتمانية",
+
+      //custom_nurse_card
+      Specializednutritionservicesandcomprehensivenutritionalassessment: "خدمات التغذية المتخصصة والتقييم الغذائي الشامل",
+      Minutes: "الدقائق",
+      Numberofcasesserved22: "عدد الحالات التي تم تقديم الخدمة لها: 22",
+      BookNow: "احجز الآن",
+
+      //custom_nutrition_and_dietary_assessment_card
+      Nutritionservices: "خدمات التغذية",
+      Findanurse: "ابحث عن ممرضة",
+      ShowMore: "عرض المزيد",
 
     }
   };

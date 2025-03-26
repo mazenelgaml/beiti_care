@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import '../services/translation_key.dart';
 
 class NutritionCard extends StatelessWidget {
   final int rating;
@@ -58,7 +60,7 @@ class NutritionCard extends StatelessWidget {
                   children: [
                     Icon(Icons.access_time, color: Colors.black,size: 17,),
                     SizedBox(width: 5.w),
-                    Text('40-60 Minutes',style: TextStyle(color: Colors.black,fontSize: 10.sp,fontWeight: FontWeight.w500)),
+                    Text('40-60 ${Minutes.tr}',style: TextStyle(color: Colors.black,fontSize: 10.sp,fontWeight: FontWeight.w500)),
                   ],
                 )
               ],
@@ -66,7 +68,7 @@ class NutritionCard extends StatelessWidget {
             SizedBox(height: 10),
             Center(
               child: Text(
-                'Number of cases served 22',
+                Numberofcasesserved22.tr,
                 style: TextStyle(color: Color(0xffB93439), fontWeight: FontWeight.w500,fontSize: 14.sp),
               ),
             ),
@@ -83,7 +85,7 @@ class NutritionCard extends StatelessWidget {
                 ),
                 onPressed: () {},
                 child: Text(
-                  'Book Now',
+                  BookNow.tr,
                   style: TextStyle(fontSize: 18.sp, color: Colors.white,fontWeight: FontWeight.w600),
                 ),
               ),

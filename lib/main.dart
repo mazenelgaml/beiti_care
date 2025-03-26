@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         title: 'BeitiCare',
         debugShowCheckedModeBanner: false,
 
-        home: WithdrawHistoryScreen(),
+        home: HomeUserScreen(),
 
         translations: AppTranslations(),
         locale: Get.find<LocalizationService>().activeLocale,
