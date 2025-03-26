@@ -181,6 +181,7 @@ class AppTranslations extends Translations {
 
       //bottom nav bar
       homeBottomNav:"Home",
+      servicesBottomNav:"Services",
 
       //add credit card
       cashPhoneNumber:"Cash Phone Number",
@@ -496,6 +497,7 @@ a type specimen book. It has survived not \n only five centuries """ ,
 
       //bottom nav bar
       homeBottomNav:"الرئيسية",
+      servicesBottomNav:"الخدمات",
 
       //add credit card
       cashPhoneNumber:"رقم الهاتف للدفع النقدي",
