@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get.dart';
+import '../../services/translation_key.dart';
 import '../../widgets/custom_button.dart';
 
 class MedicalTesttScreen extends StatelessWidget {
@@ -37,7 +38,7 @@ class MedicalTesttScreen extends StatelessWidget {
               ),
               SizedBox(width: 5.w),
               Text(
-                "Medical tests",
+                Medicaltests.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -85,7 +86,7 @@ class MedicalTesttScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Blood Urea (Urea or BUN )',
+                                    BloodUreaUreaorBUN.tr,
                                     style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w600,
@@ -95,7 +96,7 @@ class MedicalTesttScreen extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text(
-                                        'In case of cash ',
+                                        Incaseofcash.tr,
                                         style: TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.w500,
@@ -122,7 +123,7 @@ class MedicalTesttScreen extends StatelessWidget {
                                     color: Colors.yellow,
                                   ),
                                   Text(
-                                    'Booking through the application is ',
+                                    Bookingthroughtheapplicationis.tr,
                                     style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w500,
@@ -168,7 +169,7 @@ class MedicalTesttScreen extends StatelessWidget {
                 ),
               ),
             ),
-            CustomButton(onPressed: () {  }, name: 'Search', borderRadius: 10, btnColor: Color(0xffB93439), textColor: Color(0xffFFFFFF),height: 50.h,),
+            CustomButton(onPressed: () {  }, name: Search.tr, borderRadius: 10, btnColor: Color(0xffB93439), textColor: Color(0xffFFFFFF),height: 50.h,),
           ],
         ),
       ),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../services/translation_key.dart';
+import 'package:get/get.dart';
+
 class GeneticTestingScreen extends StatelessWidget {
   const GeneticTestingScreen({super.key});
 
@@ -35,7 +38,7 @@ class GeneticTestingScreen extends StatelessWidget {
               ),
               SizedBox(width: 10.w),
               Text(
-               "Genetic testing",
+                Genetictesting.tr,
                 style: TextStyle(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w600,
@@ -62,7 +65,7 @@ class GeneticTestingScreen extends StatelessWidget {
               ),
               SizedBox(height: 20.h),
               Text(
-                " No`t Genetic testing",
+                NotGenetictesting.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w500,
