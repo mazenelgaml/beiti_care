@@ -38,7 +38,7 @@ class _MoreUserScreenState extends State<MoreUserScreen> {
       appBar: AppBar(
         leadingWidth: 270.w,
         leading: Padding(
-          padding: EdgeInsets.only(left: 25.w),
+          padding: EdgeInsets.only(left: 25.w,right: 25.w),
           child: Row(
             children: [
               GestureDetector(

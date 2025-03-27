@@ -13,7 +13,7 @@ class CheckOutScreen extends StatelessWidget {
       appBar: AppBar(
         leadingWidth: 170.w,
         leading: Padding(
-          padding: EdgeInsets.only(left: 16.w),
+          padding: EdgeInsets.only(left: 16.w,right: 16.w),
           child: Row(
             children: [
               GestureDetector(

@@ -7,6 +7,7 @@ import '../../services/translation_key.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_button_nav_bar_user.dart';
 import '../user_change_password/user_change_password_screen.dart';
+import 'controller/user_edit_profile_controller.dart';
 
 class UserEditProfileScreen extends StatefulWidget {
   const UserEditProfileScreen({super.key});
@@ -20,7 +21,10 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GetBuilder(
+        init: UserEditProfileController(),
+    builder: (UserEditProfileController controller) {
+    return controller.isLoading?Scaffold(body: Center(child: CircularProgressIndicator(),),):Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         leadingWidth: 300.w,
@@ -394,8 +398,7 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                                 ),
                                 TextButton(
                                   onPressed: () {
-                                     // Execute deletion
-                                    Navigator.of(context).pop(); // Close the popup
+                                    controller.deleteUserAccount();
                                   },
                                   child: Text(
                                     Yes.tr,
@@ -442,8 +445,7 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
           borderRadius: BorderRadius.circular(20)
       ),margin:EdgeInsets.only(bottom: 20,left: 20,right: 20
       ),child: CurvedBottomNavBarUser(profileIcon: "assets/images/profileIconActive.png",)),
-    );
+
+    );});
   }
-
-
 }

@@ -56,9 +56,9 @@ class _LanguageScreenState extends State<LanguageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 150.w,
+        leadingWidth: 200.w,
         leading: Padding(
-          padding: EdgeInsets.only(left: 16.w),
+          padding: EdgeInsets.only(left: 16.w,right: 16.w),
           child: Row(
             children: [
               GestureDetector(

@@ -12,9 +12,9 @@ class MedicalTesttScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 170.w,
+        leadingWidth: 200.w,
         leading: Padding(
-          padding: EdgeInsets.only(left: 16.w),
+          padding: EdgeInsets.only(left: 16.w,right: 16.w),
           child: Row(
             children: [
               GestureDetector(
@@ -142,7 +142,7 @@ class MedicalTesttScreen extends StatelessWidget {
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(right: 20, bottom: 20),
+                            padding: const EdgeInsets.only(right: 20, bottom: 20,left: 20),
                             child: Container(
                               width: 24.w,
                               height: 24.h,

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../services/translation_key.dart';
+import '../ui/Medical_test/medical_testt_screen.dart';
 import '../ui/about_and_more/more_screen.dart';
 import '../ui/home_user/home_user_screen.dart';
 import '../ui/profile/More_screen.dart';
@@ -37,7 +38,7 @@ class CurvedBottomNavBarUser extends StatelessWidget {
           left: MediaQuery.of(context).size.width / 2 - 50,
           child: InkWell(
             onTap: (){
-              Get.off(()=>ProfileScreen());
+              Get.off(()=>MedicalTesttScreen());
             },
             child: CircleAvatar(
               radius: 30,

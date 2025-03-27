@@ -16,6 +16,7 @@ class UserEditProfileController extends GetxController{
   TextEditingController email = TextEditingController();
   TextEditingController phoneNumber = TextEditingController();
   TextEditingController bio = TextEditingController();
+  TextEditingController age = TextEditingController();
   File? image;
   @override
   Future<void> onInit() async {
@@ -82,26 +83,11 @@ class UserEditProfileController extends GetxController{
       ),
     );
 
-    // ✅ التحقق من الصورة قبل الإرسال
-    if (image != null) {
-      print("✅ Selected Image: ${image!.path}");
-      print("✅ Image Exists: ${await image!.exists()}");
-      print("✅ Image Size: ${await image!.length()} bytes");
-    } else {
-      print("⚠️ No Image Selected!");
-    }
-
     try {
       dio.FormData formData = dio.FormData.fromMap({
         "userName": username.text.trim(),
         "email": email.text.trim(),
-        "phone": phoneNumber.text.trim(),
-        if (image != null)
-          "image": await dio.MultipartFile.fromFile(
-            image!.path,
-            filename: image!.path.split('/').last,
-            contentType: MediaType("image", "jpeg"), // تأكيد نوع الصورة
-          ),
+        "age": age.text.trim(),
       });
 
       // ✅ طباعة البيانات قبل الإرسال
@@ -111,7 +97,7 @@ class UserEditProfileController extends GetxController{
       }
 
       final response = await dioInstance.patch(
-        "/api/nurse/update/$id",
+        "/api/client/update/$id",
         data: formData,
         options: dio.Options(
           headers: {
@@ -154,7 +140,7 @@ class UserEditProfileController extends GetxController{
   }
 
 
-  Future<void> deleteNurseAccount() async {
+  Future<void> deleteUserAccount() async {
     isLoading = true;
     update();
     String? id = await Get.find<CacheHelper>().getData(key: "id");
