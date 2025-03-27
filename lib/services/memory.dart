@@ -19,7 +19,10 @@ class CacheHelper extends GetxService {
 
   //! Logout by clearing specific data
   void loggingOut() {
+    sharedPreferences.remove("id");
+    sharedPreferences.remove("nurseId");
     sharedPreferences.remove("token");
+    sharedPreferences.remove("nurseToken");
   }
 
   //! Save data to SharedPreferences
@@ -57,7 +60,10 @@ class CacheHelper extends GetxService {
 
   //! Check if user is signed in
   bool get checkUserIsSignedIn {
-    return sharedPreferences.containsKey("token");
+    return sharedPreferences.containsKey("nurseId");
+  }
+  bool get checkUserIsSignedIn1 {
+    return sharedPreferences.containsKey("id");
   }
   bool get checkUserIsEnteredAPI {
     return sharedPreferences.containsKey("Api");

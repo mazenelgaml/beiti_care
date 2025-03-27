@@ -8,6 +8,7 @@ import 'package:splash_view/source/presentation/widgets/done.dart';
 
 import '../../services/memory.dart';
 import '../auth/finger_print/finger_print_screen.dart';
+import '../home_user/home_user_screen.dart';
 import '../nurse/home/nurse_home_screen.dart';
 
 
@@ -34,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
         duration: const Duration(seconds: 4),
         done: Done(
 
-            Get.find<CacheHelper>().checkUserIsSignedIn?const NurseHomeScreen():const OnBoardingFirstScreen()
+            Get.find<CacheHelper>().checkUserIsSignedIn?const NurseHomeScreen(): Get.find<CacheHelper>().checkUserIsSignedIn1?const HomeUserScreen():const OnBoardingFirstScreen()
 
         ),
 

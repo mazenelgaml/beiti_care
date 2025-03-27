@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 
 import '../services/translation_key.dart';
 import '../ui/about_and_more/more_screen.dart';
+import '../ui/home_user/home_user_screen.dart';
 import '../ui/profile/More_screen.dart';
 import '../ui/requests/user_requests_screen.dart';
 import '../ui/services/services_screen.dart';
@@ -53,7 +54,7 @@ class CurvedBottomNavBarUser extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildNavItem('assets/images/homeIcon.png', homeBottomNav.tr, homeIcon??Color(0xff797979),(){Get.to(()=>NurseHomeScreen());}),
+              _buildNavItem('assets/images/homeIcon.png', homeBottomNav.tr, homeIcon??Color(0xff797979),(){Get.to(()=>HomeUserScreen());}),
               _buildNavItem('assets/images/servicesBottom.png', servicesBottomNav.tr, servicesIcon??Color(0xff797979),(){Get.to(()=>ServicesScreen());}),
               SizedBox(width: 50), // Space for center profile
               _buildNavItem('assets/images/pending.png', Requests.tr, requestsIcon??Color(0xff797979),(){Get.to(()=>UserRequestsScreen());}),

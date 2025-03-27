@@ -11,6 +11,8 @@ import 'controller/log_in_controller.dart';
 
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -179,8 +181,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 56.h,
                       child: ElevatedButton(
                         onPressed: () {
-                          controller.submitForm(context);
-
+                          if(isClient==false){
+                            controller.submitForm(context);
+                          }else{
+                            controller.submitForm1(context);
+                          }
                         },
 
                         style: ElevatedButton.styleFrom(

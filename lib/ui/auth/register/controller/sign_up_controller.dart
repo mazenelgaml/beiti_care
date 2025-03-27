@@ -12,6 +12,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import '../../../../models/error_auth_model.dart';
 import '../../../../models/services_model.dart';
+import '../../../../models/sign_up_user.dart';
 import '../../../../services/end_points.dart';
 import '../../../../services/memory.dart';
 import '../../../nurse/home/nurse_home_screen.dart';
@@ -137,6 +138,11 @@ class SignupController extends GetxController {
       signUp(context, selectedSpecialty);
     }
   }
+  void submitForm1(BuildContext context, String selectedSpecialty) {
+    if (formKey1.currentState!.validate() || formKey2.currentState!.validate()) {
+      signUp1(context, selectedSpecialty);
+    }
+  }
 
   bool isLoading = false;
 
@@ -196,6 +202,68 @@ class SignupController extends GetxController {
         final token = signUpModel.token;
         final id = signUpModel.newNurse?.id;
 
+        await Get.find<CacheHelper>().saveData(key: "nurseToken", value: token);
+        await Get.find<CacheHelper>().saveData(key: "nurseId", value: id);
+        Get.off(() => FingerprintAuthScreen());
+        // Get.off(() => FingerprintAuthScreen(email: emailController.text.trim(),));
+
+      } else {
+        final errorModel =ErrorAuthModel.fromJson(response.data);
+        final error= errorModel.errors?[0].msg;
+        CoolAlert.show(
+          context: context,
+          type: CoolAlertType.error,
+          title: "خطأ",
+          text: error,
+        );
+      }
+    } catch (e) {
+      print('خطأ تسجيل الدخول: $e');
+      CoolAlert.show(
+        context: context,
+        type: CoolAlertType.error,
+        title: "خطأ في الاتصال",
+        text: "حدث خطأ أثناء الاتصال بالخادم.",
+      );
+    } finally {
+      isLoading = false;
+      update();
+    }
+  }
+  Future<void> signUp1(BuildContext context,String gender) async {
+    isLoading = true;
+    update();
+    print("hellllllllloooo");
+
+
+    final dio.Dio dioInstance = dio.Dio(
+      dio.BaseOptions(
+        baseUrl: EndPoint.baseUrl,
+        validateStatus: (status) => status != null && status < 500,
+      ),
+    );
+
+    try {
+      final response = await dioInstance.post(
+        "/api/client/create",
+        data: {
+          "userName":nameController.text.trim(),
+          "email":emailController.text.trim(),
+          "password":passwordController.text.trim(),
+          "role":"sick",
+          "phone":fullPhoneNumber ?? phoneNumberController.text.trim(),
+          "gender":gender,
+          "age":ageController.text,
+          "years":yearsController.text
+        },
+        options: dio.Options(),
+      );
+
+      if (response.statusCode == 201) {
+        final signUpModel = SignUpUserModel.fromJson(response.data);
+        final token = signUpModel.token;
+        final id = signUpModel.newUser?.id;
+
         await Get.find<CacheHelper>().saveData(key: "token", value: token);
         await Get.find<CacheHelper>().saveData(key: "id", value: id);
         Get.off(() => FingerprintAuthScreen());
@@ -224,7 +292,6 @@ class SignupController extends GetxController {
       update();
     }
   }
-
   Future<void> getServices() async {
     isLoading = true;
     update();

@@ -16,13 +16,14 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   bool isClient = true;
-  int selectedIndex = 0;
+  int selectedIndex = -1;
   String? selectedSpecialty;
 
 
 
   @override
   Widget build(BuildContext context) {
+
     return GetBuilder(
         init: SignupController(),
         builder: (SignupController controller) {
@@ -117,7 +118,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     width: 338.w,
                     height: 50.h,
                     child: TextFormField(
-                      obscureText: true,
                       controller: controller.nameController,
                       validator: (v){controller.validateName(v);},
                       decoration: InputDecoration(
@@ -377,7 +377,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     height: 56.h,
                     child: ElevatedButton(
                       onPressed: () {
-                        controller.submitForm(context,selectedSpecialty??"");
+                        if (controller.formKey1.currentState!.validate())
+                        {
+                          controller.signUp1(context, selectedGender);
+                        }
                       },
 
                       style: ElevatedButton.styleFrom(
@@ -393,7 +396,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ],
               ),
-            ) else Form(
+            ) else
+              Form(
               key: controller.formKey2,
               child: Column(
                 children: [
@@ -808,6 +812,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
     );});
   }
+   // لا شيء مختار بالبداية
+  String selectedGender = ""; // لتخزين الجنس المختار
+
   Widget genderButton(int index, IconData icon, String text) {
     bool isSelected = selectedIndex == index;
 
@@ -815,6 +822,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
       onTap: () {
         setState(() {
           selectedIndex = index;
+          if(text=="Male"||text=="ذكر"){
+            selectedGender="Male";
+          }else{
+            selectedGender="Female";
+          }// تخزين القيمة المختارة
         });
       },
       child: Container(
@@ -830,19 +842,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
           children: [
             Icon(
               isSelected ? Icons.check_circle : Icons.circle_outlined,
-              color: isSelected ? Color(0xff8B8B8B) : Color(0xff8B8B8B),
+              color: Color(0xff8B8B8B),
             ),
             SizedBox(width: 3),
-            Icon(icon, color: Colors.grey,size: 30,),
+            Icon(icon, color: Colors.grey, size: 30),
             SizedBox(width: 3),
             Text(
               text,
-              style: TextStyle(color: Colors.grey, fontSize: 16,fontWeight: FontWeight.w600),
+              style: TextStyle(color: Colors.grey, fontSize: 16, fontWeight: FontWeight.w600),
             ),
           ],
         ),
       ),
     );
   }
+
 }
 

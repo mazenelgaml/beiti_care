@@ -51,9 +51,68 @@ class LogInController extends GetxController{
       logIn(context);
     }
   }
+  void submitForm1(BuildContext context) {
+    if (formKey.currentState!.validate()) {
+      logIn1(context);
+    }
+  }
   bool isLoading=false;
 
   Future<void> logIn(BuildContext context) async {
+    isLoading = true;
+    update();
+    final Dio dio = Dio(
+      BaseOptions(
+        baseUrl: EndPoint.baseUrl,
+        validateStatus: (status) => status != null && status < 500,
+      ),
+    );
+
+    isLoading = true;
+    update();
+
+    try {
+      final response = await dio.post(
+        "/api/auth/login",
+        data: {
+          "email": emailController.text.trim(),
+          "password": passwordController.text.trim(),
+        },
+        options: Options(headers: {
+          "Content-Type": "application/json",
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        final loginModel = LoginModel.fromJson(response.data);
+        final token = loginModel.token;
+        final id = loginModel.user?.id;
+        await Get.find<CacheHelper>().saveData(key: "nurseToken", value: token);
+        await Get.find<CacheHelper>().saveData(key: "nurseId", value: id);
+        Get.off(() => FingerprintAuthScreen());
+
+      } else {
+        CoolAlert.show(
+          context: context,
+          type: CoolAlertType.error,
+          title: "خطأ",
+          text: "البريد الإلكتروني أو كلمة المرور غير صحيحة، يرجى المحاولة مرة أخرى.",
+        );
+      }
+    } catch (e) {
+      print('خطأ تسجيل الدخول: $e');
+      CoolAlert.show(
+        context: context,
+        type: CoolAlertType.error,
+        title: "خطأ في الاتصال",
+        text: "حدث خطأ أثناء الاتصال بالخادم.",
+      );
+    } finally {
+      isLoading = false;
+      update();
+    }
+  }
+  Future<void> logIn1(BuildContext context) async {
     isLoading = true;
     update();
     final Dio dio = Dio(
