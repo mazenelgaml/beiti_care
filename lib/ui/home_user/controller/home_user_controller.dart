@@ -35,11 +35,11 @@ class HomeUserController extends GetxController{
 
     try {
       final response = await dioInstance.get(
-        "//api/client/getUser/$id",
+        "/api/client/getUser/$id",
         options: dio.Options(headers: {"Content-Type": "application/json"}),
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         UserByIdModel userDataModel = UserByIdModel.fromJson(response.data);
         userByIdModel = userDataModel;
         username.text = userByIdModel?.user?.userName ?? "";

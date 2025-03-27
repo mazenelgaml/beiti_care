@@ -89,7 +89,7 @@ class LogInController extends GetxController{
         final id = loginModel.user?.id;
         await Get.find<CacheHelper>().saveData(key: "nurseToken", value: token);
         await Get.find<CacheHelper>().saveData(key: "nurseId", value: id);
-        Get.off(() => FingerprintAuthScreen());
+        Get.off(() => FingerprintAuthScreen(toWhere: 'nurse',));
 
       } else {
         CoolAlert.show(
@@ -143,7 +143,7 @@ class LogInController extends GetxController{
         final id = loginModel.user?.id;
         await Get.find<CacheHelper>().saveData(key: "token", value: token);
         await Get.find<CacheHelper>().saveData(key: "id", value: id);
-        Get.off(() => FingerprintAuthScreen());
+        Get.off(() => FingerprintAuthScreen(toWhere: 'user',));
 
       } else {
         CoolAlert.show(

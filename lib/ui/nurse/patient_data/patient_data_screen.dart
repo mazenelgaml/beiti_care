@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import '../../../services/translation_key.dart';
 
 class PatientDataScreen extends StatefulWidget {
+  const PatientDataScreen({super.key});
+
   @override
   _PatientDataScreenState createState() => _PatientDataScreenState();
 }

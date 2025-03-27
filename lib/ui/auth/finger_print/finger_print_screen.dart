@@ -1,3 +1,4 @@
+import 'package:beiti_care/ui/home_user/home_user_screen.dart';
 import 'package:beiti_care/ui/nurse/home/nurse_home_screen.dart';
 import 'package:beiti_care/ui/onboarding/on_boarding_first_screen.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,8 @@ import 'package:local_auth/local_auth.dart';
 import '../../../services/translation_key.dart';
 
 class FingerprintAuthScreen extends StatefulWidget {
-  const FingerprintAuthScreen({Key? key}) : super(key: key);
+  final String toWhere;
+  const FingerprintAuthScreen({super.key, required this.toWhere});
 
   @override
   _FingerprintAuthScreenState createState() => _FingerprintAuthScreenState();
@@ -37,7 +39,12 @@ class _FingerprintAuthScreenState extends State<FingerprintAuthScreen> {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () async {
-                   Get.off(()=>NurseHomeScreen()); // Start fingerprint authentication
+                   if(widget.toWhere=="nurse")
+                   {
+                     Get.off(()=>NurseHomeScreen());
+                   }else{
+                     Get.off(()=>HomeUserScreen());
+                   } // Start fingerprint authentication
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
@@ -84,7 +91,12 @@ class _FingerprintAuthScreenState extends State<FingerprintAuthScreen> {
     }
 
     if (authenticated) {
-      Get.off(()=>NurseHomeScreen());
+      if(widget.toWhere=="nurse")
+      {
+        Get.off(()=>NurseHomeScreen());
+      }else{
+        Get.off(()=>HomeUserScreen());
+      }
     }
   }
   void initState() {

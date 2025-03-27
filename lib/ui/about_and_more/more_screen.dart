@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../services/memory.dart';
 import '../../services/translation_key.dart';
 import '../../widgets/custom_buttom_nav_bar.dart';
 import '../../widgets/custom_button_nav_bar_user.dart';
@@ -159,7 +160,8 @@ class _MoreUserScreenState extends State<MoreUserScreen> {
           Get.to(()=>PolicyPrivacyScreen());
         } else if (notification == Logout.tr) {
           print("Log out");
-          Get.to(()=>LoginScreen());
+          Get.find<CacheHelper>().loggingOut();
+          Get.off(()=>LoginScreen());
         }
       },
       child: Container(

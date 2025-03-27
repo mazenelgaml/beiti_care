@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:beiti_care/ui/user_check_out/user_check_out_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -156,6 +157,8 @@ class NurseCard extends StatelessWidget {
 }
 
 class WaitingDialog extends StatefulWidget {
+  const WaitingDialog({super.key});
+
   @override
   _WaitingDialogState createState() => _WaitingDialogState();
 }
@@ -238,7 +241,7 @@ class _WaitingDialogState extends State<WaitingDialog> {
                 height: 55.h,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Get.to(()=>UserCheckoutScreen());
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(

@@ -86,7 +86,7 @@ class ProfileScreen extends StatelessWidget {
                             )
                                 : (controller.nurseByIdModel?.data?.image == null || controller.nurseByIdModel?.data?.image == "")
                                 ? Image.asset(
-                              "assets/images/default_avatar.jpg",
+                              "assets/images/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
                               width: 70.w,
                               height: 70.h,
                               fit: BoxFit.cover,

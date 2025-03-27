@@ -288,6 +288,8 @@ const Nonotifications="No notifications";
 //AboutandMore folder
 const About1="About";
 const More1="More";
+const surgery="Surgery";
+const drug="Drug";
 
 //Basicpatiantinformation folder
 const Basicpatientinformation="Basic patient information";

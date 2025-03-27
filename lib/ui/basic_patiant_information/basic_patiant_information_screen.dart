@@ -5,13 +5,17 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:get/get.dart';
 import '../../services/translation_key.dart';
 import '../../widgets/custom_button.dart';
+import 'controller/basic_patiant_information_controller.dart';
 
 class BasicpatiantinformationScreen extends StatelessWidget {
   const BasicpatiantinformationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GetBuilder(
+        init: BasicPatientInformationController(),
+    builder: (BasicPatientInformationController controller) {
+    return controller.isLoading?Scaffold(body: Center(child: CircularProgressIndicator(),),): Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         leadingWidth: 300.w,
@@ -21,7 +25,7 @@ class BasicpatiantinformationScreen extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                  Get.back();
                 },
                 child: Container(
                   width: 24.w,
@@ -65,8 +69,22 @@ class BasicpatiantinformationScreen extends StatelessWidget {
                     child: Stack(
                       children: [
                         ClipOval(
-                          child: Image.asset(
-                            "assets/images/boy.png",
+                          child: controller.selectedImage != null
+                              ? Image.file(
+                            controller.selectedImage!,
+                            width: 70.w,
+                            height: 70.h,
+                            fit: BoxFit.cover,
+                          )
+                              : (controller.userByIdModel?.user?.image == null || controller.userByIdModel?.user?.image == "")
+                              ? Image.asset(
+                            "assets/images/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+                            width: 70.w,
+                            height: 70.h,
+                            fit: BoxFit.cover,
+                          )
+                              : Image.network(
+                            controller.userByIdModel?.user?.image??"",
                             width: 70.w,
                             height: 70.h,
                             fit: BoxFit.cover,
@@ -103,7 +121,7 @@ class BasicpatiantinformationScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Rania Mohamed",
+                          controller.userByIdModel?.user?.userName??"",
                           style: TextStyle(
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w600,
@@ -111,7 +129,7 @@ class BasicpatiantinformationScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "raniamohamed@gmail.com",
+                          controller.userByIdModel?.user?.email??"",
                           style: TextStyle(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w500,
@@ -1245,6 +1263,6 @@ class BasicpatiantinformationScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
+    );});
   }
 }

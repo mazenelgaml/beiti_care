@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../services/translation_key.dart';
+import '../ui/nutrition_details/nutrition_details_screen.dart';
 
 class NutritionCard extends StatelessWidget {
   final int rating;
@@ -83,7 +84,9 @@ class NutritionCard extends StatelessWidget {
                   ),
                   padding: EdgeInsets.symmetric(vertical: 12),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(()=>NutritionDetailsScreen());
+                },
                 child: Text(
                   BookNow.tr,
                   style: TextStyle(fontSize: 18.sp, color: Colors.white,fontWeight: FontWeight.w600),

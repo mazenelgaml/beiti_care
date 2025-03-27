@@ -15,6 +15,7 @@ import '../ui/home_user/home_user_screen.dart';
 import '../ui/profile/More_screen.dart';
 import '../ui/requests/user_requests_screen.dart';
 import '../ui/services/services_screen.dart';
+import '../ui/user_profile_options/user_profile_options_screen.dart';
 
 class CurvedBottomNavBarUser extends StatelessWidget {
   final Color? homeIcon;
@@ -38,7 +39,7 @@ class CurvedBottomNavBarUser extends StatelessWidget {
           left: MediaQuery.of(context).size.width / 2 - 50,
           child: InkWell(
             onTap: (){
-              Get.off(()=>MedicalTesttScreen());
+              Get.off(()=>UserProfileOptionsScreen());
             },
             child: CircleAvatar(
               radius: 30,

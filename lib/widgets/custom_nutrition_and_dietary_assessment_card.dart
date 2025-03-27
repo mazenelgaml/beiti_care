@@ -1,3 +1,4 @@
+import 'package:beiti_care/ui/nutrition/nutrition_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -85,7 +86,9 @@ class NutritionAndDietaryAssessmentCard extends StatelessWidget {
                   child: ElevatedButton(
 
 
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(()=>NutritionScreen());
+                    },
 
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

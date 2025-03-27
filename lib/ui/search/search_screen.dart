@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../services/translation_key.dart';
 import '../../widgets/custom_button.dart';
+import '../search_result/search_result_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -27,14 +28,14 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 170.w,
+        leadingWidth: 200.w,
         leading: Padding(
-          padding: EdgeInsets.only(left: 16.w),
+          padding: EdgeInsets.only(left: 16.w,right: 16.w),
           child: Row(
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                  Get.back();
                 },
                 child: Container(
                   width: 24.w,
@@ -170,7 +171,9 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
             ),
             CustomButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.to(()=>SearchResultScreen());
+              },
               name: Search.tr,
               borderRadius: 10,
               btnColor: Color(0xffB93439),

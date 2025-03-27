@@ -35,7 +35,7 @@ class ProfileController extends GetxController {
   Future<void> getUserProfile() async {
     isLoading = true;
     update();
-    String? id = await Get.find<CacheHelper>().getData(key: "id");
+    String? id = await Get.find<CacheHelper>().getData(key: "nurseId");
 
     if (id == null || id.isEmpty) {
       print("Error: ID is missing");
@@ -87,7 +87,7 @@ class ProfileController extends GetxController {
   Future<void> updateUserProfile(BuildContext context) async {
     isLoading = true;
     update();
-    String? id = await Get.find<CacheHelper>().getData(key: "id");
+    String? id = await Get.find<CacheHelper>().getData(key: "nurseId");
 
     if (id == null || id.isEmpty) {
       print("Error: ID is missing");
@@ -178,7 +178,7 @@ class ProfileController extends GetxController {
   Future<void> deleteNurseAccount() async {
     isLoading = true;
     update();
-    String? id = await Get.find<CacheHelper>().getData(key: "id");
+    String? id = await Get.find<CacheHelper>().getData(key: "nurseId");
 
     if (id == null || id.isEmpty) {
       print("Error: ID is missing");

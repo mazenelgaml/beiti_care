@@ -5,8 +5,8 @@ import '../../services/translation_key.dart';
 import '../../widgets/custom_nutrition_card.dart';
 
 
-class NutritionScreen extends StatelessWidget {
-  const NutritionScreen({super.key});
+class SearchResultScreen extends StatelessWidget {
+  const SearchResultScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class NutritionScreen extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                 Get.back();
+                  Get.back();
                 },
                 child: Container(
                   width: 24.w,
@@ -40,7 +40,7 @@ class NutritionScreen extends StatelessWidget {
               ),
               SizedBox(width: 5.w), // توسيع المسافة بين الأيقونة والنص
               Text(
-                Nutrition.tr,
+                Search.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -57,7 +57,7 @@ class NutritionScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: ListView.builder(
-          itemCount: 4,
+          itemCount: 3,
           itemBuilder: (context, index) {
             return NutritionCard(rating: 5,);
           },

@@ -164,6 +164,8 @@ class AppTranslations extends Translations {
       More:"More",
       WithdrawHistory:"Withdraw History",
       Logout:"Log out",
+      surgery:"Surgery",
+      drug:"Drug",
 
       //notifications screen
       Notifications:"Notifications",
@@ -720,6 +722,8 @@ a type specimen book. It has survived not \n only five centuries """ ,
 
       //home_user
       Seeall:"عرض الكل",
+      surgery:"جراحة",
+      drug:"دواء",
 
       //medical_testt_screen
       BloodUreaUreaorBUN: "اليوريا في الدم (اليوريا أو BUN)",

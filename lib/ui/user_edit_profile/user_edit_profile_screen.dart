@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../services/translation_key.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_button_nav_bar_user.dart';
+import '../basic_patiant_information/basic_patiant_information_screen.dart';
 import '../user_change_password/user_change_password_screen.dart';
 import 'controller/user_edit_profile_controller.dart';
 
@@ -17,7 +18,7 @@ class UserEditProfileScreen extends StatefulWidget {
 }
 
 class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
-  int _selectedIndex = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                  Get.back();
                 },
                 child: Container(
                   width: 24.w,
@@ -78,8 +79,22 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                     child: Stack(
                       children: [
                         ClipOval(
-                          child: Image.asset(
-                            "assets/images/boy.png",
+                          child: controller.selectedImage != null
+                              ? Image.file(
+                            controller.selectedImage!,
+                            width: 70.w,
+                            height: 70.h,
+                            fit: BoxFit.cover,
+                          )
+                              : (controller.userByIdModel?.user?.image == null || controller.userByIdModel?.user?.image == "")
+                              ? Image.asset(
+                            "assets/images/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+                            width: 70.w,
+                            height: 70.h,
+                            fit: BoxFit.cover,
+                          )
+                              : Image.network(
+                            controller.userByIdModel?.user?.image??"",
                             width: 70.w,
                             height: 70.h,
                             fit: BoxFit.cover,
@@ -90,7 +105,7 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                           right: 0,
                           child: GestureDetector(
                             onTap: () {
-                              print(EditProfilePicture.tr);
+                             controller.pickImage();
                             },
                             child: Container(
                               width: 25.w,
@@ -114,7 +129,7 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Rania Mohamed",
+                          controller.userByIdModel?.user?.userName??"",
                           style: TextStyle(
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w600,
@@ -122,7 +137,7 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                           ),
                         ),
                         Text(
-                          "raniamohamed@gmail.com",
+                          controller.userByIdModel?.user?.email??"",
                           style: TextStyle(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w500,
@@ -160,14 +175,14 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                         width: 50.w,
                         height: 50.h,
                         child: CircularProgressIndicator(
-                          value: 0.7,
+                          value:controller.numericValue,
                           backgroundColor: Colors.grey[300],
                           valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
                           strokeWidth: 6,
                         ),
                       ),
                       Text(
-                        "70%",
+                        controller.percentage,
                         style: TextStyle(
                           color: Colors.red,
                           fontSize: 14,
@@ -181,12 +196,17 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        Completeyourprofile.tr,
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blueGrey),
+                      InkWell(
+                        onTap:(){
+                          Get.to(()=>BasicpatiantinformationScreen());
+                        },
+                        child: Text(
+                          Completeyourprofile.tr,
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blueGrey),
+                        ),
                       ),
                       Text(
                         Completeyourfile.tr,
@@ -343,7 +363,9 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                   ),
                   SizedBox(height: 8.h,),
                   CustomButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.updateUserProfile(context);
+                    },
                     name: Save.tr,
                     borderRadius: 10,
                     btnColor: Color(0xffB93439),
@@ -351,7 +373,11 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                   ),
                   SizedBox(height: 8.h,),
                   CustomButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.username.clear();
+                      controller.email.clear();
+                      controller.phoneNumber.clear();
+                    },
                     name: Cancel.tr,
                     borderRadius: 10,
                     btnColor: Color(0xff49768C),

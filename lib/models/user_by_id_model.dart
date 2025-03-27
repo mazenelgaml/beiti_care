@@ -37,20 +37,21 @@ class User {
   String? userName;
   String? email;
   String? password;
-  String? gender;
-  int? age;
-  int? years;
-  int? phone;
-  int? v;
   String? role;
-  DateTime? updatedAt;
-  String? bloodType;
+  int? phone;
+  int? age;
+  String? gender;
   List<Comment>? comments;
+  List<MedicalFile>? medicalFiles;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+  String? image;
+  String? bloodType;
   String? familyHealthHistory;
   String? healthNumber;
   String? idCard;
-  List<MedicalFile>? medicalFiles;
-  String? fingerprint;
+  String? address;
 
   User({
     this.generalHealthStatus,
@@ -61,20 +62,21 @@ class User {
     this.userName,
     this.email,
     this.password,
-    this.gender,
-    this.age,
-    this.years,
-    this.phone,
-    this.v,
     this.role,
-    this.updatedAt,
-    this.bloodType,
+    this.phone,
+    this.age,
+    this.gender,
     this.comments,
+    this.medicalFiles,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
+    this.image,
+    this.bloodType,
     this.familyHealthHistory,
     this.healthNumber,
     this.idCard,
-    this.medicalFiles,
-    this.fingerprint,
+    this.address,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
@@ -86,20 +88,21 @@ class User {
     userName: json["userName"],
     email: json["email"],
     password: json["password"],
-    gender: json["gender"],
-    age: json["age"],
-    years: json["years"],
-    phone: json["phone"],
-    v: json["__v"],
     role: json["role"],
-    updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
-    bloodType: json["bloodType"],
+    phone: json["phone"],
+    age: json["age"],
+    gender: json["gender"],
     comments: json["comments"] == null ? [] : List<Comment>.from(json["comments"]!.map((x) => Comment.fromJson(x))),
+    medicalFiles: json["medicalFiles"] == null ? [] : List<MedicalFile>.from(json["medicalFiles"]!.map((x) => MedicalFile.fromJson(x))),
+    createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+    updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+    v: json["__v"],
+    image: json["image"],
+    bloodType: json["bloodType"],
     familyHealthHistory: json["familyHealthHistory"],
     healthNumber: json["healthNumber"],
     idCard: json["idCard"],
-    medicalFiles: json["medicalFiles"] == null ? [] : List<MedicalFile>.from(json["medicalFiles"]!.map((x) => MedicalFile.fromJson(x))),
-    fingerprint: json["fingerprint"],
+    address: json["address"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -111,97 +114,94 @@ class User {
     "userName": userName,
     "email": email,
     "password": password,
-    "gender": gender,
-    "age": age,
-    "years": years,
-    "phone": phone,
-    "__v": v,
     "role": role,
-    "updatedAt": updatedAt?.toIso8601String(),
-    "bloodType": bloodType,
+    "phone": phone,
+    "age": age,
+    "gender": gender,
     "comments": comments == null ? [] : List<dynamic>.from(comments!.map((x) => x.toJson())),
+    "medicalFiles": medicalFiles == null ? [] : List<dynamic>.from(medicalFiles!.map((x) => x.toJson())),
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
+    "__v": v,
+    "image": image,
+    "bloodType": bloodType,
     "familyHealthHistory": familyHealthHistory,
     "healthNumber": healthNumber,
     "idCard": idCard,
-    "medicalFiles": medicalFiles == null ? [] : List<dynamic>.from(medicalFiles!.map((x) => x.toJson())),
-    "fingerprint": fingerprint,
+    "address": address,
   };
 }
 
 class Comment {
   String? text;
-  String? id;
   DateTime? date;
+  String? id;
 
   Comment({
     this.text,
-    this.id,
     this.date,
+    this.id,
   });
 
   factory Comment.fromJson(Map<String, dynamic> json) => Comment(
     text: json["text"],
-    id: json["_id"],
     date: json["date"] == null ? null : DateTime.parse(json["date"]),
+    id: json["_id"],
   );
 
   Map<String, dynamic> toJson() => {
     "text": text,
-    "_id": id,
     "date": date?.toIso8601String(),
+    "_id": id,
   };
 }
 
 class GeneralHealthStatus {
   String? chronicDiseases;
-  String? allergies;
   String? currentMedications;
   DateTime? lastExaminationDate;
+  String? allergies;
 
   GeneralHealthStatus({
     this.chronicDiseases,
-    this.allergies,
     this.currentMedications,
     this.lastExaminationDate,
+    this.allergies,
   });
 
   factory GeneralHealthStatus.fromJson(Map<String, dynamic> json) => GeneralHealthStatus(
     chronicDiseases: json["chronicDiseases"],
-    allergies: json["allergies"],
     currentMedications: json["currentMedications"],
     lastExaminationDate: json["lastExaminationDate"] == null ? null : DateTime.parse(json["lastExaminationDate"]),
+    allergies: json["allergies"],
   );
 
   Map<String, dynamic> toJson() => {
     "chronicDiseases": chronicDiseases,
-    "allergies": allergies,
     "currentMedications": currentMedications,
     "lastExaminationDate": lastExaminationDate?.toIso8601String(),
+    "allergies": allergies,
   };
 }
 
 class MedicalFile {
-  String? filename;
   String? fileUrl;
   String? id;
   DateTime? uploadedAt;
 
   MedicalFile({
-    this.filename,
     this.fileUrl,
     this.id,
     this.uploadedAt,
   });
 
   factory MedicalFile.fromJson(Map<String, dynamic> json) => MedicalFile(
-    filename: json["filename"],
     fileUrl: json["fileUrl"],
     id: json["_id"],
     uploadedAt: json["uploadedAt"] == null ? null : DateTime.parse(json["uploadedAt"]),
   );
 
   Map<String, dynamic> toJson() => {
-    "filename": filename,
     "fileUrl": fileUrl,
     "_id": id,
     "uploadedAt": uploadedAt?.toIso8601String(),
@@ -209,29 +209,29 @@ class MedicalFile {
 }
 
 class MedicalHistory {
-  List<LaboratoryTest>? laboratoryTests;
-  String? medicalReports;
   String? medicalDiagnoses;
+  String? medicalReports;
+  List<LaboratoryTest>? laboratoryTests;
   List<Vaccination>? vaccinations;
 
   MedicalHistory({
-    this.laboratoryTests,
-    this.medicalReports,
     this.medicalDiagnoses,
+    this.medicalReports,
+    this.laboratoryTests,
     this.vaccinations,
   });
 
   factory MedicalHistory.fromJson(Map<String, dynamic> json) => MedicalHistory(
-    laboratoryTests: json["laboratoryTests"] == null ? [] : List<LaboratoryTest>.from(json["laboratoryTests"]!.map((x) => LaboratoryTest.fromJson(x))),
-    medicalReports: json["medicalReports"],
     medicalDiagnoses: json["medicalDiagnoses"],
+    medicalReports: json["medicalReports"],
+    laboratoryTests: json["laboratoryTests"] == null ? [] : List<LaboratoryTest>.from(json["laboratoryTests"]!.map((x) => LaboratoryTest.fromJson(x))),
     vaccinations: json["vaccinations"] == null ? [] : List<Vaccination>.from(json["vaccinations"]!.map((x) => Vaccination.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "laboratoryTests": laboratoryTests == null ? [] : List<dynamic>.from(laboratoryTests!.map((x) => x.toJson())),
-    "medicalReports": medicalReports,
     "medicalDiagnoses": medicalDiagnoses,
+    "medicalReports": medicalReports,
+    "laboratoryTests": laboratoryTests == null ? [] : List<dynamic>.from(laboratoryTests!.map((x) => x.toJson())),
     "vaccinations": vaccinations == null ? [] : List<dynamic>.from(vaccinations!.map((x) => x.toJson())),
   };
 }
@@ -262,24 +262,20 @@ class LaboratoryTest {
 
 class Vaccination {
   String? vaccineName;
-  DateTime? date;
   String? id;
 
   Vaccination({
     this.vaccineName,
-    this.date,
     this.id,
   });
 
   factory Vaccination.fromJson(Map<String, dynamic> json) => Vaccination(
     vaccineName: json["vaccineName"],
-    date: json["date"] == null ? null : DateTime.parse(json["date"]),
     id: json["_id"],
   );
 
   Map<String, dynamic> toJson() => {
     "vaccineName": vaccineName,
-    "date": date?.toIso8601String(),
     "_id": id,
   };
 }

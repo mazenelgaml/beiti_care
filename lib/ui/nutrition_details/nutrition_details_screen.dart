@@ -29,7 +29,7 @@ class NutritionDetailsScreen extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                  Get.back();
                 },
                 child: Container(
                   width: 24.w,

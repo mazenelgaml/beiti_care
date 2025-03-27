@@ -1,8 +1,13 @@
+import 'package:beiti_care/ui/consultation/consultation_screen.dart';
+import 'package:beiti_care/ui/nutrition/nutrition_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../services/translation_key.dart';
 import '../../widgets/custom_suggestion_card.dart';
+import '../Medical_test/medical_testt_screen.dart';
+import '../notifications_user/notifications_user_screen.dart';
+import '../nutrition_and_dietary_assessment/nutrition_and_dietary_assessment_screen.dart';
 
 class SuggestionsScreen extends StatelessWidget {
   final List<String> suggestions = [
@@ -10,10 +15,7 @@ class SuggestionsScreen extends StatelessWidget {
     Catheterization.tr,
     Nutrition.tr,
     Consultations.tr,
-    Catheterization.tr,
-    Nutrition.tr,
-    Catheterization.tr,
-    Nutrition.tr,
+
   ];
 
    SuggestionsScreen({super.key});
@@ -30,7 +32,7 @@ class SuggestionsScreen extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                  Get.back();
                 },
                 child: Container(
                   width: 24.w,
@@ -81,10 +83,21 @@ class SuggestionsScreen extends StatelessWidget {
                 padding: EdgeInsets.only(left: 10,right: 10),
                 itemCount: suggestions.length,
                 itemBuilder: (context, index) {
-                  return SizedBox(
-                      height: 67.h,
-                      width: 338.w,
-                      child: SuggestionCard(title: suggestions[index]));
+                  return InkWell(
+                    onTap: (){
+                      if(suggestions[index]==Nutrition.tr){
+                        Get.to(()=>NutritionAndDietaryAssessmentScreen());
+                      }else if(suggestions[index]==Medicaltests.tr){
+                        Get.to(()=>MedicalTesttScreen());
+                      }else if(suggestions[index]==Consultations.tr){
+                        Get.to(()=>ConsultationScreen());
+                      }
+                    },
+                    child: SizedBox(
+                        height: 67.h,
+                        width: 338.w,
+                        child: SuggestionCard(title: suggestions[index])),
+                  );
                 },
                 separatorBuilder: (context, index){
                   return SizedBox(

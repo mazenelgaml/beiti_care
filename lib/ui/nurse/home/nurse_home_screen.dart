@@ -57,10 +57,22 @@ class NurseHomeScreen extends StatelessWidget {
     Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-    Text(
-    controller.nurseByIdModel?.data?.userName??"",
-    style:
-    TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
+    Column(
+      children: [
+        Text(
+        controller.nurseByIdModel?.data?.userName??"",
+        style:
+        TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
+        ),
+        Row(
+          children: [
+            Text("${controller.nurseByIdModel?.data?.rating}",
+              style:
+              TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),),
+            Icon(Icons.star,color: Colors.amber,size: 15,)
+          ],
+        )
+      ],
     ),
     Row(
     children: [

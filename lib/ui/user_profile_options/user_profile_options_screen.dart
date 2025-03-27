@@ -6,9 +6,11 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../../services/translation_key.dart';
 import '../../widgets/custom_button_nav_bar_user.dart';
+import '../basic_patiant_information/basic_patiant_information_screen.dart';
 import '../history/history_screen.dart';
 import '../therapeutic_examinations/therapeutic_examinations_screen.dart';
 import '../user_edit_profile/user_edit_profile_screen.dart';
+import 'controller/user_profile_options_controler.dart';
 
 
 class UserProfileOptionsScreen extends StatefulWidget {
@@ -19,11 +21,14 @@ class UserProfileOptionsScreen extends StatefulWidget {
 }
 
 class _UserProfileOptionsScreenState extends State<UserProfileOptionsScreen> {
-  int _selectedIndex = 0;
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GetBuilder(
+        init: UserProfileOptionsController(),
+    builder: (UserProfileOptionsController controller) {
+    return controller.isLoading?Scaffold(body: Center(child: CircularProgressIndicator(),),): Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         leadingWidth: 300.w,
@@ -33,7 +38,7 @@ class _UserProfileOptionsScreenState extends State<UserProfileOptionsScreen> {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                  Get.back();
                 },
                 child: Container(
                   width: 24.w,
@@ -77,8 +82,22 @@ class _UserProfileOptionsScreenState extends State<UserProfileOptionsScreen> {
                     child: Stack(
                       children: [
                         ClipOval(
-                          child: Image.asset(
-                            "assets/images/boy.png",
+                          child: controller.selectedImage != null
+                              ? Image.file(
+                            controller.selectedImage!,
+                            width: 70.w,
+                            height: 70.h,
+                            fit: BoxFit.cover,
+                          )
+                              : (controller.userByIdModel?.user?.image == null || controller.userByIdModel?.user?.image == "")
+                              ? Image.asset(
+                            "assets/images/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+                            width: 70.w,
+                            height: 70.h,
+                            fit: BoxFit.cover,
+                          )
+                              : Image.network(
+                            controller.userByIdModel?.user?.image??"",
                             width: 70.w,
                             height: 70.h,
                             fit: BoxFit.cover,
@@ -89,7 +108,7 @@ class _UserProfileOptionsScreenState extends State<UserProfileOptionsScreen> {
                           right: 0,
                           child: GestureDetector(
                             onTap: () {
-                              print(EditProfilePicture.tr);
+                              controller.pickImage();
                             },
                             child: Container(
                               width: 25.w,
@@ -113,7 +132,7 @@ class _UserProfileOptionsScreenState extends State<UserProfileOptionsScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Rania Mohamed",
+                          controller.userByIdModel?.user?.userName??"",
                           style: TextStyle(
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w600,
@@ -121,7 +140,7 @@ class _UserProfileOptionsScreenState extends State<UserProfileOptionsScreen> {
                           ),
                         ),
                         Text(
-                          "raniamohamed@gmail.com",
+                          controller.userByIdModel?.user?.email??"",
                           style: TextStyle(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w500,
@@ -159,14 +178,14 @@ class _UserProfileOptionsScreenState extends State<UserProfileOptionsScreen> {
                         width: 50.w,
                         height: 50.h,
                         child: CircularProgressIndicator(
-                          value: 0.7,
+                          value: controller.numericValue,
                           backgroundColor: Colors.grey[300],
                           valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
                           strokeWidth: 6,
                         ),
                       ),
                       Text(
-                        "70%",
+                        controller.percentage,
                         style: TextStyle(
                           color: Colors.red,
                           fontSize: 14,
@@ -180,12 +199,17 @@ class _UserProfileOptionsScreenState extends State<UserProfileOptionsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        Completeyourprofile.tr,
-                        style: TextStyle(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blueGrey),
+                      InkWell(
+                        onTap:(){
+                          Get.to(()=>BasicpatiantinformationScreen());
+                        },
+                        child: Text(
+                          Completeyourprofile.tr,
+                          style: TextStyle(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blueGrey),
+                        ),
                       ),
                       Text(
                         Completeyourfile.tr,
@@ -336,7 +360,7 @@ class _UserProfileOptionsScreenState extends State<UserProfileOptionsScreen> {
      borderRadius: BorderRadius.circular(20)
  ),margin:EdgeInsets.only(bottom: 20,left: 20,right: 20
  ),child: CurvedBottomNavBarUser(profileIcon: "assets/images/profileIconActive.png",)),
-    );
+    );});
   }
 
 

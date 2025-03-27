@@ -1,4 +1,5 @@
 import 'package:beiti_care/ui/auth/Log_in/log_in_screen.dart';
+import 'package:beiti_care/ui/auth/register/widget/add_file_widget.dart';
 import 'package:beiti_care/ui/auth/register/widget/add_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -484,6 +485,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   ImagePickerWidget(),
+                  SizedBox(height: 15.h),
+                  FilePickerWidget(),
                   Container(
                     width: 338.w,
                     child: Row(

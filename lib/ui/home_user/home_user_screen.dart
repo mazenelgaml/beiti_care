@@ -1,3 +1,4 @@
+import 'package:beiti_care/ui/home_user/widgets/sugesstions_widget.dart';
 import 'package:beiti_care/ui/services/services_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,13 +9,18 @@ import '../../widgets/custom_button_nav_bar_user.dart';
 import '../../widgets/custom_nutrition_and_dietary_assessment_card.dart';
 import '../notifications/notification_screen.dart';
 import '../notifications_user/notifications_user_screen.dart' show NotificationsUser;
+import '../search/search_screen.dart';
+import 'controller/home_user_controller.dart' show HomeUserController;
 
 class HomeUserScreen extends StatelessWidget {
   const HomeUserScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GetBuilder(
+        init: HomeUserController(),
+    builder: (HomeUserController controller) {
+    return controller.isLoading?Scaffold(body: Center(child: CircularProgressIndicator(),),): Scaffold(
       backgroundColor: Color(0xffF3EFEF),
       body: SafeArea(
         child: Padding(
@@ -30,20 +36,25 @@ class HomeUserScreen extends StatelessWidget {
                       Row(
                         children: [
                           ClipOval(
-                            child:Image.asset(
+                            child:controller.userByIdModel?.user?.image == null || controller.userByIdModel?.user?.image == "" ? Image.asset(
                               "assets/images/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
-            
-                              width: 60.w,
-                              height: 60.h,
+                              width: 70.w,
+                              height: 70.h,
                               fit: BoxFit.cover,
                             )
+                                : Image.network(
+                              controller.userByIdModel?.user?.image??"",
+                              width: 70.w,
+                              height: 70.h,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                           SizedBox(width: 12.w),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Rania Mohamed",
+                                controller.userByIdModel?.user?.userName??"",
                                 style:
                                 TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
                               ),
@@ -51,7 +62,7 @@ class HomeUserScreen extends StatelessWidget {
                                 children: [
                                   Image(image: AssetImage("assets/images/locationIcon.png"),width: 10.w,height: 10.h,fit: BoxFit.fill,),
                                   SizedBox(width: 4.w),
-                                  Text("Dokki Square Street - Egypt",
+                                  Text(controller.userByIdModel?.user?.address??"",
                                       style: TextStyle(color: Color(0xff5E5C5C),fontSize: 11.sp,fontWeight: FontWeight.w500)),
                                 ],
                               ),
@@ -72,7 +83,7 @@ class HomeUserScreen extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.all(12.0),
                             child: InkWell(
-                              // onTap: (){Get.to(()=>NotificationsUser());},
+                              onTap: (){Get.to(()=>SearchScreen());},
                               child: Image(image: AssetImage("assets/images/searchIconAbbBar.png"),width: 24.w,height: 24.h,fit: BoxFit.fill,),
                             ),
                           ),
@@ -110,22 +121,23 @@ class HomeUserScreen extends StatelessWidget {
                     ),)
                   ],
                 ),
+                CategoryIcons(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(20),
+                      padding:  EdgeInsets.only(left: 20.w,right: 20.w,top: 15.h),
                       child: Text(Services.tr,style: TextStyle(color: Color(0xffB93439),fontSize: 16.sp,fontWeight: FontWeight.w600),),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(20),
+                      padding:  EdgeInsets.only(left: 20.w,right: 20.w,top: 10.h),
                       child: InkWell(onTap:(){
                         Get.to(()=>ServicesScreen());
                       },child: Text(Seeall.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 16.sp,fontWeight: FontWeight.w600),)),
                     )
                   ],
                 ),
-                SizedBox(height: 16.h),
+                SizedBox(height: 10.h),
                 Padding(
                   padding:  EdgeInsets.only(bottom: 25.0.h,right: 20.w,left: 20.w),
                   child: Column(
@@ -142,6 +154,6 @@ class HomeUserScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(20)
       ),margin:EdgeInsets.only(bottom: 20,left: 20,right: 20
       ),child: CurvedBottomNavBarUser(homeIcon: Color(0xffB93439),)),
-    );
+    );});
   }
 }

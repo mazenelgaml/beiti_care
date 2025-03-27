@@ -10,6 +10,8 @@ import '../controller/sign_up_controller.dart'; // Import GetX for translations
 
 
 class ImagePickerWidget extends StatelessWidget {
+  const ImagePickerWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     final SignupController signupController = Get.find<SignupController>(); // استدعاء الكونترولر

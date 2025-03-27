@@ -17,9 +17,9 @@ class ContactUsScreen extends StatelessWidget {
     builder: (ContactUsController controller) {
     return controller.isLoading?Scaffold(body: Center(child: CircularProgressIndicator(),),): Scaffold(
     appBar: AppBar(
-    leadingWidth: 170.w,
+    leadingWidth: 200.w,
     leading: Padding(
-    padding: EdgeInsets.only(left: 16.w),
+    padding: EdgeInsets.only(left: 16.w,right:16.w),
     child: Row(
     children: [
     GestureDetector(

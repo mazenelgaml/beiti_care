@@ -67,7 +67,7 @@ class ProfileChangePasswordController extends GetxController {
   Future<void> getUserProfile() async {
     isLoading = true;
     update();
-    String id = await Get.find<CacheHelper>().getData(key: "id");
+    String id = await Get.find<CacheHelper>().getData(key: "nurseId");
     final dio.Dio dioInstance = dio.Dio(
       dio.BaseOptions(
         baseUrl: EndPoint.baseUrl,
@@ -105,7 +105,7 @@ class ProfileChangePasswordController extends GetxController {
     isLoading = true;
     update();
 
-    String id = await Get.find<CacheHelper>().getData(key: "id");
+    String id = await Get.find<CacheHelper>().getData(key: "nurseId");
     print("User ID: $id");  // ✅ تأكد أن id ليس فارغًا
 
     final Dio dio = Dio(

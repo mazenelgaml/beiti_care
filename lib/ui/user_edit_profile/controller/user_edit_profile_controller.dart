@@ -4,8 +4,8 @@ import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:http_parser/http_parser.dart'; // جديد: لمعالجة نوع الصورة
-import '../../../models/nurse_by_id_model.dart';
+import 'package:http_parser/http_parser.dart';
+import '../../../models/profile_complete_model.dart';
 import '../../../models/user_by_id_model.dart';
 import '../../../services/end_points.dart';
 import '../../../services/memory.dart';
@@ -16,13 +16,16 @@ class UserEditProfileController extends GetxController{
   TextEditingController email = TextEditingController();
   TextEditingController phoneNumber = TextEditingController();
   TextEditingController bio = TextEditingController();
-  TextEditingController age = TextEditingController();
   File? image;
+  String percentage="";
+  double numericValue =0;
+  // 2.8
   @override
   Future<void> onInit() async {
     super.onInit();
     await CacheHelper.init();
     await getUserProfile();
+    await getProfileCompletePercentage();
   }
   Future<void> getUserProfile() async {
     isLoading = true;
@@ -37,16 +40,16 @@ class UserEditProfileController extends GetxController{
 
     try {
       final response = await dioInstance.get(
-        "//api/client/getUser/$id",
+        "/api/client/getUser/$id",
         options: dio.Options(headers: {"Content-Type": "application/json"}),
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         UserByIdModel userDataModel = UserByIdModel.fromJson(response.data);
         userByIdModel = userDataModel;
-        username.text = userByIdModel?.user?.userName ?? "";
-        email.text = userByIdModel?.user?.email ?? "";
-        phoneNumber.text ="${userByIdModel?.user?.phone ?? ""}";
+        // username.text = userByIdModel?.user?.userName ?? "";
+        // email.text = userByIdModel?.user?.email ?? "";
+        // phoneNumber.text ="${userByIdModel?.user?.phone ?? ""}";
         String bioS = await Get.find<CacheHelper>().getData(key: "bio") ?? "";
         bio.text = bioS;
       } else {
@@ -62,6 +65,51 @@ class UserEditProfileController extends GetxController{
     } finally {
       isLoading = false;
       update();
+    }
+  }
+  Future<void> getProfileCompletePercentage() async {
+    isLoading = true;
+    update();
+    String id = await Get.find<CacheHelper>().getData(key: "id");
+    final dio.Dio dioInstance = dio.Dio(
+      dio.BaseOptions(
+        baseUrl: EndPoint.baseUrl,
+        validateStatus: (status) => status != null && status < 500,
+      ),
+    );
+
+    try {
+      final response = await dioInstance.get(
+        "/api/client/profileCompletion/$id",
+        options: dio.Options(headers: {"Content-Type": "application/json"}),
+      );
+
+      if (response.statusCode == 200) {
+        ProfileCompleteModel userDataModel = ProfileCompleteModel.fromJson(response.data);
+        percentage=userDataModel.profileCompletion??"";
+        numericValue = double.parse(percentage.replaceAll('%', '')) / 100;
+        print(numericValue);
+      } else {
+        ScaffoldMessenger.of(Get.context!).showSnackBar(
+          SnackBar(content: Text('Error fetching user data')),
+        );
+      }
+    } catch (e) {
+      print(e);
+      ScaffoldMessenger.of(Get.context!).showSnackBar(
+        SnackBar(content: Text('Error occurred while connecting to the Server')),
+      );
+    } finally {
+      isLoading = false;
+      update();
+    }
+  }
+  File? selectedImage;
+  Future<void> pickImage() async {
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      selectedImage = File(pickedFile.path);
+      update(); // تحديث الـ UI
     }
   }
   Future<void> updateUserProfile(BuildContext context) async {
@@ -82,12 +130,26 @@ class UserEditProfileController extends GetxController{
         baseUrl: EndPoint.baseUrl,
       ),
     );
+    // ✅ التحقق من الصورة قبل الإرسال
+    if (image != null) {
+      print("✅ Selected Image: ${image!.path}");
+      print("✅ Image Exists: ${await image!.exists()}");
+      print("✅ Image Size: ${await image!.length()} bytes");
+    } else {
+      print("⚠️ No Image Selected!");
+    }
 
     try {
       dio.FormData formData = dio.FormData.fromMap({
-        "userName": username.text.trim(),
-        "email": email.text.trim(),
-        "age": age.text.trim(),
+        "userName": username.text.trim()==""||username.text.trim()==null?userByIdModel?.user?.userName:username.text.trim(),
+        "email": email.text.trim()==""||email.text.trim()==null?userByIdModel?.user?.email:email.text.trim(),
+        "phone":phoneNumber.text.trim()==""||phoneNumber.text.trim()==null?userByIdModel?.user?.phone:phoneNumber.text.trim(),
+        if (image != null)
+          "image": await dio.MultipartFile.fromFile(
+            image!.path,
+            filename: image!.path.split('/').last,
+            contentType: MediaType("image", "jpeg"),
+          ),
       });
 
       // ✅ طباعة البيانات قبل الإرسال
@@ -129,17 +191,6 @@ class UserEditProfileController extends GetxController{
       update();
     }
   }
-
-  File? selectedImage;
-  Future<void> pickImage() async {
-    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (pickedFile != null) {
-      selectedImage = File(pickedFile.path);
-      update(); // تحديث الـ UI
-    }
-  }
-
-
   Future<void> deleteUserAccount() async {
     isLoading = true;
     update();

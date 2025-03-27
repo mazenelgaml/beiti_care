@@ -1,24 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:get/get.dart';
 import '../../services/translation_key.dart';
 import '../../widgets/custom_button.dart';
+import 'controller/user_change_password_controller.dart';
 
 class UserChangePasswordScreen extends StatefulWidget {
-  UserChangePasswordScreen({super.key});
+  const UserChangePasswordScreen({super.key});
 
   @override
   _UserChangePasswordScreenState createState() => _UserChangePasswordScreenState();
 }
 
 class _UserChangePasswordScreenState extends State<UserChangePasswordScreen> {
-  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GetBuilder(
+        init: UserChangePasswordController(),
+    builder: (UserChangePasswordController controller) {
+    return controller.isLoading?Scaffold(body: Center(child: CircularProgressIndicator(),),): Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         leadingWidth: 300.w,
@@ -72,8 +74,22 @@ class _UserChangePasswordScreenState extends State<UserChangePasswordScreen> {
                     child: Stack(
                       children: [
                         ClipOval(
-                          child: Image.asset(
-                            "assets/images/boy.png",
+                          child: controller.selectedImage != null
+                              ? Image.file(
+                            controller.selectedImage!,
+                            width: 70.w,
+                            height: 70.h,
+                            fit: BoxFit.cover,
+                          )
+                              : (controller.userByIdModel?.user?.image == null || controller.userByIdModel?.user?.image == "")
+                              ? Image.asset(
+                            "assets/images/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg",
+                            width: 70.w,
+                            height: 70.h,
+                            fit: BoxFit.cover,
+                          )
+                              : Image.network(
+                            controller.userByIdModel?.user?.image??"",
                             width: 70.w,
                             height: 70.h,
                             fit: BoxFit.cover,
@@ -84,7 +100,7 @@ class _UserChangePasswordScreenState extends State<UserChangePasswordScreen> {
                           right: 0,
                           child: GestureDetector(
                             onTap: () {
-                              print("Edit Profile Picture");
+                              controller.pickImage();
                             },
                             child: Container(
                               width: 25.w,
@@ -104,26 +120,29 @@ class _UserChangePasswordScreenState extends State<UserChangePasswordScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Rania Mohamed",
-                          style: TextStyle(
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xff000000),
+                    child: Form(
+                      key: controller.formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            controller.userByIdModel?.user?.userName??"",
+                            style: TextStyle(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xff000000),
+                            ),
                           ),
-                        ),
-                        Text(
-                          "raniamohamed@gmail.com",
-                          style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff8B8B8B),
+                          Text(
+                            controller.userByIdModel?.user?.email??"",
+                            style: TextStyle(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff8B8B8B),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -156,6 +175,7 @@ class _UserChangePasswordScreenState extends State<UserChangePasswordScreen> {
                     width: 338.w,
                     height: 50.h,
                     child: TextFormField(
+                      controller: controller.passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                         hintText: Password.tr,
@@ -195,6 +215,7 @@ class _UserChangePasswordScreenState extends State<UserChangePasswordScreen> {
                     width: 338.w,
                     height: 50.h,
                     child: TextFormField(
+                      controller: controller.confirmPassword,
                       obscureText: true,
                       decoration: InputDecoration(
                         hintText: ConfirmPassword.tr,
@@ -223,7 +244,9 @@ class _UserChangePasswordScreenState extends State<UserChangePasswordScreen> {
                   ),
                   SizedBox(height: 8.h,),
                   CustomButton(
-                    onPressed: () {},
+                    onPressed: () {
+
+                    },
                     name: Cancel.tr,
                     borderRadius: 10,
                     btnColor: Color(0xff49768C),
@@ -235,7 +258,7 @@ class _UserChangePasswordScreenState extends State<UserChangePasswordScreen> {
           ],
         ),
       ),
-    );
+    );});
   }
 
 }

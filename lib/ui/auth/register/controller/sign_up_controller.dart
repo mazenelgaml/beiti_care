@@ -125,6 +125,13 @@ class SignupController extends GetxController {
     update(); // تحديث الـ UI
   }
 
+  File? selectedFile;
+
+  void setFile(File? file) {
+    selectedFile = file;
+    update(); // تحديث الـ UI
+  }
+
   String? fullPhoneNumber; // متغير جديد لتخزين الرقم مع الكود
 
   void setPhoneNumber(String number) {
@@ -150,10 +157,8 @@ class SignupController extends GetxController {
   Future<void> signUp(BuildContext context, String selectedSpecialty) async {
     isLoading = true;
     update();
-    choosenService=services?.firstWhere((service) => service.name==selectedSpecialty).id;
-    print(choosenService);
-    print("hellllllllloooo");
 
+    choosenService = services?.firstWhere((service) => service.name == selectedSpecialty).id;
 
     final dio.Dio dioInstance = dio.Dio(
       dio.BaseOptions(
@@ -170,27 +175,23 @@ class SignupController extends GetxController {
         "role": "nurse",
         "phone": fullPhoneNumber ?? phoneNumberController.text.trim(),
         "experience": experienceController.text.trim(),
-        "specialty[]":[
-          "${choosenService}"]
-        ,
+        "specialty[]": ["${choosenService}"],
         "location": locationController.text.trim(),
         "idCard": idCardController.text.trim(),
         if (selectedImage != null)
           "image": await dio.MultipartFile.fromFile(
             selectedImage!.path,
-            filename: selectedImage!.name,
-            contentType: MediaType("image", "jpeg"), // تحديد نوع الصورة
+            filename: selectedImage!.path.split('/').last,
+            contentType: MediaType("image", "jpeg"),
           ),
-
+        if (selectedFile != null)
+          "cv": await dio.MultipartFile.fromFile(
+            selectedFile!.path,
+            filename: selectedFile!.path.split('/').last,
+            contentType: MediaType("application", "pdf"),
+          ),
       });
-      formData.fields.forEach((element) {
-        print("${element.key}: ${element.value}");
-      });
 
-// طباعة الصورة إن وجدت
-      if (selectedImage != null) {
-        print("Image: ${selectedImage!.path}");
-      }
       final response = await dioInstance.post(
         "/api/nurse/register",
         data: formData,
@@ -204,12 +205,10 @@ class SignupController extends GetxController {
 
         await Get.find<CacheHelper>().saveData(key: "nurseToken", value: token);
         await Get.find<CacheHelper>().saveData(key: "nurseId", value: id);
-        Get.off(() => FingerprintAuthScreen());
-        // Get.off(() => FingerprintAuthScreen(email: emailController.text.trim(),));
-
+        Get.off(() => FingerprintAuthScreen(toWhere: 'nurse',));
       } else {
-        final errorModel =ErrorAuthModel.fromJson(response.data);
-        final error= errorModel.errors?[0].msg;
+        final errorModel = ErrorAuthModel.fromJson(response.data);
+        final error = errorModel.errors?[0].msg;
         CoolAlert.show(
           context: context,
           type: CoolAlertType.error,
@@ -218,7 +217,6 @@ class SignupController extends GetxController {
         );
       }
     } catch (e) {
-      print('خطأ تسجيل الدخول: $e');
       CoolAlert.show(
         context: context,
         type: CoolAlertType.error,
@@ -266,7 +264,7 @@ class SignupController extends GetxController {
 
         await Get.find<CacheHelper>().saveData(key: "token", value: token);
         await Get.find<CacheHelper>().saveData(key: "id", value: id);
-        Get.off(() => FingerprintAuthScreen());
+        Get.off(() => FingerprintAuthScreen(toWhere: 'user',));
         // Get.off(() => FingerprintAuthScreen(email: emailController.text.trim(),));
 
       } else {
