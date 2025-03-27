@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get.dart';
+import '../../services/translation_key.dart';
 import '../../widgets/custom_nurse_card.dart';
 import '../../widgets/custom_review_card.dart';
 
 
 class NutritionDetailsScreen extends StatelessWidget {
   final List<String> reviews = [
-    "A highly experienced nurse who knows what he is doing and does it perfectly.",
-    "A highly experienced nurse who knows what he is doing and does it perfectly.",
-    "A highly experienced nurse who knows what he is doing and does it perfectly.",
-    "A highly experienced nurse who knows what he is doing and does it perfectly.",
+    Ahighlyexperiencednursewhoknowswhatheisdoinganddoesitperfectly.tr,
+    Ahighlyexperiencednursewhoknowswhatheisdoinganddoesitperfectly.tr,
+    Ahighlyexperiencednursewhoknowswhatheisdoinganddoesitperfectly.tr,
+    Ahighlyexperiencednursewhoknowswhatheisdoinganddoesitperfectly.tr
   ];
 
    NutritionDetailsScreen({super.key});
@@ -47,7 +48,7 @@ class NutritionDetailsScreen extends StatelessWidget {
               ),
               SizedBox(width: 5.w), // توسيع المسافة بين الأيقونة والنص
               Text(
-                'Nutrition and Dietary Assessment',
+                NutritionandDietaryAssessment.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -69,7 +70,7 @@ class NutritionDetailsScreen extends StatelessWidget {
             NurseCard(rating: 4,),
             SizedBox(height: 16),
             Text(
-              "Customer reviews",
+              Customerreviews.tr,
               style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600,  color: Color(0xffB93439),),
             ),
             SizedBox(height: 10),

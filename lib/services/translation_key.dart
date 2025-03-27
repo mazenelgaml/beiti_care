@@ -265,7 +265,7 @@ const Therapeuticexaminations="Therapeutic examinations";
 
 //Therapeutic examinations page
 const Therapeuticexaminations1="Therapeutic examinations";
-const Genetictesting="Genetictesting";
+const Genetictesting="Genetic testing";
 
 //TestResults folder
 //Testresults page
@@ -316,3 +316,74 @@ const Thepresenceofhereditarydiseasesinthefamilydiabeteshighbloodpressureheartdi
 const Uploadmedicalfilesandxrays="Upload medical files and x-rays";
 const AbilitytouploadXraysMRIsandcardiacscans="Ability to upload X-rays, MRIs, and cardiac scans";
 const Comments="Comments";
+
+//check_out folder
+const CheckOut="Check Out";
+const BackTOHome="Back TO Home";
+
+//consultation folder
+const Consultations="Consultations";
+
+//genatic testing folder
+const NotGenetictesting="No`t Genetic testing";
+
+//home_user
+const Seeall="Seeall";
+
+//medical_testt_screen
+const BloodUreaUreaorBUN="Blood Urea (Urea or BUN )";
+const Incaseofcash ="In case of cash ";
+const Bookingthroughtheapplicationis="Booking through the application is ";
+const Search="Search";
+
+//nutrition folder
+const Nutrition="Nutrition";
+
+//nutrition details folder
+const Ahighlyexperiencednursewhoknowswhatheisdoinganddoesitperfectly="A highly experienced nurse who knows what he is doing and does it perfectly.";
+const NutritionandDietaryAssessment="Nutrition and Dietary Assessment";
+const Customerreviews="Customer reviews";
+
+//requests
+const Norequests="No requests";
+
+//search folder
+const Catheterization="Catheterization";
+const Physiotherapy="Physiotherapy";
+const HomeNursing="HomeNursing";
+const Servicetype="Service type";
+const Selecttheservice="Select the service";
+const Searchrangekm="Search range km";
+
+//suggestions folder
+const Suggestions="Suggestions";
+
+//user_check_out folder
+const PaymentComplete="Payment Complete";
+const ThankYouForYourOrder="Thank You For\nYour Order";
+const PaymentUnComplete="Payment UnComplete";
+const Pleaseconfirmthedata="Please confirm\nthe data";
+const Chooseapaymentmethod="Choose a payment method";
+const sampling="sampling";
+const Paymentuponsampling="Payment upon sampling";
+const visa="visa";
+const PaymentbyVisa="Payment by Visa";
+const CardNumber="Card Number";
+const NameOnCard="Name On Card";
+const CVV="CVV";
+const Expiry="Expiry";
+const SaveYourCreditInformation="Save Your Credit Information";
+
+//custom_nurse_card
+const Specializednutritionservicesandcomprehensivenutritionalassessment="Specialized nutrition services and comprehensive nutritional assessment";
+const Minutes="Minutes";
+const Numberofcasesserved22="Number of cases served 22";
+const BookNow="Book Now";
+
+
+//custom_nutrition_and_dietary_assessment_card
+const Nutritionservices="Nutrition services";
+const Findanurse="Find a nurse";
+const ShowMore="Show More";
+
+

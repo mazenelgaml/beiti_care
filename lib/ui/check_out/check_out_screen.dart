@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import '../../services/translation_key.dart';
 
 class CheckOutScreen extends StatelessWidget {
   const CheckOutScreen({super.key});
@@ -35,7 +37,7 @@ class CheckOutScreen extends StatelessWidget {
               ),
               SizedBox(width: 5.w),
               Text(
-                "Check Out",
+                CheckOut.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -66,7 +68,7 @@ class CheckOutScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 20.h,),
                   Text(
-                    'Back TO Home',
+                    BackTOHome.tr,
                     style: TextStyle(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w700,

@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import '../services/translation_key.dart';
 
 class NurseCard extends StatelessWidget {
   final int rating;
@@ -46,7 +48,7 @@ class NurseCard extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Text(
-              "Specialized nutrition services and comprehensive nutritional assessment",
+              Specializednutritionservicesandcomprehensivenutritionalassessment.tr,
               style: TextStyle(
                   color: Color(0xff5E5C5C),
                   fontSize: 13.sp,
@@ -85,7 +87,7 @@ class NurseCard extends StatelessWidget {
                           size: 18,
                         ),
                         SizedBox(width: 5.w),
-                        Text('40-60 Minutes',
+                        Text('40-60 ${Minutes.tr}',
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 12.sp,
@@ -113,7 +115,7 @@ class NurseCard extends StatelessWidget {
             SizedBox(height: 10),
             Row(
               children: [
-                Text("Number of cases served 22",
+                Text(Numberofcasesserved22.tr,
                     style: TextStyle(
                         color: Color(0xffB93439),
                         fontSize: 15.sp,
@@ -137,7 +139,7 @@ class NurseCard extends StatelessWidget {
                   ),
                   child: Center(
                       child: Text(
-                        "Book Now",
+                        BookNow.tr,
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w600,

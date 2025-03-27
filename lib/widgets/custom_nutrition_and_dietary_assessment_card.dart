@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import '../services/translation_key.dart';
 
 class NutritionAndDietaryAssessmentCard extends StatelessWidget {
   const NutritionAndDietaryAssessmentCard({super.key});
@@ -32,7 +34,7 @@ class NutritionAndDietaryAssessmentCard extends StatelessWidget {
                 ),
                 SizedBox(width: 8),
                 Text(
-                  "Nutrition and Dietary Assessment",
+                  NutritionandDietaryAssessment.tr,
                   style: TextStyle(
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
@@ -43,12 +45,12 @@ class NutritionAndDietaryAssessmentCard extends StatelessWidget {
             ),
             SizedBox(height: 4),
             Text(
-              "Nutrition services",
+              Nutritionservices.tr,
               style: TextStyle(color: Color(0xff7D7D7D),fontSize: 11.sp,fontWeight: FontWeight.w500),
             ),
             SizedBox(height: 8),
             Text(
-              "Specialized nutrition services and comprehensive nutritional assessment",
+              Specializednutritionservicesandcomprehensivenutritionalassessment.tr,
               style: TextStyle(fontSize: 13.sp,fontWeight: FontWeight.w500,color: Color(0xff5E5C5C)),
             ),
             SizedBox(height: 10),
@@ -68,7 +70,7 @@ class NutritionAndDietaryAssessmentCard extends StatelessWidget {
                   children: [
                     Icon(Icons.access_time, color: Colors.black,size: 17,),
                     SizedBox(width: 5.w),
-                    Text('40-60 Minutes',style: TextStyle(color: Colors.black,fontSize: 11.sp,fontWeight: FontWeight.w500)),
+                    Text('40-60 ${Minutes.tr}',style: TextStyle(color: Colors.black,fontSize: 11.sp,fontWeight: FontWeight.w500)),
                   ],
                 )
               ],
@@ -88,7 +90,7 @@ class NutritionAndDietaryAssessmentCard extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Find a nurse",style: TextStyle(color: Colors.white,fontSize: 12.sp,fontWeight: FontWeight.w500),),
+                        Text(Findanurse.tr,style: TextStyle(color: Colors.white,fontSize: 12.sp,fontWeight: FontWeight.w500),),
                         Icon(Icons.search,color: Colors.white,),
                       ],
                     ),
@@ -109,7 +111,7 @@ class NutritionAndDietaryAssessmentCard extends StatelessWidget {
                   ),
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text("Show More",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 12.sp,color: Color(0xff49768C)),),
+                    child: Text(ShowMore.tr,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 12.sp,color: Color(0xff49768C)),),
                     style: ElevatedButton.styleFrom(
 
                       backgroundColor: Color(0xffF0F0F0),

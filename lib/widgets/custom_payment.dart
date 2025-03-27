@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import '../services/translation_key.dart';
 
 class NutritionAndDietaryAssessmentCardPayment extends StatelessWidget {
   const NutritionAndDietaryAssessmentCardPayment({super.key});
@@ -35,7 +37,7 @@ class NutritionAndDietaryAssessmentCardPayment extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Nutrition and Dietary Assessment",
+                      NutritionandDietaryAssessment.tr,
                       style: TextStyle(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w600,
@@ -44,7 +46,7 @@ class NutritionAndDietaryAssessmentCardPayment extends StatelessWidget {
                     ),
                     SizedBox(height: 4.h),
                     Text(
-                      "Nutrition services",
+                      Nutritionservices.tr,
                       style: TextStyle(color: Color(0xff7D7D7D),fontSize: 11.sp,fontWeight: FontWeight.w500),
                     ),
                   ],
@@ -54,7 +56,7 @@ class NutritionAndDietaryAssessmentCardPayment extends StatelessWidget {
 
             SizedBox(height: 8.h),
             Text(
-              "Specialized nutrition services and comprehensive nutritional assessment",
+              Specializednutritionservicesandcomprehensivenutritionalassessment.tr,
               style: TextStyle(fontSize: 13.sp,fontWeight: FontWeight.w500,color: Color(0xff5E5C5C)),
             ),
             SizedBox(height: 10.h),

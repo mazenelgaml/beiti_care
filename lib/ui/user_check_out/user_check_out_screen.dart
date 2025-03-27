@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../../services/translation_key.dart';
 import '../../widgets/custom_payment.dart';
 
 class UserCheckoutScreen extends StatefulWidget {
@@ -34,7 +35,7 @@ class _UserCheckoutScreenState extends State<UserCheckoutScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Payment Complete",
+                  PaymentComplete.tr,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -45,7 +46,7 @@ class _UserCheckoutScreenState extends State<UserCheckoutScreen> {
                 Image.asset("assets/images/checkoutSucess.png", width: 180.w,height: 177.8.h,), // صورة علامة الصح
                 SizedBox(height: 20),
                 Text(
-                  "Thank You For\nYour Order",
+                  ThankYouForYourOrder.tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 18,
@@ -83,7 +84,7 @@ class _UserCheckoutScreenState extends State<UserCheckoutScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Payment UnComplete",
+                  PaymentUnComplete.tr,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -94,7 +95,7 @@ class _UserCheckoutScreenState extends State<UserCheckoutScreen> {
                 Image.asset("assets/images/paymenfail.png", width: 180.w,height: 177.8.h,), // صورة علامة الصح
                 SizedBox(height: 20),
                 Text(
-                  "Please confirm\nthe data",
+                  Pleaseconfirmthedata.tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 18,
@@ -113,7 +114,7 @@ class _UserCheckoutScreenState extends State<UserCheckoutScreen> {
   }
 
 
-  String? selectedPaymentMethod = "sampling"; // القيمة الافتراضية
+  String? selectedPaymentMethod = sampling.tr; // القيمة الافتراضية
   bool saveCreditInfo = false; // متغير لحفظ بيانات البطاقة
 
   @override
@@ -142,7 +143,7 @@ class _UserCheckoutScreenState extends State<UserCheckoutScreen> {
               ),
               SizedBox(width: 5.w),
               Text(
-                'Check Out',
+                CheckOut.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -168,7 +169,7 @@ class _UserCheckoutScreenState extends State<UserCheckoutScreen> {
 
     // اختيار وسيلة الدفع
     Text(
-    "Choose a payment method",
+    Chooseapaymentmethod.tr,
     style: TextStyle(
     fontWeight: FontWeight.w500,
     color: Color(0xffB93439),
@@ -179,35 +180,35 @@ class _UserCheckoutScreenState extends State<UserCheckoutScreen> {
 
     // الدفع عند الاستلام
     GestureDetector(
-    onTap: () => setState(() => selectedPaymentMethod = "sampling"),
+    onTap: () => setState(() => selectedPaymentMethod = sampling.tr),
     child: paymentOption(
-    "Payment upon sampling",
-    selectedPaymentMethod == "sampling"),
+    Paymentuponsampling.tr,
+    selectedPaymentMethod == sampling.tr),
     ),
 
     // الدفع بفيزا
     GestureDetector(
-    onTap: () => setState(() => selectedPaymentMethod = "visa"),
-    child: paymentOption("Payment by Visa",
-    selectedPaymentMethod == "visa"),
+    onTap: () => setState(() => selectedPaymentMethod = visa.tr),
+    child: paymentOption(PaymentbyVisa.tr,
+    selectedPaymentMethod == visa.tr),
     ),
 
     // إظهار الحقول الخاصة ببطاقة الفيزا فقط عند اختيار الدفع بها
-    if (selectedPaymentMethod == "visa") ...[
+    if (selectedPaymentMethod == visa.tr) ...[
           SizedBox(height: 20.h),
 
 // حقل رقم البطاقة مع العنوان
-      Text("Card Number",
+      Text(CardNumber.tr,
           style: TextStyle(color: Color(0xff8B8B8B), fontSize: 16.sp, fontWeight: FontWeight.w500)),
       SizedBox(height: 5.h),
-      buildTextField("Card Number"),
+      buildTextField(CardNumber.tr),
       SizedBox(height: 10.h),
 
 // حقل اسم البطاقة مع العنوان
-      Text("Name On Card",
+      Text(NameOnCard.tr,
           style: TextStyle(color: Color(0xff8B8B8B), fontSize: 16.sp, fontWeight: FontWeight.w500)),
       SizedBox(height: 5.h),
-      buildTextField("Name On Card"),
+      buildTextField(NameOnCard.tr),
       SizedBox(height: 10.h),
 
 // حقل CVV و Expiry مع العناوين
@@ -217,10 +218,10 @@ class _UserCheckoutScreenState extends State<UserCheckoutScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("CVV",
+                Text(CVV.tr,
                     style: TextStyle(color: Color(0xff8B8B8B), fontSize: 16.sp, fontWeight: FontWeight.w500)),
                 SizedBox(height: 5.h),
-                buildTextField("CVV"),
+                buildTextField(CVV.tr),
               ],
             ),
           ),
@@ -229,10 +230,10 @@ class _UserCheckoutScreenState extends State<UserCheckoutScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Expiry",
+                Text(Expiry.tr,
                     style: TextStyle(color: Color(0xff8B8B8B), fontSize: 16.sp, fontWeight: FontWeight.w500)),
                 SizedBox(height: 5.h),
-                buildTextField("Expiry"),
+                buildTextField(Expiry.tr),
               ],
             ),
           ),
@@ -242,7 +243,7 @@ class _UserCheckoutScreenState extends State<UserCheckoutScreen> {
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("Save Your Credit Information",
+          Text(SaveYourCreditInformation.tr,
               style: TextStyle(
                   color: Color(0xffB93439),
                   fontWeight: FontWeight.w600,
@@ -278,14 +279,14 @@ class _UserCheckoutScreenState extends State<UserCheckoutScreen> {
     ),
     ),
     onPressed: () {
-    if (selectedPaymentMethod == "visa") {
+    if (selectedPaymentMethod == visa.tr) {
       showPaymentSuccessPopup(context);
     } else {
       showPaymentFailPopup(context);
     }
     },
     child: Text(
-    "Pay",
+    Pay.tr,
     style: TextStyle(
     color: Colors.white,
     fontSize: 20.sp,

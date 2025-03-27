@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../services/translation_key.dart';
 import '../../widgets/custom_button_nav_bar_user.dart';
 import '../../widgets/custom_nutrition_and_dietary_assessment_card.dart';
 import '../notifications/notification_screen.dart';
@@ -114,13 +115,13 @@ class HomeUserScreen extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(20),
-                      child: Text("Services",style: TextStyle(color: Color(0xffB93439),fontSize: 16.sp,fontWeight: FontWeight.w600),),
+                      child: Text(Services.tr,style: TextStyle(color: Color(0xffB93439),fontSize: 16.sp,fontWeight: FontWeight.w600),),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(20),
                       child: InkWell(onTap:(){
                         Get.to(()=>ServicesScreen());
-                      },child: Text("See all",style: TextStyle(color: Color(0xff8B8B8B),fontSize: 16.sp,fontWeight: FontWeight.w600),)),
+                      },child: Text(Seeall.tr,style: TextStyle(color: Color(0xff8B8B8B),fontSize: 16.sp,fontWeight: FontWeight.w600),)),
                     )
                   ],
                 ),

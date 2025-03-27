@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get.dart';
+import '../../services/translation_key.dart';
 import '../../widgets/custom_button_nav_bar_user.dart';
 
 class UserRequestsScreen extends StatelessWidget {
@@ -37,7 +38,7 @@ class UserRequestsScreen extends StatelessWidget {
               ),
               SizedBox(width: 10.w),
               Text(
-                "Requests",
+                Requests.tr,
                 style: TextStyle(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w600,
@@ -64,7 +65,7 @@ class UserRequestsScreen extends StatelessWidget {
               ),
               SizedBox(height: 20.h),
               Text(
-                " No requests",
+                Norequests.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w500,

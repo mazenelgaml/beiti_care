@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get.dart';
+import '../../services/translation_key.dart';
 import '../../widgets/custom_suggestion_card.dart';
 
 class SuggestionsScreen extends StatelessWidget {
   final List<String> suggestions = [
-    "Medical tests",
-    "Catheterization",
-    "Nutrition",
-    "Consultations",
-    "Catheterization",
-    "Nutrition",
-    "Catheterization",
-    "Nutrition",
+    Medicaltests.tr,
+    Catheterization.tr,
+    Nutrition.tr,
+    Consultations.tr,
+    Catheterization.tr,
+    Nutrition.tr,
+    Catheterization.tr,
+    Nutrition.tr,
   ];
 
    SuggestionsScreen({super.key});
@@ -48,7 +49,7 @@ class SuggestionsScreen extends StatelessWidget {
               ),
               SizedBox(width: 5.w), // توسيع المسافة بين الأيقونة والنص
               Text(
-                'Suggestions',
+                Suggestions.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,

@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get.dart';
+import '../../services/translation_key.dart';
 import '../../widgets/custom_button.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -15,11 +16,11 @@ class _SearchScreenState extends State<SearchScreen> {
   String? selectedService;
 
   List<String> services = [
-    'Nutrition',
-    'Catheterization',
-    'Consultations',
-    'Physiotherapy',
-    'Home Nursing',
+    Nutrition.tr,
+    Catheterization.tr,
+    Consultations.tr,
+    Physiotherapy.tr,
+    HomeNursing.tr,
   ];
 
   @override
@@ -52,7 +53,7 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
               SizedBox(width: 5.w),
               Text(
-                "Search",
+                Search.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -76,7 +77,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Service type',
+                      Servicetype.tr,
                       style: TextStyle(
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w500,
@@ -97,7 +98,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         child: DropdownButton<String>(
                           value: selectedService,
                           hint: Text(
-                            'Select the service',
+                            Selecttheservice.tr,
                             style: TextStyle(fontSize: 14.sp, color: Colors.grey),
                           ),
                           icon: Icon(Icons.keyboard_arrow_down, color: Colors.grey),
@@ -128,7 +129,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                     SizedBox(height: 20.h),
                     Text(
-                      'Search range km',
+                      Searchrangekm.tr,
                       style: TextStyle(
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w500,
@@ -142,7 +143,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       child: TextFormField(
                         onTap: () {},
                         decoration: InputDecoration(
-                          hintText: 'Select the service',
+                          hintText: Selecttheservice.tr,
                           hintStyle: TextStyle(
                             fontSize: 14.sp,
                             color: selectedService == null
@@ -170,7 +171,7 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
             CustomButton(
               onPressed: () {},
-              name: 'Search',
+              name: Search.tr,
               borderRadius: 10,
               btnColor: Color(0xffB93439),
               textColor: Color(0xffFFFFFF),

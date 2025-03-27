@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import '../services/translation_key.dart';
 
 class ReviewCard extends StatelessWidget {
   const ReviewCard({super.key});
@@ -28,7 +30,7 @@ class ReviewCard extends StatelessWidget {
             "Ali Omar",
             style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: Color(0xff000000)),
           ),
-          subtitle: Text("A highly experienced nurse who knows what he is doing and does it perfectly.", style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: Color(0xff5E5C5C)),),
+          subtitle: Text(Ahighlyexperiencednursewhoknowswhatheisdoinganddoesitperfectly.tr, style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: Color(0xff5E5C5C)),),
         ),
       ),
     );

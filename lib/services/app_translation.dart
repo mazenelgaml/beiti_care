@@ -318,7 +318,81 @@ a type specimen book. It has survived not \n only five centuries """ ,
       Healthrecordandmedicalhistory:"Health record and medical history",
       Medicalreportsrumorsandtests:"Medical reports, rumors and tests",
 
-    },
+
+      //check_out folder
+      CheckOut:"Check Out",
+      BackTOHome:"Back TO Home",
+
+      //consultation folder
+      Consultations:"Consultations",
+
+      //genatic testing folder
+      NotGenetictesting:"No`t Genetic testing",
+
+      //home user folder
+      Seeall:"See all",
+
+    //medical_testt_screen
+     BloodUreaUreaorBUN:"Blood Urea (Urea or BUN )",
+     Incaseofcash :"In case of cash ",
+     Bookingthroughtheapplicationis:"Booking through the application is ",
+      Search:"Search",
+
+  //nutrition folder
+   Nutrition:"Nutrition",
+
+
+ //nutrition details folder
+   Ahighlyexperiencednursewhoknowswhatheisdoinganddoesitperfectly:"A highly experienced nurse who knows what he is doing and does it perfectly.",
+   NutritionandDietaryAssessment:"Nutrition and Dietary Assessment",
+   Customerreviews:"Customer reviews",
+
+  //requests
+   Norequests:"No requests",
+
+  //search folder
+   Catheterization:"Catheterization",
+   Physiotherapy:"Physiotherapy",
+   HomeNursing:"HomeNursing",
+   Servicetype:"Service type",
+   Selecttheservice:"Select the service",
+   Searchrangekm:"Search range km",
+
+      //suggestions folder
+      Suggestions:"Suggestions",
+
+
+  //user_check_out folder
+   PaymentComplete:"Payment Complete",
+   ThankYouForYourOrder:"Thank You For\nYour Order",
+   PaymentUnComplete:"Payment UnComplete",
+   Pleaseconfirmthedata:"Please confirm\nthe data",
+   Chooseapaymentmethod:"Choose a payment method",
+   sampling:"sampling",
+   Paymentuponsampling:"Payment upon sampling",
+   visa:"visa",
+   PaymentbyVisa:"Payment by Visa",
+   CardNumber:"Card Number",
+   NameOnCard:"Name On Card",
+   CVV:"CVV",
+   Expiry:"Expiry",
+   SaveYourCreditInformation:"Save Your Credit Information",
+
+  //custom_nurse_card
+   Specializednutritionservicesandcomprehensivenutritionalassessment:"Specialized nutrition services and comprehensive nutritional assessment",
+   Minutes:"Minutes",
+   Numberofcasesserved22:"Number of cases served 22",
+   BookNow:"Book Now",
+
+//custom_nutrition_and_dietary_assessment_card
+   Nutritionservices:"Nutrition services",
+   Findanurse:"Find a nurse",
+   ShowMore:"Show More",
+
+      //custom_review_card
+
+
+},
     "ar": {
 
       //login page
@@ -633,6 +707,74 @@ a type specimen book. It has survived not \n only five centuries """ ,
       Comments: "التعليقات",
       Healthrecordandmedicalhistory: "السجل الصحي والتاريخ الطبي",
       Medicalreportsrumorsandtests: "التقارير الطبية والشائعات والفحوصات",
+
+      //check_out folder
+      CheckOut: "الدفع",
+      BackTOHome: "العودة إلى الصفحة الرئيسية",
+
+      //consultation folder
+      Consultations:"الاستشارات",
+
+      //genatic testing folder
+      NotGenetictesting: "اختبار جيني غير متاح",
+
+      //home_user
+      Seeall:"عرض الكل",
+
+      //medical_testt_screen
+      BloodUreaUreaorBUN: "اليوريا في الدم (اليوريا أو BUN)",
+      Incaseofcash: "في حالة الدفع نقدًا",
+      Bookingthroughtheapplicationis: "الحجز من خلال التطبيق هو",
+      Search: "بحث",
+
+      //nutrition folder
+      Nutrition: "التغذية",
+
+      //nutrition details folder
+      Ahighlyexperiencednursewhoknowswhatheisdoinganddoesitperfectly: "ممرضة ذات خبرة عالية تعرف ما تفعله وتقوم به بشكل مثالي.",
+      NutritionandDietaryAssessment: "تقييم التغذية والنظام الغذائي",
+      Customerreviews: "مراجعات العملاء",
+
+      //requests
+      Norequests:"لا يوجد طلبات",
+
+      //search folder
+      Catheterization: "قسطرة",
+      Physiotherapy: "العلاج الطبيعي",
+      HomeNursing: "تمريض منزلي",
+      Servicetype: "نوع الخدمة",
+      Selecttheservice: "حدد الخدمة",
+      Searchrangekm: "نطاق البحث بالكيلومتر",
+
+      //suggestions folder
+      Suggestions:"الاقتراحات",
+
+      //user_check_out folder
+      PaymentComplete: "تم الدفع",
+      ThankYouForYourOrder: "شكرًا لطلبك\n",
+      PaymentUnComplete: "الدفع غير مكتمل",
+      Pleaseconfirmthedata: "يرجى تأكيد البيانات\n",
+      Chooseapaymentmethod: "اختر طريقة الدفع",
+      sampling: "أخذ العينة",
+      Paymentuponsampling: "الدفع عند أخذ العينة",
+      visa: "فيزا",
+      PaymentbyVisa: "الدفع بواسطة فيزا",
+      CardNumber: "رقم البطاقة",
+      NameOnCard: "الاسم على البطاقة",
+      CVV: "رمز الأمان (CVV)",
+      Expiry: "تاريخ الانتهاء",
+      SaveYourCreditInformation: "حفظ معلومات البطاقة الائتمانية",
+
+      //custom_nurse_card
+      Specializednutritionservicesandcomprehensivenutritionalassessment: "خدمات التغذية المتخصصة والتقييم الغذائي الشامل",
+      Minutes: "الدقائق",
+      Numberofcasesserved22: "عدد الحالات التي تم تقديم الخدمة لها: 22",
+      BookNow: "احجز الآن",
+
+      //custom_nutrition_and_dietary_assessment_card
+      Nutritionservices: "خدمات التغذية",
+      Findanurse: "ابحث عن ممرضة",
+      ShowMore: "عرض المزيد",
 
     }
   };

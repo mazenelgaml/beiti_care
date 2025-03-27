@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../services/translation_key.dart';
 import '../../widgets/custom_nutrition_and_dietary_assessment_card.dart';
 
-
+import 'package:get/get.dart';
 
 
 class ConsultationScreen extends StatelessWidget {
@@ -41,7 +42,7 @@ class ConsultationScreen extends StatelessWidget {
               ),
               SizedBox(width: 5.w), // توسيع المسافة بين الأيقونة والنص
               Text(
-                'Consultations',
+                Consultations.tr,
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
