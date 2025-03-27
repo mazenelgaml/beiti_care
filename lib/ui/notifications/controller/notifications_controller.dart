@@ -21,7 +21,7 @@ class NotificationsController extends GetxController {
     nurseNotifications=[];
     isLoading = true;
     update();
-    String id = await Get.find<CacheHelper>().getData(key: "id");
+    String id = await Get.find<CacheHelper>().getData(key: "nurseId");
     final dio.Dio dioInstance = dio.Dio(
       dio.BaseOptions(
         baseUrl: EndPoint.baseUrl,
@@ -31,7 +31,7 @@ class NotificationsController extends GetxController {
 
     try {
       final response = await dioInstance.get(
-        "/api/notification/67cf88f548a9babe7ea07309",
+        "/api/notification/$id",
         options: dio.Options(headers: {"Content-Type": "application/json"}),
       );
 

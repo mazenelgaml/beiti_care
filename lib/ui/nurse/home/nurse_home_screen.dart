@@ -78,7 +78,7 @@ class NurseHomeScreen extends StatelessWidget {
     children: [
     Image(image: AssetImage("assets/images/locationIcon.png"),width: 10.w,height: 10.h,fit: BoxFit.fill,),
     SizedBox(width: 4.w),
-    Text(controller.nurseByIdModel?.data?.location??"",
+    Text(controller.nurseByIdModel?.data?.location??"Smouha",
     style: TextStyle(color: Color(0xff5E5C5C),fontSize: 11.sp,fontWeight: FontWeight.w500)),
     ],
     ),
